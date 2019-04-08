@@ -82,4 +82,38 @@ trait BaseRepository {
         return $model;
     }
 
+
+
+    /**
+     * 删除数据
+     *
+     * @param mixed $mixed int或者model
+     * @return mixed
+     */
+    public function destroy($mixed)
+    {
+        if(ctype_digit($mixed) || is_string($mixed))
+            return $this->getById($mixed)->delete();
+        else
+            return $mixed->delete();
+    }
+
+
+    /**
+     * 返回列表不分页
+     *
+     * @param bool $where
+     * @param string $sortColumn
+     * @param string $sort
+     * @return mixed
+     */
+    public function lists($where = false, $sortColumn = 'id', $sort = 'desc'){
+
+        if($where){
+            return $this->model->where($where)->orderBy($sortColumn, $sort)->get();
+        }else{
+            return $this->model->orderBy($sortColumn, $sort)->get();
+        }
+    }
+
 }
