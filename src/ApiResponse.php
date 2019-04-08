@@ -2,9 +2,9 @@
 
 namespace Ineplant;
 
-use Psr\Http\Message\ResponseInterface;
-
 final class ApiResponse {
+
+    protected static $errorMessage = [];
 
     /**
      * ApiResponse constructor. 禁止初始化
@@ -12,6 +12,15 @@ final class ApiResponse {
     private function __construct()
     {
 
+    }
+
+    /**
+     * 设置错误消息映射
+     *
+     * @param array $errorMessage
+     */
+    public static function setErrorMessage(array $errorMessage) {
+        self::$errorMessage = $errorMessage;
     }
 
 
@@ -24,47 +33,17 @@ final class ApiResponse {
      */
     public static function handler($response = '', $errorCode = '0'){
 
-        if( $response instanceof ResponseInterface ){
-
-            $content = $response->getBody()->getContents();
-
-            if (empty($content)){
-                $jsonResult = '未知异常！';
-            } else {
-                $jsonResult = json_decode($content, true);
-
-                if( null === $jsonResult ){
-                    $jsonResult = $content;
-                }
-            }
-
-            $responseData = 200 != $response->getStatusCode() ?
-                [
-                    'errcode' => ErrorCode::SYSTEM_FAIL,
-                    'errmsg' => $jsonResult,
-                    'content' => ''
-                ] :
-                [
-                    'errcode' => ErrorCode::NOT_ERROR,
-                    'errmsg' => '',
-                    'content' => $jsonResult
-                ];
-
-        }else{
-
-
-            $responseData = '0' != $errorCode ?
-                [
-                    'errcode' => $errorCode,
-                    'errmsg' => empty($response) ? ErrorCode::ERROR_MESSAGE[$errorCode] : $response,
-                    'content' => ''
-                ] :
-                [
-                    'errcode' => $errorCode,
-                    'errmsg' => '',
-                    'content' => $response
-                ];
-        }
+        $responseData = '0' != $errorCode ?
+            [
+                'errcode' => $errorCode,
+                'errmsg' => empty($response) ? self::$errorMessage[$errorCode] : $response,
+                'content' => ''
+            ] :
+            [
+                'errcode' => $errorCode,
+                'errmsg' => '',
+                'content' => $response
+            ];
 
         return $responseData;
 

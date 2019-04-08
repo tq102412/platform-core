@@ -25,10 +25,12 @@ class ResolveIdToken
 
         $identity = JWT::decode($idToken);
 
+        //TODO:根据实际注入的
         $request->attributes->add([
-            'identity' => $identity
+            'companyId' => '1'
         ]);
 
         return $next($request);
+
     }
 }
