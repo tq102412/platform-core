@@ -1,0 +1,12 @@
+{
+    "name": "ineplant/mr-platform",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "我不吃植物",
+            "email": "2756145382@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
