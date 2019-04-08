@@ -23,7 +23,7 @@ class ResolveIdToken
 
         $idToken = $request->header("id-token");
 
-        $identity = JWT::decode($idToken);
+        //$identity = JWT::decode($idToken);
 
         //TODO:根据实际注入的
         $request->attributes->add([
