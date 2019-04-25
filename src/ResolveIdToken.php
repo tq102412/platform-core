@@ -17,18 +17,10 @@ class ResolveIdToken
     public function handle($request, Closure $next)
     {
 
-        if (!$request->hasHeader("id-token")) {
-            return response('id token is empty', 400);
-        }
+        $companyId = $request->header("companyId");
+        $subject = $request->header("subject");
 
-        $idToken = $request->header("id-token");
-
-        //$identity = JWT::decode($idToken);
-
-        //TODO:根据实际注入的
-        $request->attributes->add([
-            'companyId' => '1'
-        ]);
+        $request->attributes->add(compact($companyId, $subject));
 
         return $next($request);
 
