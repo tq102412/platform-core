@@ -142,4 +142,22 @@ trait BaseRepository {
         }
     }
 
+
+    /**
+     * @param $id
+     * @param null $unique
+     * @param $input
+     * @return mixed
+     */
+    public function updateByUniqueId($id, $input, $unique = null) {
+        $unique = $unique ?? self::$unique;
+
+        if(is_array($id)){
+            return $this->model->whereIn($unique, $id)->update($input);
+        }else{
+            return $this->update([$unique => $id], $input);
+        }
+
+    }
+
 }
