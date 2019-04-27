@@ -6,6 +6,8 @@ trait BaseRepository {
 
     protected $model;
 
+    public static $unique;
+
     public function getModel() {
         return $this->model;
     }
@@ -113,6 +115,30 @@ trait BaseRepository {
             return $this->model->where($where)->orderBy($sortColumn, $sort)->get();
         }else{
             return $this->model->orderBy($sortColumn, $sort)->get();
+        }
+    }
+
+
+    /**
+     * @param $id
+     * @param null $unique
+     * @param bool $status
+     * @param bool $lock
+     * @return mixed
+     */
+    public function getByUniqueId($id, $unique = null, $status = true, $lock = false) {
+        $unique = $unique ?? self::$unique;
+
+        $query = $this->model;
+
+        $lock && $query = $query->lockForUpdate();
+
+        $query = $query->where($unique, $id);
+
+        if($status){
+            return $query->firstOrFail();
+        }else{
+            return $query->find();
         }
     }
 
