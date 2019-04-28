@@ -160,4 +160,40 @@ trait BaseRepository {
 
     }
 
+    /**
+     * 返回分页列表
+     *
+     * @param int $pagesize
+     * @param string $sort
+     * @param string $sortColumn
+     * @return mixed
+     */
+    public function page($where = false, $offset = 0, $limit = 20, $sortColumn = 'created_at', $sort = 'desc')
+    {
+
+        if ($where) {
+            if($sortColumn != 'created_at'){
+                $query = $this->model->where($where)
+                    ->orderBy($sortColumn, $sort)
+                    ->orderBy('created_at', 'desc');
+            }else{
+                $query =  $this->model->where($where)
+                    ->orderBy($sortColumn, $sort);
+            }
+        } else {
+            $query = $this->model->orderBy($sortColumn, $sort);
+        }
+
+
+        $total = $query->count();
+
+        $data = $query->limit($limit)->offset($offset)->get();
+
+        return [
+            'data' => $data,
+            'total' => $total
+        ];
+
+    }
+
 }
