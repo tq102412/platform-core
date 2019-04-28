@@ -17,8 +17,8 @@ class ResolveIdToken
     public function handle($request, Closure $next)
     {
 
-        $companyId = $request->header("companyId");
-        $subject = $request->header("subject");
+        $companyId = $request->header("HTTP_COMPANYID");
+        $subject = $request->header("HTTP_SUBJECT");
 
         $request->attributes->add(compact($companyId, $subject));
 
