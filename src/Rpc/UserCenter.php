@@ -8,6 +8,11 @@ class UserCenter {
 
     protected static $domain = 'http://ucenter:60004';
 
+    /**
+     * @param $openid
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function findOrCreate($openid) {
         return self::getClient()->request('GET', '/user/find_or_create', [
             'query' => [
@@ -16,6 +21,11 @@ class UserCenter {
         ]);
     }
 
+    /**
+     * @param $uniqueId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function find($uniqueId) {
         return self::getClient()->request('GET', '/user/get', [
             'query' => [

@@ -8,6 +8,11 @@ class PlatformMaterial {
 
     protected static $domain = 'http://platform:60003';
 
+    /**
+     * @param $path
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function getByPath($path) {
         return self::getClient()->request('GET', '/api/material/get/by_Path', [
             'query' => [
@@ -16,6 +21,12 @@ class PlatformMaterial {
         ]);
     }
 
+    /**
+     * @param $path
+     * @param $data
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function saveByPath($path, $data) {
         return self::getClient()->request('POST', '/api/material/save/by_path', [
             'json' => [
