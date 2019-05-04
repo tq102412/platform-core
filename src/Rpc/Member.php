@@ -30,5 +30,14 @@ class Member {
         ]);
     }
 
+    /**
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function checkoutRecharge($billCode, $data = []) {
+        return self::getClient()->request('POST', "/api/rechargebill/checkout/$billCode", [
+            'json' => $data
+        ]);
+    }
 
 }

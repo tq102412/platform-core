@@ -168,8 +168,7 @@ trait BaseRepository {
      * @param string $sortColumn
      * @return mixed
      */
-    public function page($where = false, $offset = 0, $limit = 20, $sortColumn = 'created_at', $sort = 'desc')
-    {
+    public function page($where = false, $offset = 0, $limit = 20, $sortColumn = 'created_at', $sort = 'desc') {
 
         if ($where) {
             if($sortColumn != 'created_at'){
@@ -194,6 +193,17 @@ trait BaseRepository {
             'total' => $total
         ];
 
+    }
+
+    /**
+     * 添加数据支持批量添加
+     *
+     * @param $input
+     * @return mixed
+     */
+    public function insert($input) {
+
+        return $this->model->insert($input);
     }
 
 }
