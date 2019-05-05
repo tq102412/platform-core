@@ -52,4 +52,16 @@ class Member {
         ]);
     }
 
+    /**
+     * @param $billCode
+     * @param array $data
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function wechatQuickCheckout($billCode, $data = []) {
+        return self::getClient()->request('POST', "/api/consumebill/checkout/$billCode", [
+            'json' => $data
+        ]);
+    }
+
 }
