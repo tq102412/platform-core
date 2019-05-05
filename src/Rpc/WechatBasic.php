@@ -7,6 +7,6 @@ class WechatBasic {
     use BaseRpc;
 
 
-    protected static $domain = 'http://wechat:60001';
+    protected static $domain = 'http://wechat';
 
 }

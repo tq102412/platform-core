@@ -6,7 +6,7 @@ class PlatformMaterial {
 
     use BaseRpc;
 
-    protected static $domain = 'http://platform:60003';
+    protected static $domain = 'http://platform';
 
     /**
      * @param $path

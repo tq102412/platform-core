@@ -6,7 +6,7 @@ class Member {
 
     use BaseRpc;
 
-    protected static $domain = 'http://member:60002';
+    protected static $domain = 'http://member';
 
     /**
      * @param $data
