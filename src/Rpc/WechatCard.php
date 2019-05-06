@@ -65,7 +65,7 @@ class WechatCard extends WechatBasic {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function setActivationForm($appId, $cardId, $settings) {
-        return self::getClient()->request('POST', "/api/card/user/update/$cardId", [
+        return self::getClient()->request('POST', "/api/card/activationform/set/$cardId", [
             'json' => [
                 'appId' => $appId,
                 'settings' => $settings,
