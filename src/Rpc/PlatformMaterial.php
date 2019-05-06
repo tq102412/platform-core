@@ -14,8 +14,8 @@ class PlatformMaterial {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function getByPath($path) {
-        return self::getClient()->request('GET', '/api/material/get/by_Path', [
-            'query' => [
+        return self::getClient()->request('POST', '/api/material/get/by_Path', [
+            'json' => [
                 'path' => $path
             ]
         ]);
