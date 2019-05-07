@@ -41,6 +41,17 @@ class Member {
     }
 
     /**
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function userCheckoutRecharge($billCode, $data = []) {
+        return self::getClient()->request('POST', "/api/rechargebill/usercheckout/$billCode", [
+            'json' => $data
+        ]);
+    }
+
+
+    /**
      * @param $billCode
      * @param array $data
      * @return mixed|\Psr\Http\Message\ResponseInterface
