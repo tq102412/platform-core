@@ -48,7 +48,7 @@ class WechatCard extends WechatBasic {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function updateUser($appId, $data) {
-        return self::getClient()->request('POST', "/api/card/user/update/$appId", [
+        return self::getClient()->request('POST', "/api/card/user/update", [
             'json' => [
                 'appId' => $appId,
                 'data'  => $data
@@ -81,8 +81,11 @@ class WechatCard extends WechatBasic {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function activate($appId, $info) {
-        return self::getClient()->request('POST', "/api/card/activity/$appId", [
-            'json' => $info
+        return self::getClient()->request('POST', "/api/card/activate", [
+            'json' => [
+                'card'  => $info,
+                'appId' => $appId
+            ]
         ]);
     }
 
