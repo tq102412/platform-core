@@ -41,11 +41,13 @@ class Member {
     }
 
     /**
+     * 注意此接口不是内部专用
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function userCheckoutRecharge($billCode, $data = []) {
-        return self::getClient()->request('POST', "/api/rechargebill/usercheckout/$billCode", [
+    public static function createRecharge($data = []) {
+        return self::getClient()->request('POST', "/api/rechargebill/create", [
             'json' => $data
         ]);
     }
@@ -63,14 +65,29 @@ class Member {
         ]);
     }
 
+
     /**
+     * 注意此接口不是内部专用
+     *
      * @param $billCode
      * @param array $data
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function wechatQuickCheckout($billCode, $data = []) {
-        return self::getClient()->request('POST', "/api/consumebill/checkout/$billCode", [
+    public static function createQuick($data = []) {
+        return self::getClient()->request('POST', "/api/consumebill/create", [
+            'json' => $data
+        ]);
+    }
+
+
+    /**
+     * @param $data
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function createActive($data) {
+        return self::getClient()->request('POST', "/api/member/active/create", [
             'json' => $data
         ]);
     }
