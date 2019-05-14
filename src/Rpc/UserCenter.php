@@ -34,4 +34,15 @@ class UserCenter {
         ]);
     }
 
+    /**
+     * @param $uniqueId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function update($uniqueId, $userInfo) {
+        return self::getClient()->request('POST', "/user/update?unique_id=$uniqueId", [
+            'json' => $userInfo
+        ]);
+    }
+
 }
