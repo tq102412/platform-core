@@ -27,7 +27,7 @@ trait BaseRpc {
                 $protocol = 'http://';
             }
 
-            str_replace($protocol,"$protocol://$env-", $domain);
+            $domain = str_replace($protocol,$protocol . $env . "-", $domain);
         }
 
         empty(self::$client) && self::$client = new Client([
