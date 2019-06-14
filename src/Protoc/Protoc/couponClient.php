@@ -5,7 +5,7 @@ namespace Protoc;
 
 /**
  */
-class CouponClient extends \Grpc\BaseStub {
+class couponClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -23,7 +23,7 @@ class CouponClient extends \Grpc\BaseStub {
      */
     public function GetDiscountMoney(\Protoc\DiscountMoneyRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Coupon/GetDiscountMoney',
+        return $this->_simpleRequest('/protoc.coupon/GetDiscountMoney',
         $argument,
         ['\Protoc\DiscountMoney', 'decode'],
         $metadata, $options);

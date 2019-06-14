@@ -18,7 +18,7 @@
         "psr-4": {
             "Ineplant\\": "src/",
             "GPBMetadata\\": "src/Protoc/GPBMetadata/",
-            "Protoc\\": "src/Protoc/CouponClient/"
+            "Protoc\\": "src/Protoc/Protoc/"
         }
     }
 }

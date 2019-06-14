@@ -3,13 +3,15 @@
 namespace Ineplant\Rpc;
 
 use Grpc\ChannelCredentials;
+
+use Protoc\couponClient;
 use Protoc\DiscountMoneyRequest;
 
 class Coupon     {
 
     public static function GetDiscountMoney() {
 
-        $client = new \Protoc\CouponClient(
+        $client = new couponClient(
             '',
             [
                 'credentials' => ChannelCredentials::createInsecure(),
