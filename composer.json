@@ -10,11 +10,15 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "grpc/grpc": "dev-master",
+        "google/protobuf": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "Ineplant\\": "src/"
+            "Ineplant\\": "src/",
+            "GPBMetadata\\": "src/Protoc/GPBMetadata/",
+            "Protoc\\": "src/Protoc/CouponClient/"
         }
     }
 }
