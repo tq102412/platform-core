@@ -29,4 +29,30 @@ class couponClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Protoc\ConsumingRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Consuming(\Protoc\ConsumingRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/Consuming',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Protoc\ReceivingRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Receiving(\Protoc\ReceivingRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/Receiving',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
 }

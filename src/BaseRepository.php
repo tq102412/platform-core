@@ -138,7 +138,7 @@ trait BaseRepository {
         if($status){
             return $query->firstOrFail();
         }else{
-            return $query->find();
+            return $query->first();
         }
     }
 
