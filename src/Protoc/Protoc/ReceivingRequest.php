@@ -13,6 +13,18 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class ReceivingRequest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
+     */
+    private $coupon_id = '';
+    /**
+     * Generated from protobuf field <code>string member_union_id = 2;</code>
+     */
+    private $member_union_id = '';
+    /**
+     * Generated from protobuf field <code>int32 quantity = 3;</code>
+     */
+    private $quantity = 0;
 
     /**
      * Constructor.
@@ -20,11 +32,80 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
+     *     @type string $coupon_id
+     *     @type string $member_union_id
+     *     @type int $quantity
      * }
      */
     public function __construct($data = NULL) {
         \GPBMetadata\Coupon::initOnce();
         parent::__construct($data);
+    }
+
+    /**
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
+     * @return string
+     */
+    public function getCouponId()
+    {
+        return $this->coupon_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCouponId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->coupon_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string member_union_id = 2;</code>
+     * @return string
+     */
+    public function getMemberUnionId()
+    {
+        return $this->member_union_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string member_union_id = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setMemberUnionId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->member_union_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 quantity = 3;</code>
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 quantity = 3;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setQuantity($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->quantity = $var;
+
+        return $this;
     }
 
 }

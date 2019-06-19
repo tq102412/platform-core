@@ -7,6 +7,7 @@ use Grpc\ChannelCredentials;
 use Protoc\ConsumingRequest;
 use Protoc\couponClient;
 use Protoc\DiscountMoneyRequest;
+use Protoc\ReceivingRequest;
 
 class Coupon {
 
@@ -68,6 +69,25 @@ class Coupon {
         $request->setCreatedUserId($createdUserId);
 
         return self::getClient()->Consuming($request)->wait();
+    }
+
+
+    /**
+     * 领取优惠券
+     *
+     * @param $memberUnionId
+     * @param $couponId
+     * @return array
+     */
+    public static function Receiving($memberUnionId, $couponId, $quantity = 1) {
+        $request = new ReceivingRequest();
+
+        $request->setMemberUnionId($memberUnionId);
+        $request->setCouponId($couponId);
+        $request->setQuantity($quantity);
+
+        return self::getClient()->Receiving($request)->wait();
+
     }
 
 }
