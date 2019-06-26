@@ -7,6 +7,8 @@ use Grpc\ChannelCredentials;
 use Protoc\ConsumingRequest;
 use Protoc\couponClient;
 use Protoc\DiscountMoneyRequest;
+use Protoc\GetByIdsRequest;
+use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
 
 class Coupon {
@@ -22,7 +24,7 @@ class Coupon {
     public static function getClient() {
         if (empty(self::$client)) {
             self::$client = new couponClient(
-                'coupon:8080',
+                self::getServAdd(),
                 [
                     'credentials' => ChannelCredentials::createInsecure(),
                 ]
@@ -30,6 +32,26 @@ class Coupon {
         }
 
         return self::$client;
+    }
+
+
+    /**
+     * 获取服务地址
+     *
+     * @return string
+     */
+    public static function getServAdd() {
+        $env = getenv("SERVICE_ENV");
+
+        $servAdd = '';
+
+        if (!empty($env)) {
+            $servAdd = $env . "-";
+        }
+
+        $servAdd .= "coupon:8080";
+
+        return $servAdd;
     }
 
     /**
@@ -87,7 +109,38 @@ class Coupon {
         $request->setQuantity($quantity);
 
         return self::getClient()->Receiving($request)->wait();
+    }
 
+
+    /**
+     * 获取优惠券通过ids
+     *
+     * @param array $ids
+     * @return array
+     */
+    public static function getByIds(array $ids) {
+
+        $request = new GetByIdsRequest();
+        $request->setCouponIds($ids);
+
+        return self::getClient()->GetByIds($request)->wait();
+
+    }
+
+
+    /**
+     * 获取优惠券数量
+     *
+     * @param string $memberId
+     * @param int $status
+     * @return array
+     */
+    public static function GetCountByMember(string $memberId, int $status) {
+        $request = new GetCountByMemberRequest();
+        $request->setMemberUnionId($memberId);
+        $request->setStatus($status);
+
+        return self::getClient()->GetCountByMember($request)->wait();
     }
 
 }
