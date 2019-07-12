@@ -2,8 +2,6 @@
 
 namespace Ineplant\Rpc;
 
-use Grpc\ChannelCredentials;
-
 use Protoc\ConsumingRequest;
 use Protoc\couponClient;
 use Protoc\DiscountMoneyRequest;
@@ -11,47 +9,15 @@ use Protoc\GetByIdsRequest;
 use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
 
-class Coupon {
+class Coupon extends GrpcClient {
 
-    /**
-     * @var couponClient
-     */
-    protected static $client;
 
-    /**
-     * @return couponClient
-     */
-    public static function getClient() {
-        if (empty(self::$client)) {
-            self::$client = new couponClient(
-                self::getServAdd(),
-                [
-                    'credentials' => ChannelCredentials::createInsecure(),
-                ]
-            );
-        }
-
-        return self::$client;
+    public static function getClientName() {
+        return couponClient::class;
     }
 
-
-    /**
-     * 获取服务地址
-     *
-     * @return string
-     */
-    public static function getServAdd() {
-        $env = getenv("SERVICE_ENV");
-
-        $servAdd = '';
-
-        if (!empty($env)) {
-            $servAdd = $env . "-";
-        }
-
-        $servAdd .= "coupon:8080";
-
-        return $servAdd;
+    public static function getServAddName(): string {
+        return 'coupon:8080';
     }
 
     /**
