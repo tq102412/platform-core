@@ -3,7 +3,6 @@
 namespace Ineplant\Rpc;
 
 use Protoc\GetByMemberUnionIds;
-use Protoc\GetByUnionIdRequest;
 use Protoc\GetRequest;
 use Protoc\MemberClient;
 
@@ -23,7 +22,7 @@ class GrpcMember extends GrpcClient {
      * @param array $unionIds
      * @return mixed
      */
-    protected static function getListByUnionIds(array $unionIds) {
+    public static function getListByUnionIds(array $unionIds) {
         $request = new GetByMemberUnionIds();
 
         $request->setUnionIds($unionIds);
@@ -38,7 +37,7 @@ class GrpcMember extends GrpcClient {
      * @param $nickName
      * @return mixed
      */
-    protected static function getByNickname($nickName) {
+    public static function getByNickname($nickName) {
         $request = new GetRequest();
 
         $request->setNickname($nickName);

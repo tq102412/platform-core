@@ -27,7 +27,7 @@ abstract class GrpcClient {
      */
     public static function getClient() {
         if (empty(self::$client)) {
-            $app = self::$clientName;
+            $app = static::getClientName();
 
             self::$client = new $app(
                 self::getServAdd(),
@@ -54,7 +54,7 @@ abstract class GrpcClient {
             $servAdd = $env . "-";
         }
 
-        $servAdd .= self::$servAdd;
+        $servAdd .= static::getServAddName();
 
         return $servAdd;
     }
