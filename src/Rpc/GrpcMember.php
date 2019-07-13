@@ -45,4 +45,19 @@ class GrpcMember extends GrpcClient {
         return self::getClient()->Get($request)->wait();
     }
 
+    /**
+     * 获取会员信息通过nickname和公司id
+     *
+     * @param $nickName
+     * @return mixed
+     */
+    public static function getByNicknameAndCompany($nickName, $companyId) {
+        $request = new GetRequest();
+
+        $request->setNickname($nickName);
+        $request->setCompanyId($companyId);
+
+        return self::getClient()->Get($request)->wait();
+    }
+
 }
