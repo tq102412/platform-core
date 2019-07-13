@@ -29,6 +29,10 @@ class Members extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string union_id = 4;</code>
      */
     private $union_id = '';
+    /**
+     * Generated from protobuf field <code>string headimgurl = 5;</code>
+     */
+    private $headimgurl = '';
 
     /**
      * Constructor.
@@ -40,6 +44,7 @@ class Members extends \Google\Protobuf\Internal\Message
      *     @type string $nickname
      *     @type string $openid
      *     @type string $union_id
+     *     @type string $headimgurl
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +136,28 @@ class Members extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->union_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string headimgurl = 5;</code>
+     * @return string
+     */
+    public function getHeadimgurl()
+    {
+        return $this->headimgurl;
+    }
+
+    /**
+     * Generated from protobuf field <code>string headimgurl = 5;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setHeadimgurl($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->headimgurl = $var;
 
         return $this;
     }
