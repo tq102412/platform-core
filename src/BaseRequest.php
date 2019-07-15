@@ -12,12 +12,10 @@ use App\Exceptions\InePlantLogicException;
 use App\Services\ErrorCode;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 
 class BaseRequest extends FormRequest
 {
-
     /**
      * @var array 错误码映射
      */
@@ -67,7 +65,5 @@ class BaseRequest extends FormRequest
         ];
 
         return $result;
-
     }
-
 }

@@ -23,9 +23,9 @@ trait BaseRepository {
 
         $lock && $query = $query->lockForUpdate();
 
-        if($status){
+        if ($status) {
             return $query->findOrFail($id);
-        }else{
+        } else {
             return $query->find($id);
         }
 
@@ -40,7 +40,6 @@ trait BaseRepository {
     public function store($input) {
         return $this->save($this->model, $input);
     }
-
 
     /**
      * 批量更新数据
@@ -63,9 +62,9 @@ trait BaseRepository {
      */
     public function updateById($id, $input) {
 
-        if(is_array($id)){
+        if (is_array($id)) {
             return $this->model->whereIn('id', $id)->update($input);
-        }else{
+        } else {
             return $this->update(['id' => $id], $input);
         }
 
@@ -85,16 +84,14 @@ trait BaseRepository {
     }
 
 
-
     /**
      * 删除数据
      *
      * @param mixed $mixed int或者model
      * @return mixed
      */
-    public function destroy($mixed)
-    {
-        if(ctype_digit($mixed) || is_string($mixed))
+    public function destroy($mixed) {
+        if (ctype_digit($mixed) || is_string($mixed))
             return $this->getById($mixed)->delete();
         else
             return $mixed->delete();
@@ -109,11 +106,11 @@ trait BaseRepository {
      * @param string $sort
      * @return mixed
      */
-    public function lists($where = false, $sortColumn = 'id', $sort = 'desc'){
+    public function lists($where = false, $sortColumn = 'id', $sort = 'desc') {
 
-        if($where){
+        if ($where) {
             return $this->model->where($where)->orderBy($sortColumn, $sort)->get();
-        }else{
+        } else {
             return $this->model->orderBy($sortColumn, $sort)->get();
         }
     }
@@ -135,9 +132,9 @@ trait BaseRepository {
 
         $query = $query->where($unique, $id);
 
-        if($status){
+        if ($status) {
             return $query->firstOrFail();
-        }else{
+        } else {
             return $query->first();
         }
     }
@@ -152,9 +149,9 @@ trait BaseRepository {
     public function updateByUniqueId($id, $input, $unique = null) {
         $unique = $unique ?? self::$unique;
 
-        if(is_array($id)){
+        if (is_array($id)) {
             return $this->model->whereIn($unique, $id)->update($input);
-        }else{
+        } else {
             return $this->update([$unique => $id], $input);
         }
 
@@ -171,12 +168,12 @@ trait BaseRepository {
     public function page($where = false, $offset = 0, $limit = 20, $sortColumn = 'created_at', $sort = 'desc') {
 
         if ($where) {
-            if($sortColumn != 'created_at'){
+            if ($sortColumn != 'created_at') {
                 $query = $this->model->where($where)
                     ->orderBy($sortColumn, $sort)
                     ->orderBy('created_at', 'desc');
-            }else{
-                $query =  $this->model->where($where)
+            } else {
+                $query = $this->model->where($where)
                     ->orderBy($sortColumn, $sort);
             }
         } else {
@@ -189,10 +186,54 @@ trait BaseRepository {
         $data = $query->limit($limit)->offset($offset)->get();
 
         return [
-            'data' => $data,
+            'data'  => $data,
             'total' => $total
         ];
 
+    }
+
+    /**
+     * 返回分页列表
+     *
+     * @param int $pagesize
+     * @param string $sort
+     * @param string $sortColumn
+     * @return mixed
+     */
+    public function listByLimit($where = false, $sortColumn = 'id', $sort = 'desc') {
+
+        if ($where) {
+            if ($sortColumn != 'id') {
+                $query = $this->model->where($where)
+                    ->orderBy($sortColumn, $sort)
+                    ->orderBy('id', 'desc');
+            } else {
+                $query = $this->model->where($where)
+                    ->orderBy($sortColumn, $sort);
+            }
+        } else {
+            $query = $this->model->orderBy($sortColumn, $sort);
+        }
+
+        $total = $query->count();
+        $data  = $this->doQueryPaged($query);
+
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    }
+
+    /**
+     * 查询语句 添加分页查询
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function doQueryPaged($query)
+    {
+        list($offset, $limit) = Helper::pageParam();
+        return $query->offset($offset)->limit($limit)->get();
     }
 
     /**

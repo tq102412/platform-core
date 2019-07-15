@@ -29,4 +29,9 @@ class Helper {
         return isset($_SERVER ['HTTPS']) && $_SERVER ['HTTPS'] == 'on' ? 'https://' : 'http://';
     }
 
+    public static function pageParam()
+    {
+        return [(int)request('offset', 0), (int)request('limit', 20)];
+    }
+
 }
