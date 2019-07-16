@@ -33,12 +33,13 @@ class GrpcAuthorize extends GrpcClient {
      * @param int $type
      * @return mixed
      */
-    public static function auth($companyId, $userId, $type = self::Company) {
+    public static function auth($companyId, $userId, $followId, $type = self::Company) {
         $request = new AuthInfo();
 
         $request->setCompanyId($companyId);
         $request->setType($type);
         $request->setUserId($userId);
+        $request->setFollowId($followId);
 
         return self::getClient()->auth($request)->wait();
     }

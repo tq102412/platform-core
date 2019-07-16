@@ -31,6 +31,12 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string userId = 3;</code>
      */
     private $userId = '';
+    /**
+     * 粉丝id
+     *
+     * Generated from protobuf field <code>string followId = 4;</code>
+     */
+    private $followId = '';
 
     /**
      * Constructor.
@@ -44,6 +50,8 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
      *           用户类型，1是普通用户，2是商家用户，3是大后台用户
      *     @type string $userId
      *           用户标识
+     *     @type string $followId
+     *           粉丝id
      * }
      */
     public function __construct($data = NULL) {
@@ -125,6 +133,32 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->userId = $var;
+
+        return $this;
+    }
+
+    /**
+     * 粉丝id
+     *
+     * Generated from protobuf field <code>string followId = 4;</code>
+     * @return string
+     */
+    public function getFollowId()
+    {
+        return $this->followId;
+    }
+
+    /**
+     * 粉丝id
+     *
+     * Generated from protobuf field <code>string followId = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setFollowId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->followId = $var;
 
         return $this;
     }
