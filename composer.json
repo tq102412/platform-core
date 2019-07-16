@@ -19,7 +19,8 @@
             "Ineplant\\": "src/",
             "GPBMetadata\\": "src/Protoc/GPBMetadata/",
             "Protoc\\": "src/Protoc/Protoc/",
-            "Authorize\\": "src/Protoc/Authorize/"
+            "Authorize\\": "src/Protoc/Authorize/",
+            "Follow\\": "src/Protoc/Follow/"
         }
     }
 }
