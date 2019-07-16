@@ -11,6 +11,10 @@ use Protoc\ReceivingRequest;
 
 class Coupon extends GrpcClient {
 
+    /**
+     * @var 客户端实例
+     */
+    protected static $client;
 
     public static function getClientName() {
         return couponClient::class;

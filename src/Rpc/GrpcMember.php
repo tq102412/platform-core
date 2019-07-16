@@ -8,6 +8,11 @@ use Protoc\MemberClient;
 
 class GrpcMember extends GrpcClient {
 
+    /**
+     * @var 客户端实例
+     */
+    protected static $client;
+
     protected static function getClientName() {
         return MemberClient::class;
     }

@@ -7,6 +7,11 @@ use Authorize\AuthorizeClient;
 
 class GrpcAuthorize extends GrpcClient {
 
+    /**
+     * @var 客户端实例
+     */
+    protected static $client;
+
     //1是普通用户，2是商家用户，3是大后台用户
     const User = 1;
     const Company = 2;

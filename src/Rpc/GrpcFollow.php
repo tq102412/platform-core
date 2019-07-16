@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Rpc;
+namespace Ineplant\Rpc;
 
 use App\Enum\PlatformType;
 use Follow\FollowClient;
 use Follow\GetFollowRequest;
-use Ineplant\Rpc\GrpcClient;
 
 class GrpcFollow extends GrpcClient {
+
+    /**
+     * @var 客户端实例
+     */
+    protected static $client;
 
     protected static function getClientName() {
         return FollowClient::class;

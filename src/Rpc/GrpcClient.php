@@ -6,10 +6,7 @@ use Grpc\ChannelCredentials;
 
 abstract class GrpcClient {
 
-    /**
-     * @var 客户端实例
-     */
-    protected static $client;
+
 
     /**
      * @var string rpc服务端地址+端口
@@ -26,18 +23,18 @@ abstract class GrpcClient {
      * @return mixed
      */
     public static function getClient() {
-        if (empty(self::$client)) {
+        if (empty(static::$client)) {
             $app = static::getClientName();
 
-            self::$client = new $app(
-                self::getServAdd(),
+            static::$client = new $app(
+                static::getServAdd(),
                 [
                     'credentials' => ChannelCredentials::createInsecure(),
                 ]
             );
         }
 
-        return self::$client;
+        return static::$client;
     }
 
     /**
