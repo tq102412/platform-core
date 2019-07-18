@@ -33,6 +33,10 @@ class Members extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string headimgurl = 5;</code>
      */
     private $headimgurl = '';
+    /**
+     * Generated from protobuf field <code>string follow_id = 6;</code>
+     */
+    private $follow_id = '';
 
     /**
      * Constructor.
@@ -45,6 +49,7 @@ class Members extends \Google\Protobuf\Internal\Message
      *     @type string $openid
      *     @type string $union_id
      *     @type string $headimgurl
+     *     @type string $follow_id
      * }
      */
     public function __construct($data = NULL) {
@@ -158,6 +163,28 @@ class Members extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->headimgurl = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string follow_id = 6;</code>
+     * @return string
+     */
+    public function getFollowId()
+    {
+        return $this->follow_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string follow_id = 6;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setFollowId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->follow_id = $var;
 
         return $this;
     }
