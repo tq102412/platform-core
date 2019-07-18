@@ -21,6 +21,10 @@ class GetRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string companyId = 2;</code>
      */
     private $companyId = '';
+    /**
+     * Generated from protobuf field <code>repeated string FollowIds = 3;</code>
+     */
+    private $FollowIds;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class GetRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $nickname
      *     @type string $companyId
+     *     @type string[]|\Google\Protobuf\Internal\RepeatedField $FollowIds
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class GetRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->companyId = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string FollowIds = 3;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getFollowIds()
+    {
+        return $this->FollowIds;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string FollowIds = 3;</code>
+     * @param string[]|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setFollowIds($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->FollowIds = $arr;
 
         return $this;
     }
