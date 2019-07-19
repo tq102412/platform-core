@@ -64,13 +64,13 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      */
     private $effective_to_date = '';
     /**
-     * Generated from protobuf field <code>string effective_day = 13;</code>
+     * Generated from protobuf field <code>int32 effective_day = 13;</code>
      */
-    private $effective_day = '';
+    private $effective_day = 0;
     /**
-     * Generated from protobuf field <code>string effective_to_day = 14;</code>
+     * Generated from protobuf field <code>int32 effective_to_day = 14;</code>
      */
-    private $effective_to_day = '';
+    private $effective_to_day = 0;
     /**
      * Generated from protobuf field <code>int32 usage = 15;</code>
      */
@@ -95,8 +95,8 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type int $effective_type
      *     @type string $effective_from_date
      *     @type string $effective_to_date
-     *     @type string $effective_day
-     *     @type string $effective_to_day
+     *     @type int $effective_day
+     *     @type int $effective_to_day
      *     @type int $usage
      * }
      */
@@ -374,8 +374,8 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string effective_day = 13;</code>
-     * @return string
+     * Generated from protobuf field <code>int32 effective_day = 13;</code>
+     * @return int
      */
     public function getEffectiveDay()
     {
@@ -383,21 +383,21 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string effective_day = 13;</code>
-     * @param string $var
+     * Generated from protobuf field <code>int32 effective_day = 13;</code>
+     * @param int $var
      * @return $this
      */
     public function setEffectiveDay($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkInt32($var);
         $this->effective_day = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>string effective_to_day = 14;</code>
-     * @return string
+     * Generated from protobuf field <code>int32 effective_to_day = 14;</code>
+     * @return int
      */
     public function getEffectiveToDay()
     {
@@ -405,13 +405,13 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string effective_to_day = 14;</code>
-     * @param string $var
+     * Generated from protobuf field <code>int32 effective_to_day = 14;</code>
+     * @param int $var
      * @return $this
      */
     public function setEffectiveToDay($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkInt32($var);
         $this->effective_to_day = $var;
 
         return $this;
