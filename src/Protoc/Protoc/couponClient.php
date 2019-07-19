@@ -81,4 +81,17 @@ class couponClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Protoc\CouponCreateRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function CreateCoupon(\Protoc\CouponCreateRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/CreateCoupon',
+        $argument,
+        ['\Protoc\Coupon', 'decode'],
+        $metadata, $options);
+    }
+
 }
