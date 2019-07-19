@@ -71,6 +71,10 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string effective_to_day = 14;</code>
      */
     private $effective_to_day = '';
+    /**
+     * Generated from protobuf field <code>int32 usage = 15;</code>
+     */
+    private $usage = 0;
 
     /**
      * Constructor.
@@ -93,6 +97,7 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type string $effective_to_date
      *     @type string $effective_day
      *     @type string $effective_to_day
+     *     @type int $usage
      * }
      */
     public function __construct($data = NULL) {
@@ -408,6 +413,28 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->effective_to_day = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 usage = 15;</code>
+     * @return int
+     */
+    public function getUsage()
+    {
+        return $this->usage;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 usage = 15;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setUsage($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->usage = $var;
 
         return $this;
     }
