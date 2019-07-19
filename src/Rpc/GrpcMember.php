@@ -35,32 +35,20 @@ class GrpcMember extends GrpcClient {
         return self::getClient()->GetListByUnionId($request)->wait();
     }
 
-
-    /**
-     * 获取会员信息通过nickname
-     *
-     * @param $nickName
-     * @return mixed
-     */
-    public static function getByNickname($nickName) {
-        $request = new GetRequest();
-
-        $request->setNickname($nickName);
-
-        return self::getClient()->Get($request)->wait();
-    }
-
     /**
      * 获取会员信息通过nickname和公司id
      *
+     * @param $followIds
+     * @param $companyId
      * @param $nickName
      * @return mixed
      */
-    public static function getByNicknameAndCompany($nickName, $companyId) {
+    public static function getList($followIds,  $companyId = '', $nickName = '') {
         $request = new GetRequest();
 
         $request->setNickname($nickName);
         $request->setCompanyId($companyId);
+        $request->setFollowIds($followIds);
 
         return self::getClient()->Get($request)->wait();
     }
