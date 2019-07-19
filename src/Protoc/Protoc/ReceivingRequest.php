@@ -25,6 +25,14 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 quantity = 3;</code>
      */
     private $quantity = 0;
+    /**
+     * Generated from protobuf field <code>int32 money = 4;</code>
+     */
+    private $money = 0;
+    /**
+     * Generated from protobuf field <code>string activity_id = 5;</code>
+     */
+    private $activity_id = '';
 
     /**
      * Constructor.
@@ -35,6 +43,8 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
      *     @type string $coupon_id
      *     @type string $member_union_id
      *     @type int $quantity
+     *     @type int $money
+     *     @type string $activity_id
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +114,50 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->quantity = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 money = 4;</code>
+     * @return int
+     */
+    public function getMoney()
+    {
+        return $this->money;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 money = 4;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setMoney($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->money = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string activity_id = 5;</code>
+     * @return string
+     */
+    public function getActivityId()
+    {
+        return $this->activity_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string activity_id = 5;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setActivityId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->activity_id = $var;
 
         return $this;
     }
