@@ -51,6 +51,26 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 limit = 9;</code>
      */
     private $limit = 0;
+    /**
+     * Generated from protobuf field <code>int32 effective_type = 10;</code>
+     */
+    private $effective_type = 0;
+    /**
+     * Generated from protobuf field <code>string effective_from_date = 11;</code>
+     */
+    private $effective_from_date = '';
+    /**
+     * Generated from protobuf field <code>string effective_to_date = 12;</code>
+     */
+    private $effective_to_date = '';
+    /**
+     * Generated from protobuf field <code>string effective_day = 13;</code>
+     */
+    private $effective_day = '';
+    /**
+     * Generated from protobuf field <code>string effective_to_day = 14;</code>
+     */
+    private $effective_to_day = '';
 
     /**
      * Constructor.
@@ -68,6 +88,11 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type string $activity_id
      *     @type int $total_sku
      *     @type int $limit
+     *     @type int $effective_type
+     *     @type string $effective_from_date
+     *     @type string $effective_to_date
+     *     @type string $effective_day
+     *     @type string $effective_to_day
      * }
      */
     public function __construct($data = NULL) {
@@ -273,6 +298,116 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->limit = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 effective_type = 10;</code>
+     * @return int
+     */
+    public function getEffectiveType()
+    {
+        return $this->effective_type;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 effective_type = 10;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setEffectiveType($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->effective_type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_from_date = 11;</code>
+     * @return string
+     */
+    public function getEffectiveFromDate()
+    {
+        return $this->effective_from_date;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_from_date = 11;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEffectiveFromDate($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->effective_from_date = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_to_date = 12;</code>
+     * @return string
+     */
+    public function getEffectiveToDate()
+    {
+        return $this->effective_to_date;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_to_date = 12;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEffectiveToDate($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->effective_to_date = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_day = 13;</code>
+     * @return string
+     */
+    public function getEffectiveDay()
+    {
+        return $this->effective_day;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_day = 13;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEffectiveDay($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->effective_day = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_to_day = 14;</code>
+     * @return string
+     */
+    public function getEffectiveToDay()
+    {
+        return $this->effective_to_day;
+    }
+
+    /**
+     * Generated from protobuf field <code>string effective_to_day = 14;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEffectiveToDay($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->effective_to_day = $var;
 
         return $this;
     }
