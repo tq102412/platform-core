@@ -4,12 +4,14 @@ namespace Ineplant\Rpc;
 
 use Protoc\ConsumingRequest;
 use Protoc\couponClient;
+use Protoc\CouponCreateRequest;
 use Protoc\DiscountMoneyRequest;
 use Protoc\GetByIdsRequest;
 use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
 
-class Coupon extends GrpcClient {
+class Coupon extends GrpcClient
+{
 
     /**
      * @var 客户端实例
@@ -113,4 +115,31 @@ class Coupon extends GrpcClient {
         return self::getClient()->GetCountByMember($request)->wait();
     }
 
+    /**
+     * 创建膨胀礼券
+     *
+     * @param array $info
+     * @return mixed
+     */
+    public static function creating($info) {
+        $request = new CouponCreateRequest();
+        $request->setType(3);
+        $request->setTitle("{$info['denomination']}元膨胀礼券");
+        //起始金额最小值
+        $request->setFromMoney((int)100 * $info['from_money']);
+        //起始金额最大值
+        $request->setToMoney((int)100 * $info['to_money']);
+        //券使用期限 起始
+        $request->setEffectiveFromDate($info['effective_from_date']);
+        //券使用期限 结束
+        $request->setEffectiveToDate($info['effective_to_date']);
+        $request->setCompanyId($info['company_id']);
+        $request->setCreatedUserId($info['created_user_id']);
+        $request->setActivityId($info['activity_id']);
+        $request->setTotalSku($info['total_sku']);
+        $request->setLimit(1);
+        $request->setUsage(3);
+
+        return self::getClient()->CreateCoupon($request)->wait();
+    }
 }
