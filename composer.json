@@ -20,7 +20,8 @@
             "GPBMetadata\\": "src/Protoc/GPBMetadata/",
             "Protoc\\": "src/Protoc/Protoc/",
             "Authorize\\": "src/Protoc/Authorize/",
-            "Follow\\": "src/Protoc/Follow/"
+            "Follow\\": "src/Protoc/Follow/",
+            "Account\\": "src/Protoc/Account/"
         }
     }
 }
