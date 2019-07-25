@@ -10,16 +10,15 @@ class ResolveIdToken
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-
-        $companyId = $request->header("companyid");
-        $subject = $request->header("subject");
-        $request->attributes->add(compact("companyId", "subject"));
+    public function handle($request, Closure $next) {
+        $companyId = $request->header('companyid');
+        $subject   = $request->header('subject');
+        $followId  = $request->header('followId');
+        $request->attributes->add(compact('companyId', 'subject', 'followId'));
 
         return $next($request);
 

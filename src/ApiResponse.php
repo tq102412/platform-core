@@ -46,9 +46,20 @@ final class ApiResponse {
             ];
 
         return $responseData;
-
     }
 
+    /**
+     * 列表查询没有数据时的返回
+     *
+     * @return array
+     */
+    public static function noData()
+    {
+        return self::handler([
+            'data' => [],
+            'total' => 0
+        ]);
+    }
 
     /**
      * 禁止克隆

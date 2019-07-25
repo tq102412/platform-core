@@ -43,24 +43,23 @@ class BaseRequest extends FormRequest
      * @return array
      */
     protected function formatErrors(Validator $validator){
-
-        //$message = $messages = $validator->errors()->all();
+        $message = config('app.debug') ? $messages = $validator->errors()->all()
+            : '参数错误';
 
         $code = '400';
 
-//        foreach ($messages as $v){
-//
-//            if( isset($this->maps[$v]) ){
-//                $code = $this->maps[$v];
-//                $message = $v;
-//                break;
-//            }
-//        }
+        //        foreach ($messages as $v){
+        //
+        //            if( isset($this->maps[$v]) ){
+        //                $code = $this->maps[$v];
+        //                $message = $v;
+        //                break;
+        //            }
+        //        }
 
         $result = [
             'errcode' => $code,
-            //'errmsg' => $message,
-            'errmsg' => '参数错误',
+            'errmsg'  => $message,
             'content' => ''
         ];
 
