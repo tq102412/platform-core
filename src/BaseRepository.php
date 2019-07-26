@@ -2,7 +2,8 @@
 
 namespace Ineplant;
 
-trait BaseRepository {
+trait BaseRepository
+{
 
     protected $model;
 
@@ -195,13 +196,12 @@ trait BaseRepository {
     /**
      * 返回分页列表
      *
-     * @param int $pagesize
+     * @param $where
      * @param string $sort
      * @param string $sortColumn
      * @return mixed
      */
     public function listByLimit($where = false, $sortColumn = 'id', $sort = 'desc') {
-
         if ($where) {
             if ($sortColumn != 'id') {
                 $query = $this->model->where($where)
@@ -215,13 +215,7 @@ trait BaseRepository {
             $query = $this->model->orderBy($sortColumn, $sort);
         }
 
-        $total = $query->count();
-        $data  = $this->doQueryPaged($query);
-
-        return [
-            'data'  => $data,
-            'total' => $total
-        ];
+        return $this->pageRes($query);
     }
 
     /**
@@ -230,10 +224,22 @@ trait BaseRepository {
      * @param $query
      * @return mixed
      */
-    public function doQueryPaged($query)
-    {
+    public function doQueryPaged($query) {
         list($offset, $limit) = Helper::pageParam();
         return $query->offset($offset)->limit($limit)->get();
+    }
+
+    /**
+     * 根据$query语句 返回分页的列表格式数据
+     *
+     * @param $query
+     * @return array
+     */
+    public function pageRes($query) {
+        return [
+            'total' => $query->count(),
+            'data'  => $this->doQueryPaged($query),
+        ];
     }
 
     /**
@@ -243,7 +249,6 @@ trait BaseRepository {
      * @return mixed
      */
     public function insert($input) {
-
         return $this->model->insert($input);
     }
 
