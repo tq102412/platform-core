@@ -126,9 +126,9 @@ class Coupon extends GrpcClient
         $request->setType(3);
         $request->setTitle("{$info['denomination']}元膨胀礼券");
         //起始金额最小值
-        $request->setFromMoney((int)100 * $info['from_money']);
+        $request->setFromMoney($info['from_money']);
         //起始金额最大值
-        $request->setToMoney((int)100 * $info['to_money']);
+        $request->setToMoney($info['to_money']);
         //券使用期限 起始
         $request->setEffectiveFromDate($info['effective_from_date']);
         //券使用期限 结束
