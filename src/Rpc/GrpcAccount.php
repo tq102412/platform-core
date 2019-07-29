@@ -82,7 +82,6 @@ class GrpcAccount extends GrpcClient {
         $cancelRequest->setComment($cancelData['comment']);
         $cancelRequest->setCreatedShopId($cancelData['created_shop_id']);
         $cancelRequest->setOriginBillCode($cancelData['origin_bill_code']);
-        $cancelRequest->setOriginBillType($cancelData['origin_bill_type']);
 
 
         return self::getClient()->Cancel($cancelRequest)->wait();
@@ -95,12 +94,12 @@ class GrpcAccount extends GrpcClient {
      * @return mixed
      */
     public static function GetOne($accountType, $association) {
-        $request = new Associations([
-            'account_type' => $accountType,
-            'association'  => $association,
-        ]);
+        $request = new Associations();
 
-        return self::getClient()->Get($request)->wait();
+        $request->setAccountType($accountType);
+        $request->setAssociation($association);
+
+        return self::getClient()->GetOne($request)->wait();
     }
 
     /**

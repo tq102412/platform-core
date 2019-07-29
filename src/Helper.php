@@ -9,15 +9,8 @@ class Helper {
      * @throws \Exception
      */
     public static function createOrderNo() {
-       /* $date = date('Ymd');
-        $microsecond = str_split(substr(uniqid(), 7, 13), 1);
-        $microsecond = implode(NULL,array_map('ord', $microsecond));
-        $microsecondInteger = substr($microsecond, 0, 8);
-
-        return $date . $microsecondInteger . mt_rand(10000, 99999);*/
-
         $dataCenterId = mt_rand(0, 31);
-        $snowFlake = new SnowFlake($dataCenterId, 0);
+        $snowFlake    = new SnowFlake($dataCenterId, 0);
 
         return $snowFlake->generateID();
     }
@@ -29,9 +22,26 @@ class Helper {
         return isset($_SERVER ['HTTPS']) && $_SERVER ['HTTPS'] == 'on' ? 'https://' : 'http://';
     }
 
-    public static function pageParam()
-    {
+    public static function pageParam() {
         return [(int)request('offset', 0), (int)request('limit', 20)];
+    }
+
+    /**
+     * 保留小数并且进一
+     *
+     * @param $val
+     * @param $num
+     * @return float|int
+     */
+    public static function ceil($val, $num) {
+
+        $n = 1;
+
+        for ($i = 0; $i < $num; $i++) {
+            $n *= 10;
+        }
+
+        return ceil($val * $n) / $n;
     }
 
 }

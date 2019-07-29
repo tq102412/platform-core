@@ -3,6 +3,7 @@
 namespace Ineplant\Rpc;
 
 use Grpc\ChannelCredentials;
+use Ineplant\GrpcException;
 
 abstract class GrpcClient {
 
@@ -35,6 +36,24 @@ abstract class GrpcClient {
         }
 
         return static::$client;
+    }
+
+
+    /**
+     * 获取返回结果或者抛出一个异常
+     *
+     * @param array $result
+     * @return array|mixed
+     * @throws GrpcException
+     */
+    public static function getOrFail($result = []) {
+        list($result, $status) = $result;
+
+        if (0 != $status->code) {
+            throw new GrpcException($status->details, 1);
+        }
+
+        return $result;
     }
 
     /**

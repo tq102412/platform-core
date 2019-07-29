@@ -2,13 +2,11 @@
 
 namespace Ineplant;
 
-class InePlantLogicException extends \RuntimeException {
-
-    // 这是用来给tq自己创造bug用的
+class GrpcException extends \RuntimeException {
 
     protected $response;
 
-    public function __construct(string $message = "", $code = '1')
+    public function __construct(string $message = "", $code = 0)
     {
         $this->response = ApiResponse::handler(
             $message,
