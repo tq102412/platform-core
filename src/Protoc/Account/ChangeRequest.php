@@ -58,9 +58,9 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
      */
     private $xa = null;
     /**
-     * Generated from protobuf field <code>string account_type = 12;</code>
+     * Generated from protobuf field <code>int32 account_type = 12;</code>
      */
-    private $account_type = '';
+    private $account_type = 0;
     /**
      * Generated from protobuf field <code>string association = 13;</code>
      */
@@ -83,7 +83,7 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
      *     @type string $comment
      *     @type int|string $expired_time
      *     @type \Account\XaRequest $xa
-     *     @type string $account_type
+     *     @type int $account_type
      *     @type string $association
      * }
      */
@@ -335,8 +335,8 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string account_type = 12;</code>
-     * @return string
+     * Generated from protobuf field <code>int32 account_type = 12;</code>
+     * @return int
      */
     public function getAccountType()
     {
@@ -344,13 +344,13 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string account_type = 12;</code>
-     * @param string $var
+     * Generated from protobuf field <code>int32 account_type = 12;</code>
+     * @param int $var
      * @return $this
      */
     public function setAccountType($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkInt32($var);
         $this->account_type = $var;
 
         return $this;
