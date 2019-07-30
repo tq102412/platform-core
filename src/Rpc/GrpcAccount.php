@@ -142,5 +142,4 @@ class GrpcAccount extends GrpcClient {
         return self::getClient()->Change($changeRequest)->wait();
     }
 
-
 }
