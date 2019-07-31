@@ -2,9 +2,10 @@
 
 namespace Ineplant\Rpc;
 
-use Protoc\GetByMemberUnionIds;
-use Protoc\GetRequest;
-use Protoc\MemberClient;
+use Member\GetByFollowIdAndCompanyIdRequest;
+use Member\GetByMemberUnionIds;
+use Member\GetRequest;
+use Member\MembersClient;
 
 class GrpcMember extends GrpcClient {
 
@@ -14,7 +15,7 @@ class GrpcMember extends GrpcClient {
     protected static $client;
 
     protected static function getClientName() {
-        return MemberClient::class;
+        return MembersClient::class;
     }
 
     protected static function getServAddName(): string {
@@ -51,6 +52,20 @@ class GrpcMember extends GrpcClient {
         $request->setFollowIds($followIds);
 
         return self::getClient()->Get($request)->wait();
+    }
+
+
+    /**
+     * @param $followId
+     * @param $companyId
+     * @return mixed
+     */
+    public static function getByFollowIdAndCompanyId($followId, $companyId) {
+        $request = new GetByFollowIdAndCompanyIdRequest();
+        $request->setFollowId($followId);
+        $request->setCompanyId($companyId);
+
+        return self::getClient()->GetByFollowIdAndCompanyId($request)->wait();
     }
 
 }

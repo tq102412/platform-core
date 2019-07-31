@@ -4,6 +4,7 @@ namespace Ineplant\Rpc;
 
 use App\Enum\PlatformType;
 use Follow\FollowClient;
+use Follow\GetByOpenidAndAppIdRequest;
 use Follow\GetFollowRequest;
 
 class GrpcFollow extends GrpcClient {
@@ -31,7 +32,6 @@ class GrpcFollow extends GrpcClient {
      * @return mixed
      */
     public static function getFollow($appId, $openid, $unionId, $isBusiness = false, $type = PlatformType::Wechat) {
-
         $request = new GetFollowRequest();
 
         $request->setIsBusiness($isBusiness);
@@ -41,7 +41,20 @@ class GrpcFollow extends GrpcClient {
         $request->setUnionId($unionId);
 
         return self::getClient()->GetFollow($request)->wait();
+    }
 
+
+    /**
+     * @param $appId
+     * @param $openid
+     * @return mixed
+     */
+    public static function getByOpenidAndAppId($appId, $openid) {
+        $request = new GetByOpenidAndAppIdRequest();
+        $request->setOpenid($openid);
+        $request->setAppId($appId);
+
+        return self::getClient()->GetByOpenidAndAppId($request)->wait();
     }
 
 }

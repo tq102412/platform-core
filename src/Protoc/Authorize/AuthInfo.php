@@ -20,21 +20,15 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
      */
     private $companyId = '';
     /**
-     * 用户类型，1是普通用户，2是商家用户，3是大后台用户
-     *
-     * Generated from protobuf field <code>string type = 2;</code>
-     */
-    private $type = '';
-    /**
      * 用户标识
      *
-     * Generated from protobuf field <code>string userId = 3;</code>
+     * Generated from protobuf field <code>string userId = 2;</code>
      */
     private $userId = '';
     /**
      * 粉丝id
      *
-     * Generated from protobuf field <code>string followId = 4;</code>
+     * Generated from protobuf field <code>string followId = 3;</code>
      */
     private $followId = '';
 
@@ -46,8 +40,6 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
      *
      *     @type string $companyId
      *           所属公司
-     *     @type string $type
-     *           用户类型，1是普通用户，2是商家用户，3是大后台用户
      *     @type string $userId
      *           用户标识
      *     @type string $followId
@@ -86,35 +78,9 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * 用户类型，1是普通用户，2是商家用户，3是大后台用户
-     *
-     * Generated from protobuf field <code>string type = 2;</code>
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * 用户类型，1是普通用户，2是商家用户，3是大后台用户
-     *
-     * Generated from protobuf field <code>string type = 2;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setType($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->type = $var;
-
-        return $this;
-    }
-
-    /**
      * 用户标识
      *
-     * Generated from protobuf field <code>string userId = 3;</code>
+     * Generated from protobuf field <code>string userId = 2;</code>
      * @return string
      */
     public function getUserId()
@@ -125,7 +91,7 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
     /**
      * 用户标识
      *
-     * Generated from protobuf field <code>string userId = 3;</code>
+     * Generated from protobuf field <code>string userId = 2;</code>
      * @param string $var
      * @return $this
      */
@@ -140,7 +106,7 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
     /**
      * 粉丝id
      *
-     * Generated from protobuf field <code>string followId = 4;</code>
+     * Generated from protobuf field <code>string followId = 3;</code>
      * @return string
      */
     public function getFollowId()
@@ -151,7 +117,7 @@ class AuthInfo extends \Google\Protobuf\Internal\Message
     /**
      * 粉丝id
      *
-     * Generated from protobuf field <code>string followId = 4;</code>
+     * Generated from protobuf field <code>string followId = 3;</code>
      * @param string $var
      * @return $this
      */

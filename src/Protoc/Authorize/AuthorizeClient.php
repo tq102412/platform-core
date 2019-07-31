@@ -29,4 +29,17 @@ class AuthorizeClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Authorize\AuthFollow $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function authFollow(\Authorize\AuthFollow $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/authorize.Authorize/authFollow',
+        $argument,
+        ['\Authorize\IdToken', 'decode'],
+        $metadata, $options);
+    }
+
 }
