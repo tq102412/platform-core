@@ -47,9 +47,9 @@ class ShopClient extends \Grpc\BaseStub {
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function Create(\Protoc\ShopRequest $argument,
+    public function CreateDefaultShop(\Protoc\ShopRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Shop/Create',
+        return $this->_simpleRequest('/protoc.Shop/CreateDefaultShop',
         $argument,
         ['\Protoc\Shops', 'decode'],
         $metadata, $options);

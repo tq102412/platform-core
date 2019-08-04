@@ -21,6 +21,10 @@ class ShopRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string address = 2;</code>
      */
     private $address = '';
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     */
+    private $company_id = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class ShopRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $title
      *     @type string $address
+     *     @type string $company_id
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class ShopRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->address = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     * @return string
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCompanyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->company_id = $var;
 
         return $this;
     }

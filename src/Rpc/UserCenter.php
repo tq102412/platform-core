@@ -13,10 +13,10 @@ class UserCenter {
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function findOrCreate($openid) {
+    public static function findOrCreate($followId) {
         return self::getClient()->request('GET', '/user/find_or_create', [
             'query' => [
-                'openid' => $openid
+                'follow_id' => $followId
             ]
         ]);
     }

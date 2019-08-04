@@ -53,6 +53,10 @@ class Shops extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string poi_id = 11;</code>
      */
     private $poi_id = '';
+    /**
+     * Generated from protobuf field <code>string company_id = 12;</code>
+     */
+    private $company_id = '';
 
     /**
      * Constructor.
@@ -70,6 +74,7 @@ class Shops extends \Google\Protobuf\Internal\Message
      *     @type string $latitude
      *     @type string $longitude
      *     @type string $poi_id
+     *     @type string $company_id
      * }
      */
     public function __construct($data = NULL) {
@@ -293,6 +298,28 @@ class Shops extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->poi_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 12;</code>
+     * @return string
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 12;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCompanyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->company_id = $var;
 
         return $this;
     }
