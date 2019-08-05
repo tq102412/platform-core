@@ -21,6 +21,10 @@ class CreatesRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.account.XaRequest xa = 2;</code>
      */
     private $xa = null;
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     */
+    private $company_id = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class CreatesRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type \Account\CreateRequest[]|\Google\Protobuf\Internal\RepeatedField $creates
      *     @type \Account\XaRequest $xa
+     *     @type string $company_id
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class CreatesRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Account\XaRequest::class);
         $this->xa = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     * @return string
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCompanyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->company_id = $var;
 
         return $this;
     }

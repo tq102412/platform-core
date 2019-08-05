@@ -2,6 +2,7 @@
 
 namespace Ineplant\Rpc;
 
+use Authorize\AuthFollow;
 use Authorize\AuthInfo;
 use Authorize\AuthorizeClient;
 
@@ -30,15 +31,26 @@ class GrpcAuthorize extends GrpcClient {
     /**
      * @param $companyId
      * @param $userId
-     * @param int $type
+     * @param $followId
      * @return mixed
      */
-    public static function auth($companyId, $userId, $followId, $type = self::Company) {
+    public static function auth($companyId, $userId, $followId) {
         $request = new AuthInfo();
 
         $request->setCompanyId($companyId);
-        $request->setType($type);
         $request->setUserId($userId);
+        $request->setFollowId($followId);
+
+        return self::getClient()->auth($request)->wait();
+    }
+
+    /**
+     * @param $followId
+     * @return mixed
+     */
+    public static function authFollow($followId) {
+        $request = new AuthFollow();
+
         $request->setFollowId($followId);
 
         return self::getClient()->auth($request)->wait();

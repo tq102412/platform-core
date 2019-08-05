@@ -22,14 +22,6 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      */
     private $balance = 0;
     /**
-     * Generated from protobuf field <code>int32 max_balance = 3;</code>
-     */
-    private $max_balance = 0;
-    /**
-     * Generated from protobuf field <code>int32 fixed_balance = 4;</code>
-     */
-    private $fixed_balance = 0;
-    /**
      * Generated from protobuf field <code>int32 type = 5;</code>
      */
     private $type = 0;
@@ -42,8 +34,6 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      *
      *     @type string $account_id
      *     @type int $balance
-     *     @type int $max_balance
-     *     @type int $fixed_balance
      *     @type int $type
      * }
      */
@@ -92,50 +82,6 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->balance = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 max_balance = 3;</code>
-     * @return int
-     */
-    public function getMaxBalance()
-    {
-        return $this->max_balance;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 max_balance = 3;</code>
-     * @param int $var
-     * @return $this
-     */
-    public function setMaxBalance($var)
-    {
-        GPBUtil::checkInt32($var);
-        $this->max_balance = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 fixed_balance = 4;</code>
-     * @return int
-     */
-    public function getFixedBalance()
-    {
-        return $this->fixed_balance;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 fixed_balance = 4;</code>
-     * @param int $var
-     * @return $this
-     */
-    public function setFixedBalance($var)
-    {
-        GPBUtil::checkInt32($var);
-        $this->fixed_balance = $var;
 
         return $this;
     }

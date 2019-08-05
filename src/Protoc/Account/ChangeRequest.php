@@ -63,6 +63,10 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string association = 13;</code>
      */
     private $association = '';
+    /**
+     * Generated from protobuf field <code>string company_id = 14;</code>
+     */
+    private $company_id = '';
 
     /**
      * Constructor.
@@ -83,6 +87,7 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
      *     @type \Account\XaRequest $xa
      *     @type int $account_type
      *     @type string $association
+     *     @type string $company_id
      * }
      */
     public function __construct($data = NULL) {
@@ -372,6 +377,28 @@ class ChangeRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->association = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 14;</code>
+     * @return string
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 14;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCompanyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->company_id = $var;
 
         return $this;
     }

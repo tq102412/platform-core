@@ -21,7 +21,8 @@
             "Protoc\\": "src/Protoc/Protoc/",
             "Authorize\\": "src/Protoc/Authorize/",
             "Follow\\": "src/Protoc/Follow/",
-            "Account\\": "src/Protoc/Account/"
+            "Account\\": "src/Protoc/Account/",
+            "Member\\": "src/Protoc/Member/"
         }
     }
 }

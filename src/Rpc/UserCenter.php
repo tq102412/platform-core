@@ -13,11 +13,12 @@ class UserCenter {
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function findOrCreate($openid) {
-        return self::getClient()->request('GET', '/user/find_or_create', [
+    public static function findOrCreate($followId, $data = []) {
+        return self::getClient()->request('POST', '/user/find_or_create', [
             'query' => [
-                'openid' => $openid
-            ]
+                'follow_id' => $followId,
+            ],
+            'json'  => $data,
         ]);
     }
 
@@ -29,8 +30,8 @@ class UserCenter {
     public static function find($uniqueId) {
         return self::getClient()->request('GET', '/user/get', [
             'query' => [
-                'unique_id' => $uniqueId
-            ]
+                'unique_id' => $uniqueId,
+            ],
         ]);
     }
 
@@ -41,7 +42,7 @@ class UserCenter {
      */
     public static function update($uniqueId, $userInfo) {
         return self::getClient()->request('POST', "/user/update?unique_id=$uniqueId", [
-            'json' => $userInfo
+            'json' => $userInfo,
         ]);
     }
 

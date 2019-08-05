@@ -1,11 +1,11 @@
 <?php
 // GENERATED CODE -- DO NOT EDIT!
 
-namespace Protoc;
+namespace Member;
 
 /**
  */
-class MemberClient extends \Grpc\BaseStub {
+class MembersClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -17,54 +17,54 @@ class MemberClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \Protoc\GetRequest $argument input argument
+     * @param \Member\GetRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function Get(\Protoc\GetRequest $argument,
+    public function Get(\Member\GetRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Member/Get',
+        return $this->_simpleRequest('/member.Members/Get',
         $argument,
-        ['\Protoc\MembersResult', 'decode'],
+        ['\Member\MembersResult', 'decode'],
         $metadata, $options);
     }
 
     /**
-     * @param \Protoc\GetByUnionIdRequest $argument input argument
+     * @param \Member\GetByUnionIdRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function GetByUnionId(\Protoc\GetByUnionIdRequest $argument,
+    public function GetByUnionId(\Member\GetByUnionIdRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Member/GetByUnionId',
+        return $this->_simpleRequest('/member.Members/GetByUnionId',
         $argument,
-        ['\Protoc\Members', 'decode'],
+        ['\Member\MemberInfo', 'decode'],
         $metadata, $options);
     }
 
     /**
-     * @param \Protoc\GetByMemberUnionIds $argument input argument
+     * @param \Member\GetByMemberUnionIds $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function GetListByUnionId(\Protoc\GetByMemberUnionIds $argument,
+    public function GetListByUnionId(\Member\GetByMemberUnionIds $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Member/GetListByUnionId',
+        return $this->_simpleRequest('/member.Members/GetListByUnionId',
         $argument,
-        ['\Protoc\MembersResult', 'decode'],
+        ['\Member\MembersResult', 'decode'],
         $metadata, $options);
     }
 
     /**
-     * @param \Protoc\GetByFollowIdAndCompanyIdRequest $argument input argument
+     * @param \Member\GetByFollowIdAndCompanyIdRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function getByFollowIdAndCompanyId(\Protoc\GetByFollowIdAndCompanyIdRequest $argument,
+    public function getByFollowIdAndCompanyId(\Member\GetByFollowIdAndCompanyIdRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/protoc.Member/getByFollowIdAndCompanyId',
+        return $this->_simpleRequest('/member.Members/getByFollowIdAndCompanyId',
         $argument,
-        ['\Protoc\Members', 'decode'],
+        ['\Member\MemberInfo', 'decode'],
         $metadata, $options);
     }
 
