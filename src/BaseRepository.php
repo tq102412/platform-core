@@ -226,6 +226,9 @@ trait BaseRepository
      */
     public function doQueryPaged($query) {
         list($offset, $limit) = Helper::pageParam();
+        if (-1 == $limit) {
+            return $query->get();
+        }
         return $query->offset($offset)->limit($limit)->get();
     }
 
