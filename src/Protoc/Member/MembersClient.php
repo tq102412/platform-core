@@ -30,6 +30,19 @@ class MembersClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Member\GetRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function GetMemberCards(\Member\GetRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/member.Members/GetMemberCards',
+        $argument,
+        ['\Member\MembersCards', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Member\GetByUnionIdRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
