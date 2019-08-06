@@ -70,13 +70,17 @@ class Coupon extends GrpcClient
      * 领取优惠券
      *
      * @param $memberUnionId
+     * @param $activityId
      * @param $couponId
-     * @return array
+     * @param int $quantity
+     * @return mixed
      */
-    public static function Receiving($memberUnionId, $couponId, $quantity = 1) {
+    public static function Receiving($memberUnionId, $couponId, $quantity = 1, $activityId = '', $money = 0) {
         $request = new ReceivingRequest();
 
         $request->setMemberUnionId($memberUnionId);
+        $request->setActivityId($activityId);
+        $request->setMoney($money);
         $request->setCouponId($couponId);
         $request->setQuantity($quantity);
 
