@@ -2,9 +2,9 @@
 
 namespace Ineplant;
 
-final class ApiResponse {
+use Ineplant\Enum\ErrorCode;
 
-    protected static $errorMessage = [];
+final class ApiResponse {
 
     /**
      * ApiResponse constructor. 禁止初始化
@@ -14,38 +14,39 @@ final class ApiResponse {
 
     }
 
-    /**
-     * 设置错误消息映射
-     *
-     * @param array $errorMessage
-     */
-    public static function setErrorMessage(array $errorMessage) {
-        self::$errorMessage = $errorMessage;
-    }
-
 
     /**
      * 处理api返回数据格式
      *
      * @param mixed $response
-     * @param int $errcode
+     * @param int $errorCode
      * @return array
      */
-    public static function handler($response = '', $errorCode = '0'){
-
-        $responseData = '0' != $errorCode ?
+    public static function handler($response = '', $errorCode = 0){
+        $responseData = 0 != $errorCode ?
             [
-                'errcode' => $errorCode,
-                'errmsg' => empty($response) ? self::$errorMessage[$errorCode] : $response,
+                'errcode' => "$errorCode",
+                'errmsg' => $response ?: ErrorCode::toString($errorCode),
                 'content' => ''
             ] :
             [
-                'errcode' => $errorCode,
+                'errcode' => "$errorCode",
                 'errmsg' => '',
                 'content' => $response
             ];
 
         return $responseData;
+    }
+
+    /**
+     * 输出json格式，通过状态码自动匹配错误信息
+     *
+     * @param $errCode
+     * @param string $msg
+     * @return array
+     */
+    public static function out($errCode, $msg = '') {
+        return self::handler($msg, $errCode);
     }
 
     /**
