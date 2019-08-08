@@ -33,6 +33,10 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string activity_id = 5;</code>
      */
     private $activity_id = '';
+    /**
+     * Generated from protobuf field <code>int32 source = 6;</code>
+     */
+    private $source = 0;
 
     /**
      * Constructor.
@@ -45,6 +49,7 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
      *     @type int $quantity
      *     @type int $money
      *     @type string $activity_id
+     *     @type int $source
      * }
      */
     public function __construct($data = NULL) {
@@ -158,6 +163,28 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->activity_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 source = 6;</code>
+     * @return int
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 source = 6;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setSource($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->source = $var;
 
         return $this;
     }
