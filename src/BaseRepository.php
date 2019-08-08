@@ -14,6 +14,13 @@ trait BaseRepository
     }
 
     /**
+     * @return mixed
+     */
+    public function newModel() {
+        return resolve(get_class($this->model));
+    }
+
+    /**
      * 通过主键获取数据如果主键不存在则抛出一个404
      *
      * @param $id
@@ -35,11 +42,11 @@ trait BaseRepository
     /**
      * 保存数据
      *
-     * @param $data
+     * @param $input
      * @return mixed
      */
     public function store($input) {
-        return $this->save($this->model, $input);
+        return $this->save($this->newModel(), $input);
     }
 
     /**

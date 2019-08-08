@@ -44,7 +44,7 @@ class GrpcMember extends GrpcClient {
      * @param $nickName
      * @return mixed
      */
-    public static function getList($followIds,  $companyId = '', $nickName = '') {
+    public static function getList($followIds, $companyId = '', $nickName = '') {
         $request = new GetRequest();
 
         $request->setNickname($nickName);
@@ -68,4 +68,21 @@ class GrpcMember extends GrpcClient {
         return self::getClient()->GetByFollowIdAndCompanyId($request)->wait();
     }
 
+    /**
+     * 批量获取会员信息(包括卡信息)
+     *
+     * @param $followIds
+     * @param string $companyId
+     * @param string $nickName
+     * @return mixed
+     */
+    public static function listWithCards($followIds, $companyId = '', $nickName = '') {
+        $request = new GetRequest();
+
+        $request->setNickname($nickName);
+        $request->setCompanyId($companyId);
+        $request->setFollowIds($followIds);
+
+        return self::getClient()->GetMemberCards($request)->wait();
+    }
 }
