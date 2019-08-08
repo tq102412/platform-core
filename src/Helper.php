@@ -22,8 +22,27 @@ class Helper {
         return isset($_SERVER ['HTTPS']) && $_SERVER ['HTTPS'] == 'on' ? 'https://' : 'http://';
     }
 
+    /**
+     * 统一获取分页参数
+     *
+     * @return array
+     */
     public static function pageParam() {
         return [(int)request('offset', 0), (int)request('limit', 20)];
+    }
+
+    /**
+     * 统一的分页列表返回格式
+     *
+     * @param $total
+     * @param $data
+     * @return array
+     */
+    public static function listRes($total, $data) {
+        return [
+            'total' => $total,
+            'data'  => $data
+        ];
     }
 
     /**

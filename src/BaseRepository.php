@@ -246,10 +246,7 @@ trait BaseRepository
      * @return array
      */
     public function pageRes($query) {
-        return [
-            'total' => $query->count(),
-            'data'  => $this->doQueryPaged($query),
-        ];
+        return Helper::listRes($query->count(), $this->doQueryPaged($query));
     }
 
     /**
