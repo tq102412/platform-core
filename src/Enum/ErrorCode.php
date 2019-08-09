@@ -49,7 +49,7 @@ class ErrorCode {
         self::DATA         => '数据有误',
         self::DATA_NUM     => '数据有误',
         self::DATA_TIME    => '数据有误',
-        self::SQL          => 'sql执行错误',
+        self::SQL          => '未知错误',
         self::CODE         => '代码错误',
         self::NOT_FOUND    => '资源不存在',
         self::UNAUTHORIZED => '没有权限',
