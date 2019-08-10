@@ -93,6 +93,27 @@ class Coupon extends GrpcClient
 
 
     /**
+     * @param array $arr {
+        @type string memberUnionId
+        @type string couponId
+        @type int quantity
+        @type string activityId
+        @type int money
+        @type int source
+      }
+     * @return mixed
+     */
+    public static function ReceivingByArr(array $arr) {
+        $request = new ReceivingRequest();
+
+        foreach ($arr as $key => $val) {
+            call_user_func([$request, 'set'.ucfirst($key)], $val);
+        }
+        return self::getClient()->Receiving($request)->wait();
+    }
+
+
+    /**
      * 获取优惠券通过ids
      *
      * @param array $ids
@@ -132,7 +153,7 @@ class Coupon extends GrpcClient
     public static function creating($info) {
         $request = new CouponCreateRequest();
         $request->setType(3);
-        $request->setTitle("{$info['denomination']}元膨胀礼券");
+        $request->setTitle('膨胀礼券');
         //起始金额最小值
         $request->setFromMoney($info['from_money']);
         //起始金额最大值
