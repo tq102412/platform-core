@@ -2,6 +2,9 @@
 
 namespace Ineplant\Rpc;
 
+use Ineplant\GrpcException;
+use Protoc\CancelRequest;
+use Protoc\CancelSourceRequest;
 use Protoc\ConsumingRequest;
 use Protoc\couponClient;
 use Protoc\CouponCreateRequest;
@@ -9,6 +12,7 @@ use Protoc\DiscountMoneyRequest;
 use Protoc\GetByIdsRequest;
 use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
+use Protoc\RecoverRequest;
 
 class Coupon extends GrpcClient
 {
@@ -146,4 +150,56 @@ class Coupon extends GrpcClient
 
         return self::getClient()->CreateCoupon($request)->wait();
     }
+
+    /**
+     * 恢复优惠券
+     *
+     * @param $code
+     * @return mixed
+     */
+    public static function recover($code) {
+        $client = self::getClient();
+
+        $request = new RecoverRequest();
+        $request->setCode($code);
+
+        return $client->Recover($request)->wait();
+    }
+
+
+    /**
+     * 作废优惠券
+     *
+     *
+     * @param array $codes
+     * @param int $companyId
+     * @return mixed
+     */
+    public static function cancel(array $codes, $companyId = 0) {
+        $client = self::getClient();
+
+        $request = new CancelRequest();
+        $request->setCompanyId($companyId);
+        $request->setCouponCodes($codes);
+
+        return $client->Cancel($request)->wait();
+    }
+
+
+    /**
+     * @param $source
+     * @param $sourceId
+     * @return mixed
+     */
+    public static function cancelBySourceId($source, $sourceId) {
+        $client = self::getClient();
+
+        $request = new CancelSourceRequest();
+        $request->setSource($source);
+        $request->setSourceId($sourceId);
+
+        return $client->Cancel($request)->wait();
+    }
+
+
 }
