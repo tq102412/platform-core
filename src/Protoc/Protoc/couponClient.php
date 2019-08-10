@@ -94,4 +94,43 @@ class couponClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Protoc\CancelRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Cancel(\Protoc\CancelRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/Cancel',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Protoc\RecoverRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Recover(\Protoc\RecoverRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/Recover',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Protoc\CancelSourceRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function CancelBySourceId(\Protoc\CancelSourceRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/CancelBySourceId',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
 }
