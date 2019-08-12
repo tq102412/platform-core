@@ -144,4 +144,14 @@ class Helper {
 
         throw new \Ineplant\Exceptions\ReturnException($data);
     }
+
+    /**
+     * 时间转化为标准格式 用于存储
+     *
+     * @param string $dateStr '2019-08-21T16:00:00.000Z'
+     * @return false|string
+     */
+    public static function stdDate($dateStr) {
+        return date('Y-m-d H:i:s', strtotime($dateStr));
+    }
 }
