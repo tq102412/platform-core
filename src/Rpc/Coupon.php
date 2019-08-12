@@ -2,7 +2,6 @@
 
 namespace Ineplant\Rpc;
 
-use Ineplant\GrpcException;
 use Protoc\CancelRequest;
 use Protoc\CancelSourceRequest;
 use Protoc\ConsumingRequest;
@@ -14,8 +13,7 @@ use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
 use Protoc\RecoverRequest;
 
-class Coupon extends GrpcClient
-{
+class Coupon extends GrpcClient {
 
     /**
      * @var 客户端实例
@@ -94,20 +92,21 @@ class Coupon extends GrpcClient
 
     /**
      * @param array $arr {
-        @type string memberUnionId
-        @type string couponId
-        @type int quantity
-        @type string activityId
-        @type int money
-        @type int source
-      }
+     * @type string memberUnionId
+     * @type string couponId
+     * @type int quantity
+     * @type string activityId
+     * @type int money
+     * @type int source
+     * @type int sourceId
+     * }
      * @return mixed
      */
     public static function ReceivingByArr(array $arr) {
         $request = new ReceivingRequest();
 
         foreach ($arr as $key => $val) {
-            call_user_func([$request, 'set'.ucfirst($key)], $val);
+            call_user_func([$request, 'set' . ucfirst($key)], $val);
         }
         return self::getClient()->Receiving($request)->wait();
     }
