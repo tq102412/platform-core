@@ -22,6 +22,10 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      */
     private $balance = 0;
     /**
+     * Generated from protobuf field <code>string association = 3;</code>
+     */
+    private $association = '';
+    /**
      * Generated from protobuf field <code>int32 type = 5;</code>
      */
     private $type = 0;
@@ -34,6 +38,7 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      *
      *     @type string $account_id
      *     @type int $balance
+     *     @type string $association
      *     @type int $type
      * }
      */
@@ -82,6 +87,28 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->balance = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string association = 3;</code>
+     * @return string
+     */
+    public function getAssociation()
+    {
+        return $this->association;
+    }
+
+    /**
+     * Generated from protobuf field <code>string association = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAssociation($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->association = $var;
 
         return $this;
     }
