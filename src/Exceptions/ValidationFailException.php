@@ -9,7 +9,7 @@
 namespace Ineplant\Exceptions;
 
 
-use App\Lib\Enum\ErrCode;
+use Ineplant\Enum\ErrorCode;
 use Throwable;
 
 class ValidationFailException extends ReturnException {
@@ -21,7 +21,7 @@ class ValidationFailException extends ReturnException {
      * @param int $code
      * @param Throwable|null $previous
      */
-    public function __construct($message = "参数验证错误", $code = ErrCode::PARAM) {
+    public function __construct($message = "参数验证错误", $code = ErrorCode::PARAM) {
         parent::__construct($message, $code);
     }
 }
