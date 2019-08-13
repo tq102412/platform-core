@@ -2,7 +2,7 @@
 
 namespace Ineplant\BaseClass;
 
-use App\Services\CollectHandle;
+use Ineplant\CollectHandle;
 
 abstract class BaseRequest extends \Ineplant\BaseRequest
 {
