@@ -15,7 +15,7 @@ class Member {
      */
     public static function make($data) {
         return self::getClient()->request('POST', '/api/member/make', [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -26,7 +26,7 @@ class Member {
      */
     public static function addMemberUnion($data) {
         return self::getClient()->request('POST', '/api/member/union/add', [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -36,7 +36,7 @@ class Member {
      */
     public static function checkoutRecharge($billCode, $data = []) {
         return self::getClient()->request('POST', "/api/rechargebill/checkout/$billCode", [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -48,7 +48,7 @@ class Member {
      */
     public static function createRecharge($data = []) {
         return self::getClient()->request('POST', "/api/rechargebill/create", [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -61,7 +61,7 @@ class Member {
      */
     public static function checkoutConsumeBill($billCode, $data = []) {
         return self::getClient()->request('POST', "/api/consumebill/checkout/$billCode", [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -76,7 +76,7 @@ class Member {
      */
     public static function createQuick($data = []) {
         return self::getClient()->request('POST', "/api/consumebill/create", [
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
@@ -88,7 +88,27 @@ class Member {
      */
     public static function createActive($data) {
         return self::getClient()->request('POST', "/api/member/active/create", [
-            'json' => $data
+            'json' => $data,
+        ]);
+    }
+
+
+    /**
+     * 通过union_id创建会员
+     *
+     * @param $unionId
+     * @param $companyId
+     * @param $data
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function makeByUnionId($unionId, $companyId, $data) {
+        return self::getClient()->request('POST', '/api/member/make', [
+            'json' => [
+                'data'       => $data,
+                'unionid'    => $unionId,
+                'company_id' => $companyId,
+            ],
         ]);
     }
 

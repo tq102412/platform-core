@@ -4,8 +4,11 @@ namespace Ineplant\Rpc;
 
 use App\Enum\PlatformType;
 use Follow\FollowClient;
+use Follow\FollowId;
 use Follow\GetByOpenidAndAppIdRequest;
+use Follow\GetFollowIdRequest;
 use Follow\GetFollowRequest;
+use Ineplant\Exceptions\TypeErrorException;
 
 class GrpcFollow extends GrpcClient {
 
@@ -55,6 +58,29 @@ class GrpcFollow extends GrpcClient {
         $request->setAppId($appId);
 
         return self::getClient()->GetByOpenidAndAppId($request)->wait();
+    }
+
+    /**
+     * 获取followId
+     *
+     * @param $unionId
+     * @param int $type
+     * @return FollowId
+     * @throws TypeErrorException
+     */
+    public static function getFollowIdByUnionId($unionId, $type = PlatformType::Wechat) {
+        $request = new GetFollowIdRequest();
+        $request->setUnionId($unionId);
+        $request->setPlatformType($type);
+
+
+        $result = self::getOrFail(self::getClient()->GetFollowIdByUnionId($request)->wait());
+
+        if (!($result instanceof FollowId)) {
+            throw new TypeErrorException('FollowId');
+        }
+
+        return $result;
     }
 
 }
