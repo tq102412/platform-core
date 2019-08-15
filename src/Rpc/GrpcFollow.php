@@ -2,7 +2,7 @@
 
 namespace Ineplant\Rpc;
 
-use App\Enum\PlatformType;
+use Ineplant\Enum\PlatformType;
 use Follow\FollowClient;
 use Follow\FollowId;
 use Follow\GetByOpenidAndAppIdRequest;
