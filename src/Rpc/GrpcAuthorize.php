@@ -24,7 +24,7 @@ class GrpcAuthorize extends GrpcClient {
     }
 
     protected static function getServAddName(): string {
-        return "authorize-service:8080";
+        return "authorize:8080";
     }
 
 
@@ -53,7 +53,7 @@ class GrpcAuthorize extends GrpcClient {
 
         $request->setFollowId($followId);
 
-        return self::getClient()->auth($request)->wait();
+        return self::getClient()->authFollow($request)->wait();
     }
 
 

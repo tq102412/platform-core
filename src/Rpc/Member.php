@@ -103,7 +103,7 @@ class Member {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function makeByUnionId($unionId, $companyId, $data) {
-        return self::getClient()->request('POST', '/api/member/make', [
+        return self::getClient()->request('POST', '/api/member/makebyunionId', [
             'json' => [
                 'data'       => $data,
                 'unionid'    => $unionId,
