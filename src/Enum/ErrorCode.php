@@ -27,12 +27,11 @@ class ErrorCode {
 
     const REDIRECT = 302; //需要重定向
 
-    //数据 数量或时间有误
-    const DATA = 40000;
-
-    const DATA_NUM = 40001;
-
-    const DATA_TIME = 40002;
+    //数据 数量/时间/状态 有误
+    const DATA        = 40000;
+    const DATA_NUM    = 40001;
+    const DATA_TIME   = 40002;
+    const DATA_STATUS = 40003;
 
     const SQL = 50001; //sql执行错误
 
