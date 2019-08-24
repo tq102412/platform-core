@@ -23,7 +23,7 @@
             "Follow\\": "src/Protoc/Follow/",
             "Account\\": "src/Protoc/Account/",
             "Member\\": "src/Protoc/Member/",
-            "Mange\\": "src/Protoc/Mange/"
+            "Manage\\": "src/Protoc/Manage/"
         }
     }
 }
