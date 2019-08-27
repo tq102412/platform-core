@@ -12,7 +12,7 @@
         "php": ">=5.6.4",
         "ext-simplexml": "*",
         "grpc/grpc": "dev-master",
-        "google/protobuf": "dev-master"
+        "google/protobuf": ">=3.9"
     },
     "autoload": {
         "psr-4": {
@@ -22,7 +22,8 @@
             "Authorize\\": "src/Protoc/Authorize/",
             "Follow\\": "src/Protoc/Follow/",
             "Account\\": "src/Protoc/Account/",
-            "Member\\": "src/Protoc/Member/"
+            "Member\\": "src/Protoc/Member/",
+            "Manage\\": "src/Protoc/Manage/"
         }
     }
 }

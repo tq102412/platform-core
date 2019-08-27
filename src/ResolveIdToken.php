@@ -15,12 +15,11 @@ class ResolveIdToken
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        $companyId = $request->header('companyid');
+        $companyId = $request->header('companyId');
         $subject   = $request->header('subject');
         $followId  = $request->header('followId');
         $request->attributes->add(compact('companyId', 'subject', 'followId'));
 
         return $next($request);
-
     }
 }
