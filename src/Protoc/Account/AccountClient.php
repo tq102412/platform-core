@@ -107,4 +107,17 @@ class AccountClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Account\GetLogRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function GetLog(\Account\GetLogRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/account.Account/GetLog',
+        $argument,
+        ['\Account\AccountLogs', 'decode'],
+        $metadata, $options);
+    }
+
 }

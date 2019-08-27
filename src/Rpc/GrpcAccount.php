@@ -7,6 +7,7 @@ use Account\Associations;
 use Account\CancelRequest;
 use Account\ChangeRequest;
 use Account\CreatesRequest;
+use Account\GetLogRequest;
 use Account\GetRequest;
 use Account\XaRequest;
 
@@ -140,6 +141,35 @@ class GrpcAccount extends GrpcClient {
      */
     public static function Change(ChangeRequest $changeRequest) {
         return self::getClient()->Change($changeRequest)->wait();
+    }
+
+
+    /**
+     * @param array $getLogRequest {
+     * @type array type
+     * @type string association
+     * @type int change_balance
+     * @type int limit
+     * @type int offset
+     * @type int query_balance 0/-1/1 0是忽略查询条件 1是查询大于change_balance的 -1查询小于
+     * @type string from_date
+     * @type string to_date
+     * }
+     * @return mixed
+     */
+    public static function GetLog(array $getLogRequest) {
+        $request = new GetLogRequest();
+        $request->setAssociation($getLogRequest['association']);
+        $request->setChangeBalance($getLogRequest['change_balance']);
+        $request->setLimit($getLogRequest['limit']);
+        $request->setOffset($getLogRequest['offset']);
+
+        isset($getLogRequest['type']) && $request->setType((array)$getLogRequest['type']);
+        isset($getLogRequest['from_date']) && $request->setFromDate($getLogRequest['from_date']);
+        isset($getLogRequest['query_balance']) && $request->setQueryBalance($getLogRequest['query_balance']);
+        isset($getLogRequest['to_date']) && $request->setToDate($getLogRequest['to_date']);
+
+        return self::getClient()->GetLog($request)->wait();
     }
 
 }

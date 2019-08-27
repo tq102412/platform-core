@@ -15,7 +15,7 @@ class GrpcShop extends GrpcClient {
     }
 
     protected static function getServAddName(): string {
-        return "shop-service:80";
+        return "platform:8080";
     }
 
     /**
