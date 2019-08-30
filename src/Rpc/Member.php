@@ -112,4 +112,24 @@ class Member {
         ]);
     }
 
+
+    /**
+     * 查询或者创建一个会员信息
+     *
+     * @param $companyId
+     * @param $followId
+     * @param array $memberData
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function findOrCreate($companyId, $followId, $memberData = []) {
+        return self::getClient()->request('POST', '/api/member/find_or_create', [
+            'json' => [
+                'companyId' => $companyId,
+                'followId'  => $followId,
+                'data' => $memberData
+            ],
+        ]);
+    }
+
 }
