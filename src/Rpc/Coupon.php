@@ -167,6 +167,7 @@ class Coupon extends GrpcClient {
         $request->setTotalSku($info['total_sku']);
         $request->setLimit(1);
         $request->setUsage(3);
+        $request->setEffectiveType(1);
 
         return self::getClient()->CreateCoupon($request)->wait();
     }
