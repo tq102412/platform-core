@@ -28,31 +28,34 @@ class ErrorCode {
     const REDIRECT = 302; //需要重定向
 
     //数据 数量/时间/状态 有误
-    const DATA        = 40000;
-    const DATA_NUM    = 40001;
-    const DATA_TIME   = 40002;
+    const DATA = 40000;
+    const DATA_NUM = 40001;
+    const DATA_TIME = 40002;
     const DATA_STATUS = 40003;
 
     const SQL = 50001; //sql执行错误
 
     const CODE = 99999; //代码错误
 
+    const UNION_INFO_NOT_FOUND = 40004;
+
     const ErrorMsg = [
-        self::PARAM        => '参数错误',
-        self::ID           => '参数错误',
-        self::SECRET       => '参数错误',
-        self::POWER        => '没有权限',
-        self::PEER_POWER   => '没有权限',
-        self::API          => 'API调用错误',
-        self::REDIRECT     => '需要重定向',
-        self::DATA         => '数据有误',
-        self::DATA_NUM     => '数据有误',
-        self::DATA_TIME    => '数据有误',
-        self::SQL          => '未知错误',
-        self::CODE         => '代码错误',
-        self::NOT_FOUND    => '资源不存在',
-        self::UNAUTHORIZED => '没有权限',
-        self::SYSTEM_FAIL  => '系统错误',
+        self::PARAM                => '参数错误',
+        self::ID                   => '参数错误',
+        self::SECRET               => '参数错误',
+        self::POWER                => '没有权限',
+        self::PEER_POWER           => '没有权限',
+        self::API                  => 'API调用错误',
+        self::REDIRECT             => '需要重定向',
+        self::DATA                 => '数据有误',
+        self::DATA_NUM             => '数据有误',
+        self::DATA_TIME            => '数据有误',
+        self::SQL                  => '未知错误',
+        self::CODE                 => '代码错误',
+        self::NOT_FOUND            => '资源不存在',
+        self::UNAUTHORIZED         => '没有权限',
+        self::SYSTEM_FAIL          => '系统错误',
+        self::UNION_INFO_NOT_FOUND => '没有找到关联信息',
     ];
 
 
