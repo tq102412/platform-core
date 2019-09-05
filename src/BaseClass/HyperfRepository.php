@@ -10,7 +10,7 @@ use Hyperf\HttpServer\Request;
 use Hyperf\Utils\Str;
 use Ineplant\Helper;
 
-class Repository {
+class HyperfRepository {
 
     /**
      * @var Model
