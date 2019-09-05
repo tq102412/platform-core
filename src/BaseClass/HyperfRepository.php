@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Repositories;
+namespace Ineplant\BaseClass;
 
 
 use App\Exception\ResponseException;

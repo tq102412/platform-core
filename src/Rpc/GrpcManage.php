@@ -22,8 +22,10 @@ class GrpcManage extends GrpcClient {
     }
 
     public static function hi($name, $sex) {
-        $client = self::getClient();
-
+        $client = self::getClient(true);
+        $client = new ManageClient('localhost:9502', [
+            'credentials' => null,
+        ]);
         $request = new HiUser();
         $request->setName($name);
         $request->setSex($sex);
@@ -32,7 +34,7 @@ class GrpcManage extends GrpcClient {
         $message = $reply->getMessage();
 //        $user    = $reply->getUser();
 
-        $client->close();
+//        $client->close();
         return $message;
     }
 }
