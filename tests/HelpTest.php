@@ -21,4 +21,29 @@ class HelpTest extends TestCase{
 
     }
 
+    public function testUrlAddParam() {
+        $baseUrl = 'http://baidu.com?a=1';
+        $baseUrl2 = 'http://baidu.com?';
+        $baseUrl3 = 'http://baidu.com';
+        $baseUrl4 = 'http://baidu.com?a=1&b=5';
+        $baseUrl5 = 'http://baidu.com/#/?app_id=12438910&zsdk=932849';
+
+        $data = [
+            'test' => "asdsads"
+        ];
+
+        $data2 = "test=asdsads";
+
+        $this->assertEquals(Helper::urlAddParam($baseUrl, $data), "http://baidu.com?a=1&test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl, $data2), "http://baidu.com?a=1&test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl2, $data), "http://baidu.com?test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl2, $data2), "http://baidu.com?test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl3, $data), "http://baidu.com?test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl3, $data2), "http://baidu.com?test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl4, $data), "http://baidu.com?a=1&b=5&test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl4, $data2), "http://baidu.com?a=1&b=5&test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl5, $data), "http://baidu.com/#/?app_id=12438910&zsdk=932849&test=asdsads");
+        $this->assertEquals(Helper::urlAddParam($baseUrl5, $data2), "http://baidu.com/#/?app_id=12438910&zsdk=932849&test=asdsads");
+    }
+
 }

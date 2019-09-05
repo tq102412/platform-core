@@ -154,4 +154,34 @@ class Helper {
     public static function stdDate($dateStr) {
         return date('Y-m-d H:i:s', strtotime($dateStr));
     }
+
+
+    public static function  urlAddParam($url, $param) {
+        if (false === strpos($url, '?')) {
+            $url .= '?';
+        }
+
+        $str = '';
+
+        if (is_array($param)) {
+            foreach ($param as $key => $value) {
+                $str .= "$key=$value" . '&';
+            }
+
+            $str = rtrim($str, '&');
+        } else {
+            $str = $param;
+        }
+
+        $len = strlen($url);
+
+        if ('?' == $url{$len - 1}) {
+            $url .= $str;
+        } else {
+            $url .= '&' . $str;
+        }
+
+        return $url;
+    }
+
 }
