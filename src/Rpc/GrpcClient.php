@@ -23,8 +23,8 @@ abstract class GrpcClient {
     /**
      * @return mixed
      */
-    public static function getClient() {
-        if (empty(static::$client)) {
+    public static function getClient($newInstance = false) {
+        if ($newInstance || empty(static::$client)) {
             $app = static::getClientName();
 
             static::$client = new $app(
