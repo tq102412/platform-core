@@ -29,6 +29,10 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 type = 5;</code>
      */
     private $type = 0;
+    /**
+     * Generated from protobuf field <code>int32 max_balance = 6;</code>
+     */
+    private $max_balance = 0;
 
     /**
      * Constructor.
@@ -40,6 +44,7 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
      *     @type int $balance
      *     @type string $association
      *     @type int $type
+     *     @type int $max_balance
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +136,28 @@ class AccountInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 max_balance = 6;</code>
+     * @return int
+     */
+    public function getMaxBalance()
+    {
+        return $this->max_balance;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 max_balance = 6;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setMaxBalance($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->max_balance = $var;
 
         return $this;
     }
