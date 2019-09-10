@@ -4,10 +4,10 @@
 namespace Ineplant\BaseClass;
 
 
-use App\Exception\ResponseException;
 use Hyperf\DbConnection\Model\Model;
 use Hyperf\HttpServer\Request;
 use Hyperf\Utils\Str;
+use Ineplant\Exceptions\ReturnException;
 use Ineplant\Helper;
 
 class HyperfRepository {
@@ -18,27 +18,19 @@ class HyperfRepository {
     protected $model;
 
     /**
-     * Repository constructor.
+     * HyperfRepository constructor.
      *
-     * @param Model $model
-     */
-    /**
-     * Repository constructor.
-     *
-     * @param Model $model
-     * @throws ResponseException
-     * @throws \ReflectionException
+     * @throws ReturnException
      */
     public function __construct() {
         //注入model
         if (empty($this->model)) {
             $modelName = self::getModelClass();
             try {
-                $reflectionClass = new \ReflectionClass($modelName);
+                $this->model = make($modelName);
             } catch (\Exception $e) {
-                throw new ResponseException("$modelName not exist");
+                throw new ReturnException("$modelName not exist");
             }
-            $this->model = $reflectionClass->newInstance();
         }
     }
 
