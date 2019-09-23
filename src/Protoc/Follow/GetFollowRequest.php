@@ -26,10 +26,6 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      */
     private $union_id = '';
     /**
-     * Generated from protobuf field <code>bool is_business = 4;</code>
-     */
-    private $is_business = false;
-    /**
      * Generated from protobuf field <code>int32 platform_type = 5;</code>
      */
     private $platform_type = 0;
@@ -43,7 +39,6 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      *     @type string $app_id
      *     @type string $openid
      *     @type string $union_id
-     *     @type bool $is_business
      *     @type int $platform_type
      * }
      */
@@ -114,28 +109,6 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->union_id = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool is_business = 4;</code>
-     * @return bool
-     */
-    public function getIsBusiness()
-    {
-        return $this->is_business;
-    }
-
-    /**
-     * Generated from protobuf field <code>bool is_business = 4;</code>
-     * @param bool $var
-     * @return $this
-     */
-    public function setIsBusiness($var)
-    {
-        GPBUtil::checkBool($var);
-        $this->is_business = $var;
 
         return $this;
     }

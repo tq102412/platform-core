@@ -46,4 +46,17 @@ class UserCenter {
         ]);
     }
 
+    /**
+     * @param $followId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function getByFollowId($followId) {
+        return self::getClient()->request('GET', '/user/get_by_follow', [
+            'query' => [
+                'follow_id' => $followId,
+            ],
+        ]);
+    }
+
 }
