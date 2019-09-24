@@ -4,6 +4,7 @@
 namespace Ineplant\BaseClass;
 
 
+use Hyperf\DbConnection\Db;
 use Hyperf\DbConnection\Model\Model;
 use Hyperf\HttpServer\Request;
 use Hyperf\Utils\Str;
@@ -69,6 +70,44 @@ class HyperfRepository {
     }
 
     /**
+     * 表的批量更新(旧的更新,去除的删掉,新的添加
+     *
+     * @param array $data 新的数据
+     * @param array|bool $delCondetion 删除条件
+     * @param string $idKey 主键key,用于判断更新或添加
+     * @param array $addData 新增记录时添加的额外数据
+     */
+    public function batchUpdate($data, $delCondetion = false, $idKey = 'id', $addData = []) {
+        Db::transaction(function () use ($data, $delCondetion, $idKey, $addData){
+            $insertData = [];
+            $updateIds  = [];
+            foreach ($data as $datum) {
+                if (empty($datum[$idKey])) {
+                    $insertData[] = $addData ? array_merge($addData, $datum) : $datum;
+                } else {
+                    $updateIds[] = $datum[$idKey];
+                    //更新
+                    $this->query()->where($idKey, $datum[$idKey])->update($datum);
+                }
+            }
+            //删除
+            $this->query()->where($delCondetion)->whereNotIn($idKey, $updateIds)->delete();
+            //新增
+            $this->insert($insertData);
+        });
+    }
+
+    /**
+     * 简单单条查询
+     * @param $val
+     * @param string $field
+     * @return \Hyperf\Database\Model\Builder|\Hyperf\Database\Model\Model|object|null
+     */
+    public function getByValOrFail($val, $field = 'id') {
+        return $this->query()->where($field, $val)->firstOrFail();
+    }
+
+    /**
      * 保存数据
      *
      * @param $input
@@ -77,7 +116,18 @@ class HyperfRepository {
     public function store($input) {
         $model = $this->model->newInstance();
         $model->fill($input);
-        return $model->save();
+        $model->save();
+        return $model;
+    }
+
+    /**
+     * 批量添加
+     *
+     * @param $array
+     * @return bool
+     */
+    public function insert($array) {
+        return $this->query()->insert($array);
     }
 
     /**

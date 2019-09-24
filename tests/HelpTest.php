@@ -46,4 +46,10 @@ class HelpTest extends TestCase{
         $this->assertEquals(Helper::urlAddParam($baseUrl5, $data2), "http://baidu.com/#/?app_id=12438910&zsdk=932849&test=asdsads");
     }
 
+    public function testGetOutByKeys() {
+        $arr = ['a' => 'test1', 'b' => 'test2', 'c' => 'test3'];
+
+        $this->assertEquals(Helper::getOutByKeys($arr, 'b'), ['a' => 'test1', 'c' => 'test3']);
+        $this->assertEquals(Helper::getOutByKeys($arr, 'c'), 'test1');
+    }
 }

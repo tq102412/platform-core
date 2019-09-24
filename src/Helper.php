@@ -156,6 +156,11 @@ class Helper {
     }
 
 
+    /**
+     * @param $url
+     * @param $param
+     * @return string
+     */
     public static function  urlAddParam($url, $param) {
         if (false === strpos($url, '?')) {
             $url .= '?';
@@ -184,4 +189,19 @@ class Helper {
         return $url;
     }
 
+    /**
+     * 根据key获取并删除数组的值
+     *
+     * @param $arrays
+     * @param mixed ...$keys
+     * @return array|mixed
+     */
+    public static function getOutByKeys(&$arrays, ...$keys) {
+        $res = [];
+        foreach ($keys as $key) {
+            $res[$key] = $arrays[$key];
+            unset($arrays[$key]);
+        }
+        return 1 == count($res) ? reset($res) : $res;
+    }
 }
