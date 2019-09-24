@@ -28,6 +28,10 @@ class BaseValidate extends Validate {
 
         $data = [];
         foreach ($keys as $key) {
+            // 场景检测
+            if (!empty($this->only) && !in_array($key, $this->only)) {
+                continue;
+            }
             $data[$key] = $input[$key] ?? null;
         }
 
@@ -43,5 +47,16 @@ class BaseValidate extends Validate {
     protected function isPositiveInteger($value) {
         return (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) ?
             true : ':attribute只能是正整数';
+    }
+
+    /**
+     * uuid 验证
+     * @param $value
+     * @return bool|string
+     */
+    protected function uuid($value) {
+        return '00000000-0000-0000-0000-000000000000' != $value &&
+            preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i', $value) ?
+            true : ':attribute格式错误';
     }
 }
