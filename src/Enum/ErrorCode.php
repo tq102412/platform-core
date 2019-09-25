@@ -34,6 +34,7 @@ class ErrorCode {
     const DATA_STATUS = 40003;
 
     const SQL = 50001; //sql执行错误
+    const COMPANY_NOT_FOUND = 50002; //店铺不存在
 
     const CODE = 99999; //代码错误
 
@@ -56,6 +57,7 @@ class ErrorCode {
         self::UNAUTHORIZED         => '没有权限',
         self::SYSTEM_FAIL          => '系统错误',
         self::UNION_INFO_NOT_FOUND => '没有找到关联信息',
+        self::COMPANY_NOT_FOUND    => '店铺不存在',
     ];
 
 
