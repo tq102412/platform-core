@@ -2,6 +2,7 @@
 
 namespace Ineplant\Rpc;
 
+use Follow\FollowIds;
 use Ineplant\Enum\PlatformType;
 use Follow\FollowClient;
 use Follow\FollowId;
@@ -79,6 +80,29 @@ class GrpcFollow extends GrpcClient {
         }
 
         return $result;
+    }
+
+
+    /**
+     * @param $followIds
+     * @return mixed
+     */
+    public static function getByFollowIds($followIds = []) {
+        $request = new FollowIds();
+        $request->setFollowIds($followIds);
+
+        return self::getClient()->GetByFollowIds($request)->wait();
+    }
+
+    /**
+     * @param $followId
+     * @return mixed
+     */
+    public static function getByFollowId($followId) {
+        $request = new FollowId();
+        $request->setFollowId($followId);
+
+        return self::getClient()->GetByFollowId($request)->wait();
     }
 
 }

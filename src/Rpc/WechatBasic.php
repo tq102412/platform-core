@@ -28,4 +28,15 @@ class WechatBasic {
         ]);
     }
 
+    /**
+     * 获取公众号信息
+     *
+     * @param $companyId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function getByCompanyId($companyId) {
+        return self::getClient()->request('GET', "/api/wechat/getbycompanyid/$companyId");
+    }
+
 }
