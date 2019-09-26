@@ -59,4 +59,13 @@ class BaseValidate extends Validate {
             preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i', $value) ?
             true : ':attribute格式错误';
     }
+
+    /**
+     * 都返回true
+     * @param $value
+     * @return bool
+     */
+    protected function noting($value) {
+        return true;
+    }
 }
