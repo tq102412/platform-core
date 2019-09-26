@@ -17,6 +17,14 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string follow_id = 1;</code>
      */
     private $follow_id = '';
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     */
+    private $nickname = '';
+    /**
+     * Generated from protobuf field <code>string avatar_url = 3;</code>
+     */
+    private $avatar_url = '';
 
     /**
      * Constructor.
@@ -25,6 +33,8 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $follow_id
+     *     @type string $nickname
+     *     @type string $avatar_url
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +60,50 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->follow_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setNickname($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->nickname = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string avatar_url = 3;</code>
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        return $this->avatar_url;
+    }
+
+    /**
+     * Generated from protobuf field <code>string avatar_url = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAvatarUrl($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_url = $var;
 
         return $this;
     }
