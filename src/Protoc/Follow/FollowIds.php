@@ -17,6 +17,10 @@ class FollowIds extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated string follow_ids = 1;</code>
      */
     private $follow_ids;
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     */
+    private $nickname = '';
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class FollowIds extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string[]|\Google\Protobuf\Internal\RepeatedField $follow_ids
+     *     @type string $nickname
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class FollowIds extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->follow_ids = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Generated from protobuf field <code>string nickname = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setNickname($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->nickname = $var;
 
         return $this;
     }
