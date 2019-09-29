@@ -21,6 +21,10 @@ class GetFollowIdRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 platform_type = 5;</code>
      */
     private $platform_type = 0;
+    /**
+     * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
+     */
+    private $data = null;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class GetFollowIdRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $union_id
      *     @type int $platform_type
+     *     @type \Follow\FollowData $data
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class GetFollowIdRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->platform_type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
+     * @return \Follow\FollowData
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
+     * @param \Follow\FollowData $var
+     * @return $this
+     */
+    public function setData($var)
+    {
+        GPBUtil::checkMessage($var, \Follow\FollowData::class);
+        $this->data = $var;
 
         return $this;
     }

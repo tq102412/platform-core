@@ -2,6 +2,7 @@
 
 namespace Ineplant\Rpc;
 
+use Follow\FollowData;
 use Follow\FollowIds;
 use Ineplant\Enum\PlatformType;
 use Follow\FollowClient;
@@ -34,7 +35,7 @@ class GrpcFollow extends GrpcClient {
      * @param int $type
      * @return mixed
      */
-    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat) {
+    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat, $data = null) {
         $request = new GetFollowRequest();
 
         $request->setPlatformType($type);
@@ -42,7 +43,27 @@ class GrpcFollow extends GrpcClient {
         $request->setOpenid($openid);
         $request->setUnionId($unionId);
 
+        self::setFollowData($request, $data);
+
         return self::getClient()->GetFollow($request)->wait();
+    }
+
+    /**
+     * @param $data
+     */
+    protected static function setFollowData($request, &$data) {
+        $followData = new FollowData();
+
+        isset($data['nickname']) && $followData->setNickname($data['nickname']);
+        isset($data['headimgurl']) && $followData->setAvatarUrl($data['headimgurl']);
+        isset($data['avatar_url']) && $followData->setAvatarUrl($data['avatar_url']);
+        isset($data['city']) && $followData->setCity($data['city']);
+        isset($data['country']) && $followData->setCountry($data['country']);
+        isset($data['gender']) && $followData->setGender(intval($data['gender']));
+        isset($data['language']) && $followData->setLanguage($data['language']);
+        isset($data['province']) && $followData->setProvince($data['province']);
+
+        $request->setData($followData);
     }
 
 
@@ -67,10 +88,12 @@ class GrpcFollow extends GrpcClient {
      * @return FollowId
      * @throws TypeErrorException
      */
-    public static function getFollowIdByUnionId($unionId, $type = PlatformType::Wechat) {
+    public static function getFollowIdByUnionId($unionId, $type = PlatformType::Wechat, $data = null) {
         $request = new GetFollowIdRequest();
         $request->setUnionId($unionId);
         $request->setPlatformType($type);
+
+        self::setFollowData($request, $data);
 
 
         $result = self::getOrFail(self::getClient()->GetFollowIdByUnionId($request)->wait());
