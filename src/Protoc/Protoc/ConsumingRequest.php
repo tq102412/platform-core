@@ -33,6 +33,10 @@ class ConsumingRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string created_user_id = 5;</code>
      */
     private $created_user_id = '';
+    /**
+     * Generated from protobuf field <code>string bill_code = 6;</code>
+     */
+    private $bill_code = '';
 
     /**
      * Constructor.
@@ -45,6 +49,7 @@ class ConsumingRequest extends \Google\Protobuf\Internal\Message
      *     @type int $usage
      *     @type string $shop_id
      *     @type string $created_user_id
+     *     @type string $bill_code
      * }
      */
     public function __construct($data = NULL) {
@@ -158,6 +163,28 @@ class ConsumingRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->created_user_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string bill_code = 6;</code>
+     * @return string
+     */
+    public function getBillCode()
+    {
+        return $this->bill_code;
+    }
+
+    /**
+     * Generated from protobuf field <code>string bill_code = 6;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setBillCode($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->bill_code = $var;
 
         return $this;
     }
