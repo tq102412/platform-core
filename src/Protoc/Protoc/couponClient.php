@@ -69,6 +69,19 @@ class couponClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Protoc\GetByCodesRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function GetByCodes(\Protoc\GetByCodesRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/GetByCodes',
+        $argument,
+        ['\Protoc\Coupons', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Protoc\GetCountByMemberRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
