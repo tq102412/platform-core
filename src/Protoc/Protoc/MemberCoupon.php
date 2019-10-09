@@ -14,9 +14,17 @@ use Google\Protobuf\Internal\GPBUtil;
 class MemberCoupon extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string code = 1;</code>
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
      */
-    private $code = '';
+    private $coupon_id = '';
+    /**
+     * Generated from protobuf field <code>string title = 2;</code>
+     */
+    private $title = '';
+    /**
+     * Generated from protobuf field <code>string coupon_code = 3;</code>
+     */
+    private $coupon_code = '';
 
     /**
      * Constructor.
@@ -24,7 +32,9 @@ class MemberCoupon extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type string $code
+     *     @type string $coupon_id
+     *     @type string $title
+     *     @type string $coupon_code
      * }
      */
     public function __construct($data = NULL) {
@@ -33,23 +43,67 @@ class MemberCoupon extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string code = 1;</code>
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
      * @return string
      */
-    public function getCode()
+    public function getCouponId()
     {
-        return $this->code;
+        return $this->coupon_id;
     }
 
     /**
-     * Generated from protobuf field <code>string code = 1;</code>
+     * Generated from protobuf field <code>string coupon_id = 1;</code>
      * @param string $var
      * @return $this
      */
-    public function setCode($var)
+    public function setCouponId($var)
     {
         GPBUtil::checkString($var, True);
-        $this->code = $var;
+        $this->coupon_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string title = 2;</code>
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Generated from protobuf field <code>string title = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setTitle($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->title = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string coupon_code = 3;</code>
+     * @return string
+     */
+    public function getCouponCode()
+    {
+        return $this->coupon_code;
+    }
+
+    /**
+     * Generated from protobuf field <code>string coupon_code = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCouponCode($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->coupon_code = $var;
 
         return $this;
     }

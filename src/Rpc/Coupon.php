@@ -8,6 +8,7 @@ use Protoc\ConsumingRequest;
 use Protoc\couponClient;
 use Protoc\CouponCreateRequest;
 use Protoc\DiscountMoneyRequest;
+use Protoc\GetByCodesRequest;
 use Protoc\GetByIdsRequest;
 use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
@@ -222,5 +223,19 @@ class Coupon extends GrpcClient {
         return $client->Cancel($request)->wait();
     }
 
+
+    /**
+     * 获取优惠券通过codes
+     *
+     * @param array $ids
+     * @return array
+     */
+    public static function getByCodes(array $codes) {
+
+        $request = new GetByCodesRequest();
+        $request->setCouponCodes($codes);
+
+        return self::getClient()->GetByCodes($request)->wait();
+    }
 
 }

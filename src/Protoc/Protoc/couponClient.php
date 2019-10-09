@@ -77,7 +77,7 @@ class couponClient extends \Grpc\BaseStub {
       $metadata = [], $options = []) {
         return $this->_simpleRequest('/protoc.coupon/GetByCodes',
         $argument,
-        ['\Protoc\Coupons', 'decode'],
+        ['\Protoc\MemberCoupons', 'decode'],
         $metadata, $options);
     }
 
