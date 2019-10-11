@@ -42,4 +42,17 @@ class AuthorizeClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Authorize\AuthBig $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function authBig(\Authorize\AuthBig $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/authorize.Authorize/authBig',
+        $argument,
+        ['\Authorize\IdToken', 'decode'],
+        $metadata, $options);
+    }
+
 }
