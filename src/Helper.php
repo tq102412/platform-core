@@ -2,6 +2,9 @@
 
 namespace Ineplant;
 
+use Illuminate\Support\Arr;
+use Ineplant\Enum\ErrorCode;
+use Ineplant\Exceptions\ReturnException;
 class Helper {
 
     /**
@@ -142,7 +145,7 @@ class Helper {
             return $item;
         });
 
-        throw new \Ineplant\Exceptions\ReturnException($data);
+        throw new ReturnException($data);
     }
 
     /**
@@ -203,5 +206,26 @@ class Helper {
             unset($arrays[$key]);
         }
         return 1 == count($res) ? reset($res) : $res;
+    }
+
+    /**
+     * @param $response
+     * @param null $key
+     * @return array|\ArrayAccess|mixed
+     * @throws ReturnException
+     */
+    public static function getForJsonResponse($response, $key = null) {
+        $arr = json_decode((string)$response->getBody(), true);
+        if (JSON_ERROR_NONE != json_last_error()) {
+            throw new ReturnException('response resolve error', ErrorCode::API);
+        }
+        if (!$key) {
+            return $arr;
+        }
+        $res = Arr::get($arr, $key);
+        if (is_null($res)) {
+            throw new ReturnException('response resolve data error', ErrorCode::API);
+        }
+        return $res;
     }
 }
