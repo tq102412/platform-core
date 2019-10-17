@@ -28,14 +28,14 @@ class ErrorCode {
     const REDIRECT = 302; //需要重定向
 
     //数据 数量/时间/状态 有误
-    const DATA            = 40000;
-    const DATA_NUM        = 40001;
-    const DATA_TIME       = 40002;
-    const DATA_STATUS     = 40003;
+    const DATA                 = 40000;
+    const DATA_NUM             = 40001;
+    const DATA_TIME            = 40002;
+    const DATA_STATUS          = 40003;
     const UNION_INFO_NOT_FOUND = 40004;
-    const MODEL_NOT_FOUND = 40005; //数据查询失败
+    const MODEL_NOT_FOUND      = 40005; //数据查询失败
 
-    const SQL = 50001; //sql执行错误
+    const SQL               = 50001; //sql执行错误
     const COMPANY_NOT_FOUND = 50002; //店铺不存在
 
     const CODE = 99999; //代码错误

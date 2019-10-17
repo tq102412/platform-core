@@ -108,6 +108,19 @@ class HyperfRepository {
     }
 
     /**
+     * 更新
+     *
+     * @param $model
+     * @param $input
+     * @return mixed
+     */
+    public function save($model, $input) {
+        $model->fill($input);
+        $model->save();
+        return $model;
+    }
+
+    /**
      * 保存数据
      *
      * @param $input
