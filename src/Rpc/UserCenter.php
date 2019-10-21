@@ -67,9 +67,9 @@ class UserCenter {
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Ineplant\Exceptions\ReturnException
      */
-    public static function getCompanyIdsByTitle($title) {
-        $response = self::getClient()->request('GET', '/company/get_all', [
-            'query' => [
+    public static function getCompanyIds($title, $companyIds = []) {
+        $response = self::getClient()->request('POST', '/company/get_all', [
+            'json' => [
                 'title' => $title,
             ],
         ]);

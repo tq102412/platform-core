@@ -5,6 +5,7 @@ namespace Ineplant;
 use Illuminate\Support\Arr;
 use Ineplant\Enum\ErrorCode;
 use Ineplant\Exceptions\ReturnException;
+
 class Helper {
 
     /**
@@ -158,13 +159,25 @@ class Helper {
         return date('Y-m-d H:i:s', strtotime($dateStr));
     }
 
+    /**
+     * 时间添加固定秒数(零时区转东八区)
+     *
+     * @param $timeStr
+     * @param string $format
+     * @param float|int $incSecond
+     * @return false|string
+     */
+    public static function timeChange($timeStr, $format = 'Y-m-d H:i:s', $incSecond = 8 * 3600) {
+        return date($format, strtotime($timeStr) + $incSecond);
+    }
+
 
     /**
      * @param $url
      * @param $param
      * @return string
      */
-    public static function  urlAddParam($url, $param) {
+    public static function urlAddParam($url, $param) {
         if (false === strpos($url, '?')) {
             $url .= '?';
         }
