@@ -129,4 +129,15 @@ class GrpcFollow extends GrpcClient {
         return self::getClient()->GetByFollowId($request)->wait();
     }
 
+    /**
+     * @param $followId
+     * @return mixed
+     */
+    public static function getFollowUnionByFollowId($followId) {
+        $request = new FollowId();
+        $request->setFollowId($followId);
+
+        return self::getClient()->GetFollowUnionByFollowId($request)->wait();
+    }
+
 }

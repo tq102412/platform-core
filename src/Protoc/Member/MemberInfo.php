@@ -37,6 +37,14 @@ class MemberInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string follow_id = 6;</code>
      */
     private $follow_id = '';
+    /**
+     * Generated from protobuf field <code>string mobile = 7;</code>
+     */
+    private $mobile = '';
+    /**
+     * Generated from protobuf field <code>string full_name = 8;</code>
+     */
+    private $full_name = '';
 
     /**
      * Constructor.
@@ -50,6 +58,8 @@ class MemberInfo extends \Google\Protobuf\Internal\Message
      *     @type string $union_id
      *     @type string $headimgurl
      *     @type string $follow_id
+     *     @type string $mobile
+     *     @type string $full_name
      * }
      */
     public function __construct($data = NULL) {
@@ -185,6 +195,50 @@ class MemberInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->follow_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobile = 7;</code>
+     * @return string
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Generated from protobuf field <code>string mobile = 7;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setMobile($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->mobile = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string full_name = 8;</code>
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->full_name;
+    }
+
+    /**
+     * Generated from protobuf field <code>string full_name = 8;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setFullName($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->full_name = $var;
 
         return $this;
     }
