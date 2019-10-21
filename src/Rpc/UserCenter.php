@@ -2,6 +2,8 @@
 
 namespace Ineplant\Rpc;
 
+use Ineplant\Helper;
+
 class UserCenter {
 
     use BaseRpc;
@@ -57,6 +59,22 @@ class UserCenter {
                 'follow_id' => $followId,
             ],
         ]);
+    }
+
+    /**
+     * @param $title
+     * @return array|\ArrayAccess|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getCompanyIdsByTitle($title) {
+        $response = self::getClient()->request('GET', '/company/get_all', [
+            'query' => [
+                'title' => $title,
+            ],
+        ]);
+
+        return array_column(Helper::getForJsonResponse($response, 'content.data'), null, 'CompanyId');
     }
 
 }
