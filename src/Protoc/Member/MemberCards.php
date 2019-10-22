@@ -41,6 +41,10 @@ class MemberCards extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .member.Card cards = 7;</code>
      */
     private $cards;
+    /**
+     * Generated from protobuf field <code>string company_id = 8;</code>
+     */
+    private $company_id = '';
 
     /**
      * Constructor.
@@ -55,6 +59,7 @@ class MemberCards extends \Google\Protobuf\Internal\Message
      *     @type string $headimgurl
      *     @type string $follow_id
      *     @type \Member\Card[]|\Google\Protobuf\Internal\RepeatedField $cards
+     *     @type string $company_id
      * }
      */
     public function __construct($data = NULL) {
@@ -212,6 +217,28 @@ class MemberCards extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Member\Card::class);
         $this->cards = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 8;</code>
+     * @return string
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string company_id = 8;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCompanyId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->company_id = $var;
 
         return $this;
     }
