@@ -241,4 +241,17 @@ class Helper {
         }
         return $res;
     }
+
+    /**
+     * @param $arr
+     * @param $num
+     * @return array
+     */
+    public static function arrShift(&$arr, $num) {
+        $res = [];
+        for ($i = 0; $i < $num; $i++) {
+            $res[] = array_shift($arr);
+        }
+        return $res;
+    }
 }
