@@ -120,4 +120,17 @@ class AccountClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Account\BetweenRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function GetByBetween(\Account\BetweenRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/account.Account/GetByBetween',
+        $argument,
+        ['\Account\AssociationIds', 'decode'],
+        $metadata, $options);
+    }
+
 }
