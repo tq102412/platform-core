@@ -62,15 +62,35 @@ class UserCenter {
     }
 
     /**
+     * 根据company name查询
+     *
      * @param $title
      * @return array|\ArrayAccess|mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Ineplant\Exceptions\ReturnException
      */
-    public static function getCompanyIds($title, $companyIds = []) {
+    public static function getCompanyByTitle($title) {
         $response = self::getClient()->request('POST', '/company/get_all', [
             'json' => [
                 'title' => $title,
+            ],
+        ]);
+
+        return array_column(Helper::getForJsonResponse($response, 'content.data'), null, 'CompanyId');
+    }
+
+    /**
+     * 根据companyIds查询
+     *
+     * @param $companyIds
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getCompanyByIds($companyIds) {
+        $response = self::getClient()->request('POST', '/user/lists', [
+            'json' => [
+                'userIds' => $companyIds,
             ],
         ]);
 
