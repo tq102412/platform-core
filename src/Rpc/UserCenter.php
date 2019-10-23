@@ -88,9 +88,9 @@ class UserCenter {
      * @throws \Ineplant\Exceptions\ReturnException
      */
     public static function getCompanyByIds($companyIds) {
-        $response = self::getClient()->request('POST', '/user/lists', [
+        $response = self::getClient()->request('POST', '/company/get_by_companyids', [
             'json' => [
-                'userIds' => $companyIds,
+                'companyIds' => $companyIds,
             ],
         ]);
 
