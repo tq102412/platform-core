@@ -4,8 +4,10 @@ namespace Ineplant\Rpc;
 
 use Account\AccountClient;
 use Account\Associations;
+use Account\BetweenRequest;
 use Account\CancelRequest;
 use Account\ChangeRequest;
+use Account\ConditionRequest;
 use Account\CreatesRequest;
 use Account\GetLogRequest;
 use Account\GetRequest;
@@ -170,6 +172,26 @@ class GrpcAccount extends GrpcClient {
         isset($getLogRequest['to_date']) && $request->setToDate($getLogRequest['to_date']);
 
         return self::getClient()->GetLog($request)->wait();
+    }
+
+
+    /**
+     * 通过关联id获取符合条件的账户的关联id
+     *
+     * @param int $maxBalance
+     * @param int $minBalance
+     * @param int $accountType
+     * @param array $associationIds
+     * @return mixed
+     */
+    public static function GetByBetween(int $maxBalance, int $minBalance, int $accountType, $associationIds = []) {
+        $request = new BetweenRequest();
+        $request->setAccountType($accountType);
+        $request->setAssociationId($associationIds);
+        $request->setMinBalance($maxBalance);
+        $request->setMaxBalance($minBalance);
+
+        return self::getClient()->GetByCondition()->wait();
     }
 
 }
