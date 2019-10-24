@@ -94,7 +94,7 @@ class UserCenter {
             ],
         ]);
 
-        return array_column(Helper::getForJsonResponse($response, 'content.data'), null, 'CompanyId');
+        return array_column(Helper::getForJsonResponse($response), null, 'CompanyId');
     }
 
 }
