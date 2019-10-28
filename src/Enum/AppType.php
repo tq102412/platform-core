@@ -27,6 +27,6 @@ class AppType extends SplEnum {
     //模版消息群发
     const GROUP_TEMPLATE_MSG = 6;
 
-    //模本消息条数
-    const TEMPLATE_MSG_QUANTITY = 6;
+    //模版消息条数
+    const TEMPLATE_MSG_QUANTITY = 7;
 }
