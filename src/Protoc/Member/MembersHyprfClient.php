@@ -15,7 +15,7 @@ class MembersHyprfClient extends BaseClient {
      */
     public function GetListByUnionId(GetByMemberUnionIds $argument) {
         return $this->simpleRequest(
-            '/grpc/orderNotify',
+            '/member.Members/GetListByUnionId',
             $argument,
             [MembersResult::class, 'decode']
         );
