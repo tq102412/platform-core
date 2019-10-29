@@ -17,6 +17,10 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string code = 1;</code>
      */
     private $code = '';
+    /**
+     * Generated from protobuf field <code>string created_user_id = 2;</code>
+     */
+    private $created_user_id = '';
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $code
+     *     @type string $created_user_id
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->code = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string created_user_id = 2;</code>
+     * @return string
+     */
+    public function getCreatedUserId()
+    {
+        return $this->created_user_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string created_user_id = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCreatedUserId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->created_user_id = $var;
 
         return $this;
     }
