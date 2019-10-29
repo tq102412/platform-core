@@ -178,14 +178,16 @@ class Coupon extends GrpcClient {
     /**
      * 恢复优惠券
      *
-     * @param $code
+     * @param string $code 优惠券code
+     * @param string $userId 操作人
      * @return mixed
      */
-    public static function recover($code) {
+    public static function recover($code, $userId) {
         $client = self::getClient();
 
         $request = new RecoverRequest();
         $request->setCode($code);
+        $request->setCreatedUserId($userId);
 
         return $client->Recover($request)->wait();
     }
