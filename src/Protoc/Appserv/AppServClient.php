@@ -5,7 +5,7 @@ namespace Appserv;
 
 /**
  */
-class ConsumeClient extends \Grpc\BaseStub {
+class AppServClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -17,15 +17,28 @@ class ConsumeClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \Appserv\ConsumingRequest $argument input argument
+     * @param \Appserv\ChangeRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      */
-    public function Consuming(\Appserv\ConsumingRequest $argument,
+    public function Consuming(\Appserv\ChangeRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/appserv.Consume/Consuming',
+        return $this->_simpleRequest('/appserv.AppServ/Consuming',
         $argument,
-        ['\Appserv\ConsumingResp', 'decode'],
+        ['\Appserv\DefaultResp', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Appserv\ChangeRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Add(\Appserv\ChangeRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/appserv.AppServ/Add',
+        $argument,
+        ['\Appserv\DefaultResp', 'decode'],
         $metadata, $options);
     }
 
@@ -36,7 +49,7 @@ class ConsumeClient extends \Grpc\BaseStub {
      */
     public function XaCommit(\Appserv\XaRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/appserv.Consume/XaCommit',
+        return $this->_simpleRequest('/appserv.AppServ/XaCommit',
         $argument,
         ['\Appserv\PBEmpty', 'decode'],
         $metadata, $options);
@@ -49,7 +62,7 @@ class ConsumeClient extends \Grpc\BaseStub {
      */
     public function XaRollback(\Appserv\XaRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/appserv.Consume/XaRollback',
+        return $this->_simpleRequest('/appserv.AppServ/XaRollback',
         $argument,
         ['\Appserv\PBEmpty', 'decode'],
         $metadata, $options);

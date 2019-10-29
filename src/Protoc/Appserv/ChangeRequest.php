@@ -9,9 +9,9 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>appserv.ConsumingRequest</code>
+ * Generated from protobuf message <code>appserv.ChangeRequest</code>
  */
-class ConsumingRequest extends \Google\Protobuf\Internal\Message
+class ChangeRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>int32 quantity = 1;</code>
