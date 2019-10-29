@@ -132,4 +132,26 @@ class Member {
         ]);
     }
 
+
+    /**
+     * 查询会员所有数据
+     *
+     * @param array $query {
+     * @type string nickname 昵称
+     * @type string code 会员卡号
+     * @type string mobile 电话号码
+     * @type string grade_id 等级id
+     * @type string gender 性别 1男 2女 0所有（默认）
+     * @type string birthday_from 生日开始时间
+     * @type string birthday_to 生日结束时间
+     * }
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function getAll($query = []) {
+        return self::getClient()->request('POST', '/api/member/getall', [
+            'json' => $query,
+        ]);
+    }
+
 }
