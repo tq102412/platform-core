@@ -62,7 +62,7 @@ class HyperfRepository {
 
     /**
      * 简单多条查询
-     * @param string $condition
+     * @param array $condition
      * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
      */
     public function getByCondition($condition) {

@@ -237,7 +237,7 @@ class Helper {
         }
         $res = Arr::get($arr, $key);
         if (is_null($res)) {
-            throw new ReturnException('response resolve data error', ErrorCode::API);
+            throw new ReturnException("response resolve '$key' error", ErrorCode::API);
         }
         return $res;
     }
