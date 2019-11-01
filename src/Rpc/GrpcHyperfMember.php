@@ -6,15 +6,14 @@ namespace Ineplant\Rpc;
 use Member\GetByMemberUnionIds;
 use Member\MembersHyprfClient;
 
-class GrpcHyperfMember {
+class GrpcHyperfMember extends GrpcHyperClient {
 
-    /**
-     * @return MembersHyprfClient|mixed
-     */
-    protected static function getClient() {
-        return new MembersHyprfClient('member-service:8080', [
-            'credentials' => null,
-        ]);
+    protected static function getServAddName(): string {
+        return 'member-service:8080';
+    }
+
+    protected static function getClientName() {
+        return MembersHyprfClient::class;
     }
 
     /**

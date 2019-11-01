@@ -9,14 +9,14 @@ use Appserv\ChangeRequest;
 use Ineplant\Enum\ErrorCode;
 use Ineplant\Exceptions\ReturnException;
 
-class GrpcHyperfAppServ {
-    /**
-     * @return AppServHyperfClient|mixed
-     */
-    protected static function getClient() {
-        return new AppServHyperfClient('app-service:8080', [
-            'credentials' => null,
-        ]);
+class GrpcHyperfAppServ extends GrpcHyperClient {
+
+    protected static function getServAddName(): string {
+        return 'app-service:8080';
+    }
+
+    protected static function getClientName() {
+        return AppServHyperfClient::class;
     }
 
     /**
