@@ -5,6 +5,7 @@ namespace Ineplant;
 use Illuminate\Support\Arr;
 use Ineplant\Enum\ErrorCode;
 use Ineplant\Exceptions\ReturnException;
+use Ramsey\Uuid\Uuid;
 
 class Helper {
 
@@ -253,5 +254,18 @@ class Helper {
             $res[] = array_shift($arr);
         }
         return $res;
+    }
+
+    /**
+     * 判断是否空uuid
+     *
+     * @param $value
+     * @return bool
+     */
+    public static function emptyUuid($value) {
+        return empty($value) || Uuid::NIL == $value || !preg_match(
+                '/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i',
+                $value
+            );
     }
 }
