@@ -13,7 +13,7 @@
         "ext-simplexml": "*",
         "grpc/grpc": "dev-master",
         "google/protobuf": ">=3.9",
-        "illuminate/support": "^7.0@dev"
+        "illuminate/support": "*"
     },
     "autoload": {
         "psr-4": {
