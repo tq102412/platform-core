@@ -6,6 +6,7 @@ namespace Ineplant\Rpc;
 
 use Appserv\AppServClient;
 use Appserv\ChangeRequest;
+use Appserv\XaRequest;
 
 class GrpcAppServ extends GrpcClient {
     /**
@@ -29,11 +30,16 @@ class GrpcAppServ extends GrpcClient {
      * @param $quantity
      * @return array [errCode, errMsg]
      */
-    public static function Consuming($appId, $companyId, $quantity) {
+    public static function Consuming($appId, $companyId, $quantity, $xaId = '') {
         $request = new ChangeRequest();
         $request->setAppId($appId);
         $request->setCompanyId($companyId);
         $request->setQuantity($quantity);
+        if ($xaId) {
+            $xaRequest = new XaRequest();
+            $xaRequest->setXaId($xaId);
+            $request->setXa($xaRequest);
+        }
 
         $response = self::getOrFail(self::getClient()->Consuming($request)->wait());
         return [$response->getCode(), $response->getMessage()];
@@ -57,5 +63,27 @@ class GrpcAppServ extends GrpcClient {
         return [$response->getCode(), $response->getMessage()];
     }
 
+    /**
+     * 事务提交
+     *
+     * @param $xaId
+     */
+    public static function XaCommit($xaId) {
+        $request = new XaRequest();
+        $request->setXaId($xaId);
 
+        self::getOrFail(self::getClient()->XaCommit($request)->wait());
+    }
+
+    /**
+     * 事务回滚
+     *
+     * @param $xaId
+     */
+    public static function XaRollback($xaId) {
+        $request = new XaRequest();
+        $request->setXaId($xaId);
+
+        self::getOrFail(self::getClient()->XaRollback($request)->wait());
+    }
 }
