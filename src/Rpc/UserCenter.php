@@ -2,9 +2,7 @@
 
 namespace Ineplant\Rpc;
 
-use GuzzleHttp\Psr7\Response;
 use Ineplant\Helper;
-use Psr\Http\Message\ResponseInterface;
 
 class UserCenter {
 
@@ -104,7 +102,7 @@ class UserCenter {
      * @return integer
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function shareTotal(string $companyId) : int {
+    public static function shareTotal(string $companyId): int {
         $response = self::getClient()->request('GET', '/company/share_total', [
             'query' => [
                 'company_id' => $companyId,
