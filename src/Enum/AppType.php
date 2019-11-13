@@ -29,4 +29,10 @@ class AppType extends SplEnum {
 
     //模版消息条数
     const TEMPLATE_MSG_QUANTITY = 7;
+
+    //自动回复
+    const AUTO_REPLY = 8;
+
+    //自定义菜单
+    const CUSTOM_MENU = 9;
 }

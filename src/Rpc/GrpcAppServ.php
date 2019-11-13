@@ -7,6 +7,8 @@ namespace Ineplant\Rpc;
 use Appserv\AppServClient;
 use Appserv\ChangeRequest;
 use Appserv\XaRequest;
+use Ineplant\Exceptions\PurchaseExpiredException;
+use Ramsey\Uuid\Uuid;
 
 class GrpcAppServ extends GrpcClient {
     /**
@@ -85,5 +87,30 @@ class GrpcAppServ extends GrpcClient {
         $request->setXaId($xaId);
 
         self::getOrFail(self::getClient()->XaRollback($request)->wait());
+    }
+
+    /**
+     * 扣费并自动处理事务
+     *
+     * @param $appId
+     * @param $companyId
+     * @param $quantity
+     * @param \Closure $handle
+     * @throws \Exception
+     */
+    public static function transaction($appId, $companyId, $quantity, \Closure $handle) {
+        $xaId = Uuid::uuid1()->toString();
+        try {
+            list($errCode, $message) = self::Consuming($appId, $companyId, $quantity, $xaId);
+            if ($errCode) {
+                throw new PurchaseExpiredException();
+            }
+            $handle();
+
+            GrpcAppServ::XaCommit($xaId);
+        } catch (\Exception $e) {
+            GrpcAppServ::XaRollback($xaId);
+            throw $e;
+        }
     }
 }
