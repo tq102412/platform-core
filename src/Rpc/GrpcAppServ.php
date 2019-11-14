@@ -113,4 +113,22 @@ class GrpcAppServ extends GrpcClient {
             throw $e;
         }
     }
+
+    /**
+     * 检测应用是否可用
+     *
+     * @param $appId
+     * @param $companyId
+     * @param $quantity
+     * @return array [errCode, errMsg]
+     */
+    public static function Validate($appId, $companyId, $quantity) {
+        $request = new ChangeRequest();
+        $request->setAppId($appId);
+        $request->setCompanyId($companyId);
+        $request->setQuantity($quantity);
+
+        $response = self::getOrFail(self::getClient()->Validate($request)->wait());
+        return [$response->getCode(), $response->getMessage()];
+    }
 }

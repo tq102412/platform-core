@@ -68,4 +68,17 @@ class AppServClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Appserv\ChangeRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Validate(\Appserv\ChangeRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/appserv.AppServ/Validate',
+        $argument,
+        ['\Appserv\DefaultResp', 'decode'],
+        $metadata, $options);
+    }
+
 }
