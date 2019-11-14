@@ -2,6 +2,10 @@
 
 namespace Ineplant\Rpc;
 
+use Ineplant\Enum\ErrorCode;
+use Ineplant\Exceptions\ErrCodeException;
+use Ineplant\Helper;
+
 class Member {
 
     use BaseRpc;
@@ -127,7 +131,7 @@ class Member {
             'json' => [
                 'companyId' => $companyId,
                 'followId'  => $followId,
-                'data' => $memberData
+                'data'      => $memberData
             ],
         ]);
     }
@@ -152,6 +156,26 @@ class Member {
         return self::getClient()->request('POST', '/api/member/getall', [
             'json' => $query,
         ]);
+    }
+
+    /**
+     * member_id 获取会员信息
+     *
+     * @param $memberId
+     * @return array|\ArrayAccess|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function info($memberId) {
+        $response = self::getClient()->request('GET', '/api/member/info', [
+            'query' => ['id' => $memberId],
+        ]);
+
+        $result = Helper::getForJsonResponse($response);
+        if (empty($result['union_id'])) {
+            throw new ErrCodeException(ErrorCode::MODEL_NOT_FOUND);
+        }
+        return $result;
     }
 
 }
