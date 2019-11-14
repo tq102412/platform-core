@@ -103,7 +103,7 @@ class GrpcAppServ extends GrpcClient {
         try {
             list($errCode, $message) = self::Consuming($appId, $companyId, $quantity, $xaId);
             if ($errCode) {
-                throw new PurchaseExpiredException();
+                throw new PurchaseExpiredException($appId);
             }
             $handle();
 

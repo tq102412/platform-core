@@ -19,9 +19,9 @@ class ErrorCode {
 
     const SECRET = 10002; //密码错误
 
-    const POWER = 20000; //一般权限不足
-
-    const PEER_POWER = 20001; //同级权限不匹配,例如可以为别人助力无法为自己助力
+    const POWER              = 20000; //一般权限不足
+    const PEER_POWER         = 20001; //同级权限不匹配,例如可以为别人助力无法为自己助力
+    const APP_PURCHASE_POWER = 21001;//应用购买失效
 
     const API = 30000; //API调用错误
 

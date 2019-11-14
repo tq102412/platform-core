@@ -13,7 +13,7 @@ class PurchaseExpiredException extends ReturnException {
      * @param string $content
      * @param int $errCode
      */
-    public function __construct($content = "请购买后继续使用该功能", $errCode = ErrorCode::POWER) {
+    public function __construct($content = "请购买后继续使用该功能", $errCode = ErrorCode::APP_PURCHASE_POWER) {
         parent::__construct($content, $errCode);
     }
 }
