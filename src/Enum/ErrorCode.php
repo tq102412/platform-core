@@ -21,7 +21,7 @@ class ErrorCode {
 
     const POWER              = 20000; //一般权限不足
     const PEER_POWER         = 20001; //同级权限不匹配,例如可以为别人助力无法为自己助力
-    const APP_PURCHASE_POWER = 21001;//应用购买失效
+    const APP_PURCHASE_POWER = 21001; //应用购买失效
 
     const API = 30000; //API调用错误
 
@@ -37,6 +37,8 @@ class ErrorCode {
 
     const SQL               = 50001; //sql执行错误
     const COMPANY_NOT_FOUND = 50002; //店铺不存在
+
+    const TEXT_ANTI_SPAM = 61011;//文本反垃圾未通过
 
     const CODE = 99999; //代码错误
 
@@ -58,6 +60,7 @@ class ErrorCode {
         self::SYSTEM_FAIL          => '系统错误',
         self::UNION_INFO_NOT_FOUND => '没有找到关联信息',
         self::COMPANY_NOT_FOUND    => '店铺不存在',
+        self::TEXT_ANTI_SPAM       => '含有敏感内容'
     ];
 
 
