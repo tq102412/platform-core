@@ -21,8 +21,22 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
      * @param array $options call options
      */
     public function appOrderNotify(Order $argument,
-                        $metadata = [], $options = []) {
+                                   $metadata = [], $options = []) {
         return $this->_simpleRequest('/grpc/orderNotify',
+            $argument,
+            [Result::class, 'decode'],
+            $metadata, $options);
+    }
+
+    /**
+     * @param PurchaseInfo $argument
+     * @param array $metadata
+     * @param array $options
+     * @return \Grpc\UnaryCall
+     */
+    public function autoPurchase(PurchaseInfo $argument,
+                                 $metadata = [], $options = []) {
+        return $this->_simpleRequest('/grpc/autoPurchase',
             $argument,
             [Result::class, 'decode'],
             $metadata, $options);
