@@ -14,7 +14,6 @@ use Ineplant\Enum\ErrorCode;
 
 class ReturnException extends \Exception {
     protected $content;
-    protected $errCode;
 
     /**
      * ReturnException constructor.
@@ -24,7 +23,9 @@ class ReturnException extends \Exception {
      */
     public function __construct($content, $errCode = ErrorCode::NOT_ERROR) {
         $this->content = $content;
-        $this->errCode = $errCode;
+
+        $this->code    = $errCode;
+        $this->message = $errCode ? $content : '';
     }
 
 
@@ -34,6 +35,16 @@ class ReturnException extends \Exception {
      * @return array
      */
     public function render() {
-        return ApiResponse::handler($this->content, $this->errCode);
+        return ApiResponse::handler($this->content, $this->code);
+    }
+
+    /**
+     * @param $name
+     * @return int
+     */
+    public function __get($name) {
+        if ($name == 'errCode') {
+            return $this->code;
+        }
     }
 }

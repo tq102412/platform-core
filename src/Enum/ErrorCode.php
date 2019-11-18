@@ -24,6 +24,7 @@ class ErrorCode {
     const APP_PURCHASE_POWER = 21001; //应用购买失效
 
     const API = 30000; //API调用错误
+    const RPC = 30001; //RPC服务调用错误
 
     const REDIRECT = 302; //需要重定向
 
