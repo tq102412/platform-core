@@ -25,6 +25,9 @@ class ReturnException extends \Exception {
     public function __construct($content, $errCode = ErrorCode::NOT_ERROR) {
         $this->content = $content;
         $this->errCode = $errCode;
+        if ($errCode) {
+            $this->message = $content;
+        }
     }
 
 

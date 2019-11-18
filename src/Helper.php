@@ -268,4 +268,18 @@ class Helper {
                 $value
             );
     }
+
+    /**
+     * 避免其他异常被handle
+     *
+     * @param $func
+     * @throws \Exception
+     */
+    public static function avoidExceptionHandle($func) {
+        try {
+            $func();
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+    }
 }

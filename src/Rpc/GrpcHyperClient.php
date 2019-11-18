@@ -4,6 +4,9 @@
 namespace Ineplant\Rpc;
 
 
+use Ineplant\Enum\ErrorCode;
+use Ineplant\Exceptions\ReturnException;
+
 abstract class GrpcHyperClient {
     /**
      * @return mixed
@@ -15,6 +18,19 @@ abstract class GrpcHyperClient {
             static::getServAdd(),
             ['credentials' => null]
         );
+    }
+
+    /**
+     * @param $response
+     * @return mixed
+     * @throws ReturnException
+     */
+    public static function getOrFail($response) {
+        list($res, $status) =  $response;
+        if (is_null($res)) {
+            throw new ReturnException($status->details, ErrorCode::RPC);
+        }
+        return $res;
     }
 
     /**

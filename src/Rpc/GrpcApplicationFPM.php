@@ -29,13 +29,14 @@ class GrpcApplicationFPM extends GrpcClient {
      * @param $orderNo
      * @param $totalMoney
      * @return mixed
+     * @throws \Ineplant\Exceptions\ReturnException
      */
     public static function handleNotify($orderNo, $totalMoney) {
         $request = new Order();
         $request->setOrderno($orderNo);
         $request->setTotalMoney($totalMoney);
 
-        $response = self::getOrFail(self::getClient()->appOrderNotify($request)->wait());
+        $response = GrpcHyperClient::getOrFail(self::getClient()->appOrderNotify($request)->wait());
         return $response->getStatus();
     }
 
@@ -45,13 +46,14 @@ class GrpcApplicationFPM extends GrpcClient {
      * @param $appId
      * @param $companyId
      * @return mixed
+     * @throws \Ineplant\Exceptions\ReturnException
      */
     public static function autoPurchaseInfo($appId, $companyId) {
         $purchaseInfo = new PurchaseInfo();
         $purchaseInfo->setAppId($appId);
         $purchaseInfo->setCompanyId($companyId);
 
-        $response = self::getOrFail(self::getClient()->autoPurchase($purchaseInfo)->wait());
+        $response = GrpcHyperClient::getOrFail(self::getClient()->autoPurchase($purchaseInfo)->wait());
         return $response->getStatus();
     }
 }
