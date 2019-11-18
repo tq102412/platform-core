@@ -3,6 +3,7 @@
 namespace Ineplant\Middleware;
 
 use Closure;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Ineplant\Enum\AppType;
 use Ineplant\Exceptions\PurchaseExpiredException;
@@ -18,13 +19,29 @@ class AppValidate {
      * @throws PurchaseExpiredException
      */
     public function handle($request, Closure $next, $appId = AppType::TEMPLATE_MSG_QUANTITY) {
-        $companyId = $request->get("companyId") ?? $request->input('company_id');
+        $response = $next($request);
 
-        if ($companyId) {
-            ValidateAppServer::validate($appId, $companyId, 1);
+        $code = $response->getStatusCode();
+
+        if (200 == $code) {
+            $companyId = $request->get("companyId") ?? $request->input('company_id');
+
+            if ($companyId) {
+                try{
+                    ValidateAppServer::validate($appId, $companyId, 1);
+                } catch (PurchaseExpiredException $expiredException) {
+                    if ($response instanceof JsonResponse) {
+                        $content = (array) $response->getData();
+                        $content['errcode'] =  "{$expiredException->getCode()}";
+                        $content['errmsg'] = $appId;
+
+                        $response = response($content);
+                    }
+                }
+            }
         }
 
-        return $next($request);
+        return $response;
     }
 
 
