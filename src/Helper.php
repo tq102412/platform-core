@@ -278,7 +278,7 @@ class Helper {
     public static function avoidExceptionHandle($func) {
         try {
             $func();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             throw new \Exception($e->getMessage());
         }
     }
