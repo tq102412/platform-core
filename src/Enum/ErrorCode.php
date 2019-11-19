@@ -61,7 +61,8 @@ class ErrorCode {
         self::SYSTEM_FAIL          => '系统错误',
         self::UNION_INFO_NOT_FOUND => '没有找到关联信息',
         self::COMPANY_NOT_FOUND    => '店铺不存在',
-        self::TEXT_ANTI_SPAM       => '含有敏感内容'
+        self::TEXT_ANTI_SPAM       => '含有敏感内容',
+        self::MODEL_NOT_FOUND      => '未查询到相关数据'
     ];
 
 
