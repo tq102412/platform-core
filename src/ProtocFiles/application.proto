@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package application;
+
+service application {
+    rpc appOrderNotify (Order) returns (Result) {
+    }
+
+    rpc autoPurchase (PurchaseInfo) returns (Result) {
+    }
+}
+
+message Order {
+    string orderno = 1;
+    int32 total_money = 2;
+}
+
+message Result {
+    bool status = 1;
+}
+
+message PurchaseInfo {
+    int32 app_id = 1;
+    string company_id = 2;
+}
