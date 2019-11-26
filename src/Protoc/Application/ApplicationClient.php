@@ -9,7 +9,7 @@ use Hyperf\GrpcClient\BaseClient;
 class ApplicationClient extends BaseClient {
     public function appOrderNotify(Order $order) {
         return $this->simpleRequest(
-            '/grpc/orderNotify',
+            '/application.application/appOrderNotify',
             $order,
             [Result::class, 'decode']
         );

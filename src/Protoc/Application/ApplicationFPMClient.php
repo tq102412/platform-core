@@ -22,7 +22,7 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
      */
     public function appOrderNotify(Order $argument,
                                    $metadata = [], $options = []) {
-        return $this->_simpleRequest('/grpc/orderNotify',
+        return $this->_simpleRequest('/application.application/appOrderNotify',
             $argument,
             [Result::class, 'decode'],
             $metadata, $options);
@@ -36,7 +36,7 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
      */
     public function autoPurchase(PurchaseInfo $argument,
                                  $metadata = [], $options = []) {
-        return $this->_simpleRequest('/grpc/autoPurchase',
+        return $this->_simpleRequest('/application.application/autoPurchase',
             $argument,
             [Result::class, 'decode'],
             $metadata, $options);
