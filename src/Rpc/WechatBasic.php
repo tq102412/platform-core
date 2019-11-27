@@ -39,4 +39,20 @@ class WechatBasic {
         return self::getClient()->request('GET', "/api/wechat/getbycompanyid/$companyId");
     }
 
+
+    /**
+     * 订阅事件
+     *
+     * @param $companyId
+     * @param array $eventIds
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function subscribe($companyId, array $eventIds) {
+        return self::getClient()->request('POST', "/api/wechat/subscribe", [
+            'company_id' => $companyId,
+            'event_ids' => $eventIds
+        ]);
+    }
+
 }
