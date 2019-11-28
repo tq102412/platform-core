@@ -41,4 +41,18 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
             [Result::class, 'decode'],
             $metadata, $options);
     }
+
+    /**
+     * @param CompanyApp $argument
+     * @param array $metadata
+     * @param array $options
+     * @return \Grpc\UnaryCall
+     */
+    public function paidApps(CompanyApp $argument,
+                                 $metadata = [], $options = []) {
+        return $this->_simpleRequest('/application.application/paidApps',
+            $argument,
+            [Apps::class, 'decode'],
+            $metadata, $options);
+    }
 }

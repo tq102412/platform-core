@@ -5,6 +5,7 @@ namespace Ineplant\Rpc;
 
 
 use Application\ApplicationFPMClient;
+use Application\CompanyApp;
 use Application\Order;
 use Application\PurchaseInfo;
 
@@ -55,5 +56,21 @@ class GrpcApplicationFPM extends GrpcClient {
 
         $response = GrpcHyperClient::getOrFail(self::getClient()->autoPurchase($purchaseInfo)->wait());
         return $response->getStatus();
+    }
+
+    /**
+     * 获取购买过的应用
+     *
+     * @param $companyId
+     * @return mixed
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function paidApps($companyId) {
+        $companyApp = new CompanyApp();
+        $companyApp->setCompanyId($companyId);
+
+        $response = GrpcHyperClient::getOrFail(self::getClient()->paidApps($companyApp)->wait());
+        return $response->getApps();
+
     }
 }
