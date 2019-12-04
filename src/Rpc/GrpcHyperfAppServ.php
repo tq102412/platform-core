@@ -35,9 +35,6 @@ class GrpcHyperfAppServ extends GrpcHyperClient {
         $request->setQuantity($quantity);
 
         list($response, $status) = self::getClient()->Consuming($request);
-        if ($status) {
-            throw new ReturnException($response, ErrorCode::API);
-        }
         return [$response->getCode(), $response->getMessage()];
     }
 
