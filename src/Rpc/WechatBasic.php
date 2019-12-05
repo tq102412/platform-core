@@ -23,8 +23,8 @@ class WechatBasic {
         return self::getClient()->request('POST', "/api/wxa/auth/session", [
             'json' => [
                 'appId' => $appId,
-                'code' => $code,
-            ]
+                'code'  => $code,
+            ],
         ]);
     }
 
@@ -50,8 +50,10 @@ class WechatBasic {
      */
     public static function subscribe($companyId, array $eventIds) {
         return self::getClient()->request('POST', "/api/wechat/subscribe", [
-            'company_id' => $companyId,
-            'event_ids' => $eventIds
+            'json' => [
+                'company_id' => $companyId,
+                'event_ids'  => $eventIds,
+            ],
         ]);
     }
 
