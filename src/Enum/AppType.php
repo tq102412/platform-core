@@ -24,10 +24,10 @@ class AppType extends SplEnum {
     //短信数量
     const MSG_QUANTITY = 5;
 
-    //模版消息群发
+    //模板消息群发
     const GROUP_TEMPLATE_MSG = 6;
 
-    //模版消息条数
+    //模板消息条数
     const TEMPLATE_MSG_QUANTITY = 7;
 
     //自动回复
