@@ -112,5 +112,24 @@ class UserCenter {
         return intval($response->getBody()->getContents());
     }
 
+    /**
+     * @param string $body 默认要签名的body字符串
+     * @param array $data 要签名的额外数据
+     * @response array {
+     * @type int s
+     * }
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function sign($body = '', $data = []) {
+        $data['body'] = $body;
+
+        $response = self::getClient()->request('POST', '/sign', [
+            'json' => $data
+        ]);
+
+        return $response->getBody()->getContents();
+    }
+
 
 }
