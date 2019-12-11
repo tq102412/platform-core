@@ -113,6 +113,7 @@ class UserCenter {
     }
 
     /**
+     * @param string $clientId 端的id
      * @param string $body 默认要签名的body字符串
      * @param array $data 要签名的额外数据
      * @response array {
@@ -121,11 +122,14 @@ class UserCenter {
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function sign($body = '', $data = []) {
+    public static function sign($clientId, $body = '', $data = []) {
         $data['body'] = $body;
 
         $response = self::getClient()->request('POST', '/sign', [
-            'json' => $data
+            'query' => [
+                'client_id' => $clientId,
+            ],
+            'json'  => $data,
         ]);
 
         return $response->getBody()->getContents();
