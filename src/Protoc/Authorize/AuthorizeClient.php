@@ -55,4 +55,17 @@ class AuthorizeClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Authorize\AuthComponent $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function authComponent(\Authorize\AuthComponent $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/authorize.Authorize/authComponent',
+        $argument,
+        ['\Authorize\IdToken', 'decode'],
+        $metadata, $options);
+    }
+
 }
