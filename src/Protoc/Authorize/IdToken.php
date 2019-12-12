@@ -17,6 +17,10 @@ class IdToken extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string idToken = 1;</code>
      */
     private $idToken = '';
+    /**
+     * Generated from protobuf field <code>int64 expiresIn = 2;</code>
+     */
+    private $expiresIn = 0;
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class IdToken extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $idToken
+     *     @type int|string $expiresIn
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class IdToken extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->idToken = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int64 expiresIn = 2;</code>
+     * @return int|string
+     */
+    public function getExpiresIn()
+    {
+        return $this->expiresIn;
+    }
+
+    /**
+     * Generated from protobuf field <code>int64 expiresIn = 2;</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setExpiresIn($var)
+    {
+        GPBUtil::checkInt64($var);
+        $this->expiresIn = $var;
 
         return $this;
     }
