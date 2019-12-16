@@ -11,6 +11,8 @@ use Account\ConditionRequest;
 use Account\CreatesRequest;
 use Account\GetLogRequest;
 use Account\GetRequest;
+use Account\GetTotalRequest;
+use Account\Total;
 use Account\XaRequest;
 
 class GrpcAccount extends GrpcClient {
@@ -191,7 +193,26 @@ class GrpcAccount extends GrpcClient {
         $request->setMinBalance($maxBalance);
         $request->setMaxBalance($minBalance);
 
-        return self::getClient()->GetByCondition()->wait();
+        return self::getClient()->GetByCondition($request)->wait();
+    }
+
+    /**
+     * @param $association
+     * @param string $fromDate
+     * @param string $toDate
+     * @param array $type
+     * @param float $queryMoney
+     * @return array|mixed
+     */
+    public static function GetTotal($association, $fromDate = '', $toDate = '', $type = [], $queryMoney = 1) {
+        $request = new GetTotalRequest();
+        $request->setAssociation($association);
+        $request->setType((array) $type);
+        $request->setFromDate($fromDate);
+        $request->setToDate($toDate);
+        $request->setQueryBalance($queryMoney);
+
+        return GrpcClient::getOrFail(self::getClient()->GetTotal($request)->wait());
     }
 
 }

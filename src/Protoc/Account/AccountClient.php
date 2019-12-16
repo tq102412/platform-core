@@ -133,4 +133,17 @@ class AccountClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Account\GetTotalRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function GetTotal(\Account\GetTotalRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/account.Account/GetTotal',
+        $argument,
+        ['\Account\Total', 'decode'],
+        $metadata, $options);
+    }
+
 }
