@@ -126,17 +126,13 @@ class UserCenter {
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function sign($clientId, $body = '', $data = []) {
-        $data['body'] = $body;
-
-        $response = self::getClient()->request('POST', '/sign', [
+    public static function sign($clientId, $params = []) {
+        return self::getClient()->request('POST', '/sign', [
             'query' => [
                 'client_id' => $clientId,
             ],
-            'json'  => $data,
+            'json'  => $params,
         ]);
-
-        return $response->getBody()->getContents();
     }
 
 
