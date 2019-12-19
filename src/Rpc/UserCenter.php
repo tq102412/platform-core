@@ -135,5 +135,24 @@ class UserCenter {
         ]);
     }
 
+    /**
+     * 获取第三方other id 需要服务ucenter:1.3以上版本
+     *
+     *
+     * @param string $clientId 客户端id
+     * @param string $companyId 公司id
+     * @return string $other_id
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function getOtherId($clientId, $companyId) {
+        $response  = self::getClient()->request('POST', '/getotherid', [
+            'query' => [
+                'client_id' => $clientId,
+                'company_id' => $companyId,
+            ]
+        ]);
+
+        return $response->getBody()->getContents();
+    }
 
 }
