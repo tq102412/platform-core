@@ -145,11 +145,11 @@ class UserCenter {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function getOtherId($clientId, $companyId) {
-        $response  = self::getClient()->request('POST', '/getotherid', [
+        $response = self::getClient()->request('POST', '/getotherid', [
             'query' => [
-                'client_id' => $clientId,
+                'client_id'  => $clientId,
                 'company_id' => $companyId,
-            ]
+            ],
         ]);
 
         return $response->getBody()->getContents();
