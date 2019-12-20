@@ -116,11 +116,10 @@ class UserCenter {
      * 服务端签名，需要服务ucenter:1.3以上版本
      *
      * @param string $clientId 端的id
-     * @param string $body 默认要签名的body字符串
-     * @param array $data 要签名的额外数据
+     * @param string $params 要签名的数据
      * @response array {
      * @type string nonce_str
-     * @type int64 timestamp
+     * @type int timestamp
      * @type string sign_str
      * }
      * @return mixed
