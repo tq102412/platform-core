@@ -193,7 +193,7 @@ class GrpcAccount extends GrpcClient {
         $request->setMinBalance($maxBalance);
         $request->setMaxBalance($minBalance);
 
-        return self::getClient()->GetByCondition($request)->wait();
+        return self::getClient()->GetByBetween($request)->wait();
     }
 
     /**
