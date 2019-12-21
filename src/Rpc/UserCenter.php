@@ -116,7 +116,8 @@ class UserCenter {
      * 服务端签名，需要服务ucenter:1.3以上版本
      *
      * @param string $clientId 端的id
-     * @param string $params 要签名的数据
+     * @param $query
+     * @param array $body
      * @response array {
      * @type string nonce_str
      * @type int timestamp
@@ -125,12 +126,13 @@ class UserCenter {
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function sign($clientId, $params = []) {
+    public static function sign($clientId, $query, $body = []) {
+        $query['body'] = \GuzzleHttp\json_encode($body);
         return self::getClient()->request('POST', '/sign', [
             'query' => [
                 'client_id' => $clientId,
             ],
-            'json'  => $params,
+            'json'  => $query,
         ]);
     }
 
