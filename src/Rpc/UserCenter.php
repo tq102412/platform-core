@@ -156,4 +156,20 @@ class UserCenter {
         return $response->getBody()->getContents();
     }
 
+    /**
+     * @param $userId
+     * @param $companyId
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function auth($userId, $companyId) {
+        $response = self::getClient()->request('POST', '/user/auth', [
+            'json' => [
+                'user_id'    => $userId,
+                'company_id' => $companyId,
+            ],
+        ]);
+
+        return $response->getBody()->getContents();
+    }
 }

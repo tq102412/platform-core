@@ -224,7 +224,7 @@ class Coupon extends GrpcClient {
         $request->setSource($source);
         $request->setSourceId($sourceId);
 
-        return $client->Cancel($request)->wait();
+        return $client->CancelBySourceId($request)->wait();
     }
 
 
