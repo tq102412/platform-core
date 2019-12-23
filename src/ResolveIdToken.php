@@ -18,7 +18,8 @@ class ResolveIdToken
         $companyId = $request->header('companyId');
         $subject   = $request->header('subject');
         $followId  = $request->header('followId');
-        $request->attributes->add(compact('companyId', 'subject', 'followId'));
+        $clientId  = $request->header('clientId');
+        $request->attributes->add(compact('companyId', 'subject', 'followId', 'clientId'));
 
         return $next($request);
     }
