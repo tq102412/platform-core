@@ -50,7 +50,7 @@ message Apps {
 }
 
 message User {
-    string subject = 1;
+    string user_id = 1;
     string client_id = 2;
     string follow_id = 3;
     string company_id = 4;
