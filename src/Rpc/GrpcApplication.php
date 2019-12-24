@@ -6,6 +6,7 @@ namespace Ineplant\Rpc;
 
 use Application\ApplicationClient;
 use Application\Order;
+use Application\User;
 
 class GrpcApplication extends GrpcHyperClient {
 
@@ -30,6 +31,22 @@ class GrpcApplication extends GrpcHyperClient {
         $request->setTotalMoney($totalMoney);
 
         list($reply, $status) = self::getClient()->appOrderNotify($request);
+        return $reply->getStatus();
+    }
+
+    /**
+     * 试用套餐发放
+     *
+     * @param $clientId
+     * @param $companyId
+     * @return mixed
+     */
+    public static function trialSend($clientId, $companyId) {
+        $request = new User();
+        $request->setClientId($clientId);
+        $request->setCompanyId($companyId);
+
+        list($reply, $status) = self::getClient()->trialSend($request);
         return $reply->getStatus();
     }
 }
