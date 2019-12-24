@@ -11,6 +11,9 @@ service application {
 
     rpc paidApps (CompanyApp) returns (Apps) {
     }
+
+    rpc trialSend (User) returns (Result) {
+    }
 }
 
 message Order {
@@ -44,4 +47,11 @@ message App {
 
 message Apps {
     repeated App apps = 1;
+}
+
+message User {
+    string subject = 1;
+    string client_id = 2;
+    string follow_id = 3;
+    string company_id = 4;
 }
