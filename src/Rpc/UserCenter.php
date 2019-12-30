@@ -98,6 +98,22 @@ class UserCenter {
     }
 
     /**
+     * @param $companyId
+     * @return array|\ArrayAccess|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getCompanyById($companyId) {
+        $response = self::getClient()->request('POST', '/company/get_by_companyids', [
+            'json' => [
+                'companyIds' => [$companyId],
+            ],
+        ]);
+
+        return reset(Helper::getForJsonResponse($response));
+    }
+
+    /**
      * @param string $companyId
      * @return integer
      * @throws \GuzzleHttp\Exception\GuzzleException
