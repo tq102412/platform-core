@@ -244,6 +244,21 @@ class Helper {
     }
 
     /**
+     * @param $response
+     * @return mixed
+     * @throws ReturnException
+     */
+    public static function HttpRpcResult($response) {
+        $response = Helper::getForJsonResponse($response);
+
+        if ($response['errcode']) {
+            throw new ReturnException($response['errmsg'], ErrorCode::API);
+        }
+
+        return $response['content'];
+    }
+
+    /**
      * @param $arr
      * @param $num
      * @return array
