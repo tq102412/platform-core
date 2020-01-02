@@ -110,7 +110,8 @@ class UserCenter {
             ],
         ]);
 
-        return reset(Helper::getForJsonResponse($response));
+        $companyArr = Helper::getForJsonResponse($response);
+        return reset($companyArr);
     }
 
     /**
