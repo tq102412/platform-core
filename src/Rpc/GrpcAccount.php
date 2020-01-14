@@ -190,8 +190,8 @@ class GrpcAccount extends GrpcClient {
         $request = new BetweenRequest();
         $request->setAccountType($accountType);
         $request->setAssociationId($associationIds);
-        $request->setMinBalance($maxBalance);
-        $request->setMaxBalance($minBalance);
+        $request->setMinBalance($minBalance);
+        $request->setMaxBalance($maxBalance);
 
         return self::getClient()->GetByBetween($request)->wait();
     }
