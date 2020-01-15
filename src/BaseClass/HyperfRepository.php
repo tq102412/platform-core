@@ -73,12 +73,12 @@ class HyperfRepository {
      * 表的批量更新(旧的更新,去除的删掉,新的添加
      *
      * @param array $data 新的数据
-     * @param array|bool $delCondetion 删除条件
+     * @param array|bool $delCondition 删除条件
      * @param string $idKey 主键key,用于判断更新或添加
      * @param array $addData 新增记录时添加的额外数据
      */
-    public function batchUpdate($data, $delCondetion = false, $idKey = 'id', $addData = []) {
-        Db::transaction(function () use ($data, $delCondetion, $idKey, $addData){
+    public function batchUpdate($data, $delCondition = false, $idKey = 'id', $addData = []) {
+        Db::transaction(function () use ($data, $delCondition, $idKey, $addData){
             $insertData = [];
             $updateIds  = [];
             foreach ($data as $datum) {
@@ -91,7 +91,7 @@ class HyperfRepository {
                 }
             }
             //删除
-            $this->query()->where($delCondetion)->whereNotIn($idKey, $updateIds)->delete();
+            $this->query()->where($delCondition)->whereNotIn($idKey, $updateIds)->delete();
             //新增
             $this->insert($insertData);
         });

@@ -99,6 +99,11 @@ class GrpcAppServ extends GrpcClient {
      * @throws \Exception
      */
     public static function transaction($appId, $companyId, $quantity, \Closure $handle) {
+        if (!$quantity) {
+            //扣费金额为0 忽略扣费操作
+            $handle();
+            return;
+        }
         $xaId = Uuid::uuid1()->toString();
         try {
             list($errCode, $message) = self::Consuming($appId, $companyId, $quantity, $xaId);
