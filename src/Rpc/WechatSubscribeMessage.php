@@ -2,7 +2,7 @@
 
 namespace Ineplant\Rpc;
 
-class WechatSubscribeMessageController extends WechatBasic {
+class WechatSubscribeMessage extends WechatBasic {
 
 
     /**
