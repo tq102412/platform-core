@@ -36,6 +36,7 @@ class ErrorCode {
     const UNION_INFO_NOT_FOUND = 40004;
     const MODEL_NOT_FOUND      = 40005; //数据查询失败
     const NEED_OPTIMIZATION    = 40006; //需要完善资料
+    const NOT_ALL_SUCCESSFUL   = 40007; //未全部成功
 
     const CONFIG_ADMIN    = 40010;//管理员配置错误
     const CONFIG_BUSINESS = 40011;//B端用户配置错误
