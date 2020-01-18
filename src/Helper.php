@@ -99,6 +99,16 @@ class Helper {
     }
 
     /**
+     * 分转化为元
+     *
+     * @param $fen
+     * @return string
+     */
+    public static function fenToYuan($fen) {
+        return number_format($fen / 100, 2, '.', '');
+    }
+
+    /**
      * 是否成功
      *
      * @param double $successRate 成功率 (0.0001 ~ 1)
