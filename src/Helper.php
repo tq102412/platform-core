@@ -2,6 +2,7 @@
 
 namespace Ineplant;
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use Ineplant\Enum\ErrorCode;
 use Ineplant\Exceptions\ReturnException;
@@ -96,6 +97,16 @@ class Helper {
      */
     public static function yuanToFen($yuan) {
         return (int)round(100 * $yuan);
+    }
+
+    /**
+     * 分转化为元
+     *
+     * @param $fen
+     * @return string
+     */
+    public static function fenToYuan($fen) {
+        return number_format($fen / 100, 2, '.', '');
     }
 
     /**
@@ -296,5 +307,22 @@ class Helper {
         } catch (\Throwable $e) {
             throw new \Exception($e->getMessage());
         }
+    }
+
+    /**
+     * 发布任务
+     *
+     * @param $s  int 执行延时秒数
+     * @param $url  string 执行地址，仅当该接口返回为字符串"SUCCESS"时,视为处理完成
+     * @param $data mixed  访问$url接口时携带的参数
+     * @param $tags array  任务标签
+     * @return bool
+     * @throws \Exception
+     */
+    public static function addJob($s, $url, $data = '', $tags = []) {
+        $response = (new Client())->post('http://horizon/job', [
+            'json' => compact('s', 'url', 'data', 'tags')
+        ]);
+        return 'SUCCESS' == (string)$response->getBody();
     }
 }

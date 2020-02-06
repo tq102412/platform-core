@@ -2,16 +2,16 @@
 
 namespace Ineplant\Rpc;
 
+use Follow\FollowClient;
 use Follow\FollowData;
+use Follow\FollowId;
 use Follow\FollowIds;
 use Follow\FollowUnionRequest;
-use Follow\UnionsRequest;
-use Ineplant\Enum\PlatformType;
-use Follow\FollowClient;
-use Follow\FollowId;
 use Follow\GetByOpenidAndAppIdRequest;
 use Follow\GetFollowIdRequest;
 use Follow\GetFollowRequest;
+use Follow\UnionsRequest;
+use Ineplant\Enum\PlatformType;
 use Ineplant\Exceptions\TypeErrorException;
 
 class GrpcFollow extends GrpcClient {
@@ -156,6 +156,25 @@ class GrpcFollow extends GrpcClient {
         $request->setAppId($appId);
 
         return self::getClient()->GetUnionsByIds($request)->wait();
+    }
+
+    /**
+     * @param array $followIds
+     * @param $appId
+     * @return array
+     */
+    public static function getOpenIds(array $followIds, $appId) {
+        $result = GrpcClient::getOrFail(self::getUnionsByIds($followIds, $appId));
+
+        $follows = $result->getFollowUnions();
+        $openIds = [];
+        foreach ($follows as $follow) {
+            $openId = $follow->getOpenid();
+            if ($openId) {
+                $openIds[] = $openId;
+            }
+        }
+        return $openIds;
     }
 
 }
