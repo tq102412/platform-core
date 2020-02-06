@@ -4,8 +4,6 @@ namespace Ineplant;
 
 class InePlantLogicException extends \RuntimeException {
 
-    // 这是用来给tq自己创造bug用的
-
     protected $response;
 
     public function __construct(string $message = "", $code = '1')
@@ -23,6 +21,15 @@ class InePlantLogicException extends \RuntimeException {
 
     public function getResponse(){
         return $this->response;
+    }
+
+    /**
+     * 异常处理
+     *
+     * @return array
+     */
+    public function render() {
+        return ApiResponse::handler($this->getMessage(), $this->getCode());
     }
 
 }
