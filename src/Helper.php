@@ -316,13 +316,16 @@ class Helper {
      * @param $url  string 执行地址，仅当该接口返回为字符串"SUCCESS"时,视为处理完成
      * @param $data mixed  访问$url接口时携带的参数
      * @param $tags array  任务标签
-     * @return bool
-     * @throws \Exception
+     * @return bool|string $return !== true,则返回failMsg
      */
     public static function addJob($s, $url, $data = '', $tags = []) {
-        $response = (new Client())->post('http://horizon/job', [
-            'json' => compact('s', 'url', 'data', 'tags')
-        ]);
-        return 'SUCCESS' == (string)$response->getBody();
+        try {
+            $response = (new Client())->post('http://horizon/api/job', [
+                'json' => compact('s', 'url', 'data', 'tags')
+            ]);
+            return 'SUCCESS' == (string)$response->getBody();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
