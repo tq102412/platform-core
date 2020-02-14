@@ -7,6 +7,7 @@ namespace Ineplant\Rpc;
 use Application\ApplicationFPMClient;
 use Application\CompanyApp;
 use Application\Order;
+use Application\PayOrder;
 use Application\PurchaseInfo;
 
 class GrpcApplicationFPM extends GrpcClient {
@@ -72,5 +73,30 @@ class GrpcApplicationFPM extends GrpcClient {
         $response = GrpcHyperClient::getOrFail(self::getClient()->paidApps($companyApp)->wait());
         return $response->getApps();
 
+    }
+
+    /**
+     * @param $orderNo
+     * @return array
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getOrder($orderNo) {
+        $request = new PayOrder();
+        $request->setOrderno($orderNo);
+
+        $order = GrpcHyperClient::getOrFail(self::getClient()->getOrder($request)->wait());
+        return GrpcApplication::orderToArr($order);
+    }
+
+    /**
+     * @param $orderNo
+     * @return array
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function saveOrder($orderData) {
+        $request = GrpcApplication::creOrder($orderData);
+
+        $response = GrpcHyperClient::getOrFail(self::getClient()->saveOrder($request)->wait());
+        return $response->getStatus();
     }
 }

@@ -55,4 +55,32 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
             [Apps::class, 'decode'],
             $metadata, $options);
     }
+
+    /**
+     * @param PayOrder $argument
+     * @param array $metadata
+     * @param array $options
+     * @return \Grpc\UnaryCall
+     */
+    public function getOrder(PayOrder $argument,
+                             $metadata = [], $options = []) {
+        return $this->_simpleRequest('/application.application/getOrder',
+            $argument,
+            [PayOrder::class, 'decode'],
+            $metadata, $options);
+    }
+
+    /**
+     * @param PayOrder $argument
+     * @param array $metadata
+     * @param array $options
+     * @return \Grpc\UnaryCall
+     */
+    public function saveOrder(PayOrder $argument,
+                             $metadata = [], $options = []) {
+        return $this->_simpleRequest('/application.application/saveOrder',
+            $argument,
+            [Result::class, 'decode'],
+            $metadata, $options);
+    }
 }

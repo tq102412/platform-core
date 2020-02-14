@@ -14,6 +14,12 @@ service application {
 
     rpc trialSend (User) returns (Result) {
     }
+
+    rpc saveOrder (PayOrder) returns (Result) {
+    }
+
+    rpc getOrder (PayOrder) returns (PayOrder) {
+    }
 }
 
 message Order {
@@ -54,4 +60,16 @@ message User {
     string client_id = 2;
     string follow_id = 3;
     string company_id = 4;
+}
+
+message PayOrder {
+    string orderno = 1;
+    string name = 2;
+    string company_id = 3;
+    int32 price = 4;
+    int32 charging_model_id = 5;
+    int32 pay_mode = 6;
+    int32 type = 7;
+    string created_user_id = 8;
+    int32 package_id = 9;
 }
