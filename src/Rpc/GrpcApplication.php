@@ -60,17 +60,7 @@ class GrpcApplication extends GrpcHyperClient {
         $request->setOrderno($orderNo);
 
         list($order, $status) = self::getClient()->getOrder($request);
-        return [
-            'orderno'           => $order->getOrderno(),
-            'name'              => $order->getName(),
-            'company_id'        => $order->getCompanyId(),
-            'price'             => $order->getPrice(),
-            'charging_model_id' => $order->getChargingModelId(),
-            'pay_mode'          => $order->getPayMode(),
-            'type'              => $order->getType(),
-            'created_user_id'   => $order->getCreatedUserId(),
-            'package_id'        => $order->getPackageId()
-        ];
+        return self::orderToArr($order);
     }
 
     /**
@@ -83,11 +73,12 @@ class GrpcApplication extends GrpcHyperClient {
         $order->setName($orderData['name']);
         $order->setCompanyId($orderData['company_id']);
         $order->setPrice($orderData['price']);
-        $orderData['charging_model_id'] && $order->setChargingModelId($orderData['charging_model_id']);
         $order->setPayMode($orderData['pay_mode']);
         $order->setType($orderData['type']);
-        $orderData['created_user_id'] && $order->setCreatedUserId($orderData['created_user_id']);
-        $orderData['package_id'] && $order->setPackageId($orderData['package_id']);
+        key_exists('charging_model_id', $orderData) && $order->setChargingModelId($orderData['charging_model_id']);
+        key_exists('created_user_id', $orderData) && $order->setCreatedUserId($orderData['created_user_id']);
+        key_exists('package_id', $orderData) && $order->setPackageId($orderData['package_id']);
+        key_exists('payload', $orderData) && $order->setPayload($orderData['payload']);
         return $order;
     }
 
@@ -105,7 +96,8 @@ class GrpcApplication extends GrpcHyperClient {
             'pay_mode'          => $order->getPayMode(),
             'type'              => $order->getType(),
             'created_user_id'   => $order->getCreatedUserId(),
-            'package_id'        => $order->getPackageId()
+            'package_id'        => $order->getPackageId(),
+            'payload'           => $order->getPayload()
         ];
     }
 }

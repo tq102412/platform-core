@@ -49,6 +49,10 @@ class PayOrder extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 package_id = 9;</code>
      */
     protected $package_id = 0;
+    /**
+     * Generated from protobuf field <code>string payload = 10;</code>
+     */
+    protected $payload = '';
 
     /**
      * Constructor.
@@ -65,6 +69,7 @@ class PayOrder extends \Google\Protobuf\Internal\Message
      *     @type int $type
      *     @type string $created_user_id
      *     @type int $package_id
+     *     @type string $payload
      * }
      */
     public function __construct($data = NULL) {
@@ -266,6 +271,28 @@ class PayOrder extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->package_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string payload = 10;</code>
+     * @return string
+     */
+    public function getPayload()
+    {
+        return $this->payload;
+    }
+
+    /**
+     * Generated from protobuf field <code>string payload = 10;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPayload($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->payload = $var;
 
         return $this;
     }

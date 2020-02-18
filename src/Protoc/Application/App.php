@@ -16,31 +16,31 @@ class App extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 id = 1;</code>
      */
-    private $id = 0;
+    protected $id = 0;
     /**
      * Generated from protobuf field <code>string name = 2;</code>
      */
-    private $name = '';
+    protected $name = '';
     /**
      * Generated from protobuf field <code>string logo = 3;</code>
      */
-    private $logo = '';
+    protected $logo = '';
     /**
      * Generated from protobuf field <code>string url = 4;</code>
      */
-    private $url = '';
+    protected $url = '';
     /**
      * Generated from protobuf field <code>string describe = 5;</code>
      */
-    private $describe = '';
+    protected $describe = '';
     /**
      * Generated from protobuf field <code>int32 event_id = 6;</code>
      */
-    private $event_id = 0;
+    protected $event_id = 0;
     /**
      * Generated from protobuf field <code>int32 on_desktop = 7;</code>
      */
-    private $on_desktop = 0;
+    protected $on_desktop = 0;
 
     /**
      * Constructor.

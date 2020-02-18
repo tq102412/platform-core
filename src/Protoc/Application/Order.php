@@ -16,11 +16,11 @@ class Order extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string orderno = 1;</code>
      */
-    private $orderno = '';
+    protected $orderno = '';
     /**
      * Generated from protobuf field <code>int32 total_money = 2;</code>
      */
-    private $total_money = 0;
+    protected $total_money = 0;
 
     /**
      * Constructor.

@@ -35,4 +35,32 @@ class ApplicationClient extends BaseClient {
         );
     }
 
+    /**
+     * 保存订单
+     *
+     * @param PayOrder $order
+     * @return array|\Google\Protobuf\Internal\Message[]|\swoole_http2_response[]
+     */
+    public function saveOrder(PayOrder $order) {
+        return $this->simpleRequest(
+            '/application.application/saveOrder',
+            $order,
+            [Result::class, 'decode']
+        );
+    }
+
+    /**
+     * 获取订单
+     *
+     * @param PayOrder $order
+     * @return array|\Google\Protobuf\Internal\Message[]|\swoole_http2_response[]
+     */
+    public function getOrder(PayOrder $order) {
+        return $this->simpleRequest(
+            '/application.application/getOrder',
+            $order,
+            [PayOrder::class, 'decode']
+        );
+    }
+
 }
