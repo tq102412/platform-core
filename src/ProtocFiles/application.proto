@@ -20,11 +20,15 @@ service application {
 
     rpc getOrder (PayOrder) returns (PayOrder) {
     }
+
+    rpc refund (PayOrder) returns (Result) {
+    }
 }
 
 message Order {
     string orderno = 1;
     int32 total_money = 2;
+    string transaction_id = 3;
 }
 
 message Result {
@@ -73,4 +77,5 @@ message PayOrder {
     string created_user_id = 8;
     int32 package_id = 9;
     string payload = 10;
+    string transaction_id = 11;
 }

@@ -30,13 +30,15 @@ class GrpcApplicationFPM extends GrpcClient {
      *
      * @param $orderNo
      * @param $totalMoney
+     * @param $transactionId
      * @return mixed
      * @throws \Ineplant\Exceptions\ReturnException
      */
-    public static function handleNotify($orderNo, $totalMoney) {
+    public static function handleNotify($orderNo, $totalMoney, $transactionId) {
         $request = new Order();
         $request->setOrderno($orderNo);
         $request->setTotalMoney($totalMoney);
+        $request->setTransactionId($transactionId);
 
         $response = GrpcHyperClient::getOrFail(self::getClient()->appOrderNotify($request)->wait());
         return $response->getStatus();
@@ -89,7 +91,7 @@ class GrpcApplicationFPM extends GrpcClient {
     }
 
     /**
-     * @param $orderNo
+     * @param $orderData
      * @return array
      * @throws \Ineplant\Exceptions\ReturnException
      */
@@ -97,6 +99,21 @@ class GrpcApplicationFPM extends GrpcClient {
         $request = GrpcApplication::creOrder($orderData);
 
         $response = GrpcHyperClient::getOrFail(self::getClient()->saveOrder($request)->wait());
+        return $response->getStatus();
+    }
+
+    /**
+     * @param $payload
+     * @param $refundPrice
+     * @return mixed
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function refund($payload, $refundPrice) {
+        $request = new PayOrder();
+        $request->setPayload($payload);
+        $request->setPrice($refundPrice);
+
+        $response = GrpcHyperClient::getOrFail(self::getClient()->refund($request)->wait());
         return $response->getStatus();
     }
 }

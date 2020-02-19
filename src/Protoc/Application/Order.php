@@ -21,6 +21,10 @@ class Order extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 total_money = 2;</code>
      */
     protected $total_money = 0;
+    /**
+     * Generated from protobuf field <code>string transaction_id = 3;</code>
+     */
+    protected $transaction_id = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class Order extends \Google\Protobuf\Internal\Message
      *
      *     @type string $orderno
      *     @type int $total_money
+     *     @type string $transaction_id
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class Order extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->total_money = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string transaction_id = 3;</code>
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->transaction_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string transaction_id = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setTransactionId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->transaction_id = $var;
 
         return $this;
     }

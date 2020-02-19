@@ -83,4 +83,18 @@ class ApplicationFPMClient extends \Grpc\BaseStub {
             [Result::class, 'decode'],
             $metadata, $options);
     }
+
+    /**
+     * @param PayOrder $argument
+     * @param array $metadata
+     * @param array $options
+     * @return \Grpc\UnaryCall
+     */
+    public function refund(PayOrder $argument,
+                              $metadata = [], $options = []) {
+        return $this->_simpleRequest('/application.application/refund',
+            $argument,
+            [Result::class, 'decode'],
+            $metadata, $options);
+    }
 }
