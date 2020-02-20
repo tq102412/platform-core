@@ -62,4 +62,29 @@ class WechatPayment extends WechatBasic {
         ]);
     }
 
+    /**
+     * @param $appId
+     * @param $followId
+     * @param $price
+     * @param $tradeNo
+     * @return bool|string true/errMsg
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function payToBalance($appId, $followId, $price, $tradeNo) {
+        try {
+            $response = self::getClient()->request('POST', "/api/wx/pay/to_balance", [
+                'json' => [
+                    'app_id'    => $appId,
+                    'follow_id' => $followId,
+                    'price'     => $price,
+                    'trade_no'  => $tradeNo,
+                ]
+            ]);
+            Helper::HttpRpcResult($response);
+            return true;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
 }
