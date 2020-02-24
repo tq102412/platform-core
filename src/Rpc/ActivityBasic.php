@@ -11,7 +11,17 @@ use Ineplant\Helper;
 class ActivityBasic {
     use BaseRpc;
 
-    protected static $domain = 'http://activity:9501';
+    /**
+     * @var string domain
+     */
+    protected static $domain;
+
+    /**
+     * 设置请求的domain
+     */
+    private static function setDomain() {
+        self::$domain = getenv('RPC_ADDR_ACTIVITY') ?: 'http://activity:9501';
+    }
 
     /**
      * @param $activityId
@@ -20,6 +30,7 @@ class ActivityBasic {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function packetOrderHandle($activityId, $companyId) {
+        self::setDomain();
         $response = self::getClient()->request('GET', '/api/activity/packet/order/handle', [
             'query' => [
                 'activity_id' => $activityId,
