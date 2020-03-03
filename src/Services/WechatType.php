@@ -19,7 +19,7 @@ class WechatType {
     /**
      * WechatType constructor.
      */
-    public function __construct($verifyType, $type) {
+    public function __construct($type, $verifyType) {
         $this->verifyType = $verifyType;
         $this->type       = $type;
     }
