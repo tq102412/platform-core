@@ -2,6 +2,7 @@
 
 namespace Ineplant\Services;
 
+use Ineplant\Exceptions\WechatNotVerifyException;
 use Ineplant\Exceptions\WechatNotVerifyServiceTypeException;
 
 class WechatType {
@@ -52,14 +53,23 @@ class WechatType {
         }
     }
 
+    /**
+     * @return bool
+     */
+    public function isVerify() {
+        return -1 != $this->verifyType;
+    }
+
 
     /**
      * 获取公众号是否认证
      *
      * @return bool
      */
-    public function isVerify() {
-        return -1 != $this->verifyType;
+    public function isVerifyOrFail() {
+        if (!$this->isVerify()) {
+            throw new WechatNotVerifyException();
+        }
     }
 
 
