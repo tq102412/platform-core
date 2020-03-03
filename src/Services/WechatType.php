@@ -65,6 +65,7 @@ class WechatType {
      * 获取公众号是否认证
      *
      * @return bool
+     * @throws WechatNotVerifyException
      */
     public function isVerifyOrFail() {
         if (!$this->isVerify()) {

@@ -76,8 +76,8 @@ class ErrorCode {
         self::MODEL_NOT_FOUND           => '未查询到相关数据',
         self::TEMPLATE_INDUSTRY_ERROR   => '模板消息的行业不符，但修改失败：本月已超出修改次数',
         self::UNBIND_WECHAT             => '未绑定公众号',
-        self::NOT_WECHAT_VERIFY_SERVICE => '授权公众号必须是已认证服务号',
-        self::NOT_WECHAT_VERIFY         => '公众号没有认证',
+        self::NOT_WECHAT_VERIFY_SERVICE => '使用该功能需要先授权已认证服务号',
+        self::NOT_WECHAT_VERIFY         => '使用该功能需要先授权已认证公众号',
     ];
 
 
