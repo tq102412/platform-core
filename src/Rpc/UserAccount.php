@@ -2,6 +2,7 @@
 
 namespace Ineplant\Rpc;
 
+use GuzzleHttp\Exception\InvalidArgumentException;
 
 class UserAccount {
 
@@ -20,58 +21,66 @@ class UserAccount {
      * @type int price
      * }
      * @param string $xaId
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException|InvalidArgumentException
      */
     public static function change($request = [], $xaId = '') {
         $request['xa'] = [
             'id' => $xaId,
         ];
 
-        return self::getClient()->request('POST', '/xacommit', [
+        $response = self::getClient()->request('POST', '/account/change', [
             'json' => $request,
         ]);
+
+        return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
     }
 
 
     /**
      * @param $userId
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException|InvalidArgumentException
      */
     public static function get($userId) {
-        return self::getClient()->request('GET', '/account/get', [
+        $response = self::getClient()->request('GET', '/account/get', [
             'query' => [
                 'user_id' => $userId,
             ],
         ]);
+
+        return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
     }
 
 
     /**
      * @param string $xaId
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function XaCommit($xaId = "") {
-        return self::getClient()->request('POST', '/xacommit', [
+        $response = self::getClient()->request('POST', '/xacommit', [
             'json' => [
                 'id' => $xaId,
             ],
         ]);
+
+        return $response->getBody()->getContents();
     }
 
 
     /**
      * @param string $xaId
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function XaRollback($xaId = "") {
-        return self::getClient()->request('POST', '/xarollback', [
+        $response = self::getClient()->request('POST', '/xarollback', [
             'json' => [
                 'id' => $xaId,
             ],
         ]);
+
+        return $response->getBody()->getContents();
     }
 }
