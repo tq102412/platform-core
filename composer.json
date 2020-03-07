@@ -26,7 +26,8 @@
             "Member\\": "src/Protoc/Member/",
             "Manage\\": "src/Protoc/Manage/",
             "Application\\": "src/Protoc/Application/",
-            "Appserv\\": "src/Protoc/Appserv/"
+            "Appserv\\": "src/Protoc/Appserv/",
+            "Ucenteraccount\\": "src/Protoc/Ucenteraccount/"
         }
     }
 }
