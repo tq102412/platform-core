@@ -11,4 +11,6 @@ class PaySources extends SplEnum {
     const CONSUME = 2;
     //微信 应用订单,红包下单
     const APPLICATION_ORDER = 3;
+    //微信 活动端订单
+    const ACTIVITY_ORDER = 4;
 }
