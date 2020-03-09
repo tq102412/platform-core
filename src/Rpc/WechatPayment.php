@@ -24,6 +24,30 @@ class WechatPayment extends WechatBasic {
         ]);
     }
 
+
+    /**
+     * @param $transactionId
+     * @param $refundFee
+     * @param $logHandle 'Log::class'
+     * @param string $refundDesc
+     * @return array 使用list($success, $refundException) = $return
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function refundWithResult($transactionId, $refundFee, $logHandle, $refundDesc = '') {
+        try {
+            self::refund($transactionId, $refundFee, $refundDesc);
+            return [true, ''];
+        } catch (\Exception $e) {
+            $exception = $e->hasResponse()
+                ? (string)$e->getResponse()->getBody() : '退款请求未获取到响应';
+            if (strlen($exception) > 50) {
+                call_user_func([$logHandle, 'error'], $exception);
+                $exception = '退款请求异常';
+            }
+
+            return [false, $exception];
+        }
+    }
     /**
      * 支付码扣款并获取到支付结果
      * @param array $company {
