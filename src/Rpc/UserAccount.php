@@ -38,14 +38,14 @@ class UserAccount {
 
 
     /**
-     * @param $userId
+     * @param $companyId
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException|InvalidArgumentException
      */
-    public static function get($userId) {
+    public static function get($companyId) {
         $response = self::getClient()->request('GET', '/account/get', [
             'query' => [
-                'user_id' => $userId,
+                'company_id' => $companyId,
             ],
         ]);
 
