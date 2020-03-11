@@ -8,8 +8,11 @@ class OrderStatus extends SplEnum {
     //未支付
     const UNPAID = 0;
 
-    //翼支付
+    //已支付
     const PAID = 10;
+
+    //待发货(已成团)
+    const WAIT_DELIVERY = 12;
 
     //退款成功
     const REFUNDED = 20;

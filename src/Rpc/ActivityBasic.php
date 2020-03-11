@@ -34,7 +34,7 @@ class ActivityBasic {
         $response = self::getClient()->request('GET', '/api/activity/packet/order/handle', [
             'query' => [
                 'activity_id' => $activityId,
-                'company_id' => $companyId
+                'company_id'  => $companyId
             ],
         ]);
 
@@ -45,5 +45,25 @@ class ActivityBasic {
         if ($response['errcode']) {
             throw new ReturnException("{$response['content']} (errcode:{$response['errcode']})", ErrorCode::RPC);
         }
+    }
+
+    /**
+     * 活动订单回调
+     *
+     * @param $orderNo
+     * @param $totalMoney
+     * @param $transactionId
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function orderNotify($orderNo, $totalMoney, $transactionId) {
+        self::setDomain();
+        return self::getClient()->request('POST', '/api/activity/order/notify', [
+            'json' => [
+                'orderno'        => $orderNo,
+                'total_fee'      => $totalMoney,
+                'transaction_id' => $transactionId
+            ],
+        ]);
     }
 }
