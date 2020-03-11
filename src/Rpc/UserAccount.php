@@ -12,12 +12,12 @@ class UserAccount {
 
     /**
      * @param array $request {
-     * @type string user_id
-     * @type string company_id
-     * @type string comment
-     * @type string action
-     * @type string origin_id
-     * @type string origin_type
+     * @type string user_id 用户id
+     * @type string company_id 公司id
+     * @type string comment 备注
+     * @type string action 操作类型：charge，group等，参照\Ineplant\Enum\UcenterAccountAction
+     * @type string origin_id 来源id，对应来源类型的标识
+     * @type string origin_type 来源类型：order，activity等,参照\Ineplant\Enum\UcenterAccountOriginType
      * @type int price
      * }
      * @param string $xaId
