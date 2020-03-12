@@ -16,7 +16,7 @@ class UserAccount {
      * @version ucenter: ~1.4.5
      *
      * @param array $request {
-     * @type string user_id 用户id
+     * @type string created_user_id 用户id
      * @type string company_id 公司id
      * @type string comment 备注
      * @type string origin_id 来源id，对应来源类型的标识
