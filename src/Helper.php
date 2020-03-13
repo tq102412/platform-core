@@ -328,4 +328,23 @@ class Helper {
             return $e->getMessage();
         }
     }
+
+    /**
+     * 查询条件添加时间约束
+     *
+     * @param $fromTime
+     * @param $toTime
+     * @param array $condition
+     * @param string $timeKey
+     * @return array
+     */
+    public static function conditionAddTime($fromTime, $toTime, $condition = [],  $timeKey = 'created_at') {
+        if ($fromTime) {
+            $condition[] = [$timeKey, '>=', date($fromTime)];
+        }
+        if ($toTime) {
+            $condition[] = [$timeKey, '<=', date($fromTime)];
+        }
+        return $condition;
+    }
 }
