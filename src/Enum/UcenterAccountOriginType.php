@@ -10,7 +10,7 @@ class UcenterAccountOriginType {
     const ORDER_CONSUME = "order_consume";
 
     // 拼团活动 -> teeam_id
-    const ACTIVITY = "activity_group";
+    const ACTIVITY_GROUP = "activity_group";
 
     // 提现 -> 微信交易单号
     const WITH_DRAW_MONEY = 'withdrawmoney';
