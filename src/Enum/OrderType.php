@@ -13,4 +13,7 @@ class OrderType extends SplEnum {
 
     //红包
     const RED_PACKET = 3;
+
+    //充值单据
+    const RECHARGE = 4;
 }
