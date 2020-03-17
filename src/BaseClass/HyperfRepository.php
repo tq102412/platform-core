@@ -39,8 +39,8 @@ class HyperfRepository {
      * 根据 仓库类名获取对应的model类名
      */
     private static function getModelClass() {
-        $arr = explode( '\\', static::class);
-        return '\App\Model\\'.Str::replaceLast('Repository', '', end($arr));
+        $arr = explode('\\', static::class);
+        return '\App\Model\\' . Str::replaceLast('Repository', '', end($arr));
     }
 
     /**
@@ -61,6 +61,23 @@ class HyperfRepository {
     }
 
     /**
+     * @param $id
+     * @param string $unique
+     * @param bool $status
+     * @param bool $lock
+     * @return \Hyperf\Database\Model\Builder|\Hyperf\Database\Model\Model|object|null
+     */
+    public function getByUniqueId($id, $unique = 'id', $status = true, $lock = false) {
+        $query = $this->query()->where($unique, $id);
+        if ($lock) {
+            $query->lockForUpdate();
+        }
+        return $status
+            ? $query->firstOrFail()
+            : $query->first();
+    }
+
+    /**
      * 简单多条查询
      * @param array $condition
      * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
@@ -78,7 +95,7 @@ class HyperfRepository {
      * @param array $addData 新增记录时添加的额外数据
      */
     public function batchUpdate($data, $delCondition = false, $idKey = 'id', $addData = []) {
-        Db::transaction(function () use ($data, $delCondition, $idKey, $addData){
+        Db::transaction(function () use ($data, $delCondition, $idKey, $addData) {
             $insertData = [];
             $updateIds  = [];
             foreach ($data as $datum) {

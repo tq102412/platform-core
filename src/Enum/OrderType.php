@@ -16,4 +16,18 @@ class OrderType extends SplEnum {
 
     //充值单据
     const RECHARGE = 4;
+
+    /**
+     * @param $type
+     * @return mixed|string
+     */
+    public static function typeName($type){
+        $map = [
+            self::RED_PACKET => '红包购买',
+            self::RECHARGE => '充值',
+        ];
+
+        return $map[$type] ?? '应用购买';
+    }
+
 }
