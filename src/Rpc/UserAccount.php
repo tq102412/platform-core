@@ -3,6 +3,8 @@
 namespace Ineplant\Rpc;
 
 use GuzzleHttp\Exception\InvalidArgumentException;
+use Ineplant\Exceptions\ReturnException;
+use Ineplant\Helper;
 
 class UserAccount {
 
@@ -13,9 +15,11 @@ class UserAccount {
     /**
      * 变更商铺资金账户
      *
+     * @return array
+     * @throws ReturnException
      * @version ucenter: ~1.4.5
      *
-     * @param array $request {
+     * @params array $request {
      * @type string created_user_id 用户id
      * @type string company_id 公司id
      * @type string comment 备注
@@ -23,22 +27,39 @@ class UserAccount {
      * @type string origin_type 来源类型：order，activity等,参照\Ineplant\Enum\UcenterAccountOriginType
      * @type int price
      * }
-     * @param string $xaId
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException|InvalidArgumentException
+     * @params string $xaId
      */
     public static function change($request = [], $xaId = '') {
         $request['xa'] = [
             'id' => $xaId,
         ];
-
-        $response = self::getClient()->request('POST', '/account/change', [
-            'json' => $request,
-        ]);
-
-        return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        return Helper::responseForRPC(function () use ($request) {
+            $response = self::getClient()->request('POST', '/account/change', [
+                'json' => $request,
+            ]);
+            return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        }, '余额服务');
     }
 
+    /**
+     * 改变余额并处理事务
+     *
+     * @param $request
+     * @param \Closure $handle
+     * @throws ReturnException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function transaction($request, \Closure $handle) {
+        $xaId = Helper::createOrderNo();
+        self::change($request, $xaId);
+        try {
+            $handle();
+            self::XaCommit($xaId);
+        } catch (\Exception $e) {
+            self::XaRollback($xaId);
+            throw $e;
+        }
+    }
 
     /**
      * @param $companyId

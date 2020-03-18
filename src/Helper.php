@@ -270,6 +270,26 @@ class Helper {
     }
 
     /**
+     * @param \Closure $handle
+     * @param $msg
+     * @return mixed
+     * @throws ReturnException
+     */
+    public static function responseForRPC(\Closure $handle, $msg) {
+        try {
+            return $handle();
+        } catch (\Exception $e) {
+            $errMsg = $exception = $e->hasResponse()
+                ? (string)$e->getResponse()->getBody() : $msg. ' 异常';
+            if (strlen($exception) > 50) {
+                $errMsg = $msg. '异常';
+            }
+
+            throw new ReturnException($errMsg, ErrorCode::RPC);
+        }
+    }
+
+    /**
      * @param $arr
      * @param $num
      * @return array
