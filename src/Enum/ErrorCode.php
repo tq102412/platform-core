@@ -50,6 +50,7 @@ class ErrorCode {
 
     const SQL               = 50001; //sql执行错误
     const COMPANY_NOT_FOUND = 50002; //店铺不存在
+    const WXA_LOGIN_INVALID = 50003; //小程序登录失效
 
     const TEXT_ANTI_SPAM = 61011;//文本反垃圾未通过
 
@@ -80,6 +81,7 @@ class ErrorCode {
         self::UNBIND_WECHAT             => '未绑定公众号',
         self::NOT_WECHAT_VERIFY_SERVICE => '使用该功能需要先授权已认证服务号',
         self::NOT_WECHAT_VERIFY         => '使用该功能需要先授权已认证公众号',
+        self::WXA_LOGIN_INVALID         => '小程序登录失效',
     ];
 
 
