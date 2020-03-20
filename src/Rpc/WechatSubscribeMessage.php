@@ -63,11 +63,48 @@ class WechatSubscribeMessage extends WechatBasic {
                     'date4'  => $data[3], // 开奖时间
                     'thing5' => $data[4], // 备注
                 ],
-            ]
+            ],
 
         ];
 
         return self::getClient()->request('POST', "/api/subscribe/message/batch/send", [
+            'json' => $json,
+        ]);
+    }
+
+
+    /**
+     * 活动开始前提醒发送，异步
+     *
+     * @param $appId
+     * @param $templateId
+     * @param $openIds
+     * @param $data
+     * @param string $page
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public static function sendActivityStartByOpenIds(
+        $appId,
+        $templateId,
+        $openIds,
+        $data,
+        $page = 'pages/home/index/index'
+    ) {
+        $json = [
+            'appid'    => $appId,
+            'open_ids' => $openIds,
+            'data'     => [
+                'template_id' => $templateId,
+                'page'        => $page,
+                'info'        => [
+                    'thing1' => $data[0], // 活动名称
+                    'date6'  => $data[1], // 开始时间
+                    'thing5' => $data[2], // 温馨提示
+                ],
+            ],
+        ];
+
+        return self::getClient()->requestAsync('POST', "/api/subscribe/message/batch/send", [
             'json' => $json,
         ]);
     }
