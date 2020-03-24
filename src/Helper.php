@@ -363,7 +363,7 @@ class Helper {
             $condition[] = [$timeKey, '>=', date($fromTime)];
         }
         if ($toTime) {
-            $condition[] = [$timeKey, '<=', date($fromTime)];
+            $condition[] = [$timeKey, '<=', date($toTime)];
         }
         return $condition;
     }
