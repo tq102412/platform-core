@@ -206,9 +206,7 @@ class Helper {
             $str = $param;
         }
 
-        $len = strlen($url);
-
-        if ('?' == substr($len, -1)) {
+        if ('?' == substr($url, -1)) {
             $url .= $str;
         } else {
             $url .= '&' . $str;
