@@ -2,6 +2,7 @@
 
 namespace Ineplant;
 
+use Faker\Factory;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use Ineplant\Enum\ErrorCode;
@@ -366,5 +367,42 @@ class Helper {
             $condition[] = [$timeKey, '<=', date($toTime)];
         }
         return $condition;
+    }
+
+    /**
+     * @param $num
+     * @return array
+     */
+    public static function getShamUsers($num) {
+        $shamUsers = [];
+        for ($i = 0; $i < $num; $i++) {
+            $shamUsers[] = [
+                'nickname'   => self::shamName(),
+                'headimgurl' => self::shamHeadImg()
+            ];
+        }
+        return $shamUsers;
+    }
+
+    /**
+     * 虚拟姓名
+     *
+     * @return mixed
+     */
+    public static function shamName() {
+        return Helper::isSuccess(0.5) ? Factory::create('zh_CN')->name
+            : (
+            Helper::isSuccess(0.7) ? Factory::create('en_UK')->firstName
+                : str_replace('.', '_', Factory::create('en_UK')->userName)
+            );
+    }
+
+    /**
+     * 虚拟头像
+     *
+     * @return string
+     */
+    public static function shamHeadImg() {
+        return '/public/headimg/u_' . rand(100000, 101120) . '.jpg';
     }
 }
