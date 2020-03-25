@@ -189,4 +189,22 @@ class UserCenter {
 
         return $response->getBody()->getContents();
     }
+
+
+    /**
+     * @param $companyId
+     * @return mixed
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getClientId($companyId) {
+        return Helper::responseForRPC(function() use ($companyId) {
+            $response = self::getClient()->request('GET', '/getclientid', [
+                'query' => [
+                    'company_id' => $companyId,
+                ],
+            ]);
+
+            return $response->getBody()->getContents();
+        }, "CLIENT ID GETTING");
+    }
 }
