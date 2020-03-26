@@ -359,10 +359,10 @@ class Helper {
      */
     public static function conditionAddTime($fromTime, $toTime, $condition = [],  $timeKey = 'created_at') {
         if ($fromTime) {
-            $condition[] = [$timeKey, '>=', date($fromTime)];
+            $condition[] = [$timeKey, '>=', self::stdDate($fromTime)];
         }
         if ($toTime) {
-            $condition[] = [$timeKey, '<=', date($toTime)];
+            $condition[] = [$timeKey, '<=', self::stdDate($toTime)];
         }
         return $condition;
     }
