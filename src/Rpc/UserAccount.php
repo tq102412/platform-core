@@ -26,6 +26,7 @@ class UserAccount {
      * @type string origin_id 来源id，对应来源类型的标识
      * @type string origin_type 来源类型：order，activity等,参照\Ineplant\Enum\UcenterAccountOriginType
      * @type int price
+     * @type boolean auto_deduct_commission
      * }
      * @params string $xaId
      */
