@@ -93,10 +93,10 @@ class WechatSubscribeMessage extends WechatBasic {
         $json = [
             'appid'    => $appId,
             'open_ids' => $openIds,
-            'data'     => [
+            'info'     => [
                 'template_id' => $templateId,
                 'page'        => $page,
-                'info'        => [
+                'data'        => [
                     'thing1' => $data[0], // 活动名称
                     'date6'  => $data[1], // 开始时间
                     'thing5' => $data[2], // 温馨提示
