@@ -279,9 +279,9 @@ class Helper {
             return $handle();
         } catch (\Exception $e) {
             $errMsg = $exception = $e->hasResponse()
-                ? (string)$e->getResponse()->getBody() : $msg. ' 异常';
+                ? (string)$e->getResponse()->getBody() : $msg . ' 异常';
             if (strlen($exception) > 50) {
-                $errMsg = $msg. '异常';
+                $errMsg = $msg . '异常';
             }
 
             throw new ReturnException($errMsg, ErrorCode::RPC);
@@ -357,7 +357,7 @@ class Helper {
      * @param string $timeKey
      * @return array
      */
-    public static function conditionAddTime($fromTime, $toTime, $condition = [],  $timeKey = 'created_at') {
+    public static function conditionAddTime($fromTime, $toTime, $condition = [], $timeKey = 'created_at') {
         if ($fromTime) {
             $condition[] = [$timeKey, '>=', self::stdDate($fromTime)];
         }
@@ -402,5 +402,32 @@ class Helper {
      */
     public static function shamHeadImg() {
         return '/public/headimg/u_' . rand(100000, 101120) . '.jpg';
+    }
+
+    /**
+     * 获取手续费
+     *
+     * @param $price
+     * @param $handle
+     * @return int
+     * @throws ReturnException
+     */
+    public static function commissionByPrice($price, $handle) {
+        return (int)round(($price / (1 - self::getMchRate($handle))) - $price);
+    }
+
+    /**
+     * @param  $handle
+     *   laravel:Redis::class
+     *   hyperf:$container->get(Hyperf\Redis\Redis::class)
+     * @return ReturnException|mixed
+     * @throws ReturnException
+     */
+    public static function getMchRate($handle) {
+        $mchRate = call_user_func([$handle, 'get'], 'IMPORTANT_MCH_RATE');
+        if (!$mchRate) {
+            throw new ReturnException('IMPORTANT_MCH_RATE GET ERROR', ErrorCode::CONFIG_ADMIN);
+        }
+        return $mchRate;
     }
 }
