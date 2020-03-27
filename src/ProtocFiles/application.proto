@@ -78,4 +78,5 @@ message PayOrder {
     int32 package_id = 9;
     string payload = 10;
     string transaction_id = 11;
+    int32 commission = 12;
 }
