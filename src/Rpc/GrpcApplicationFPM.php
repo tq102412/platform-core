@@ -103,14 +103,14 @@ class GrpcApplicationFPM extends GrpcClient {
     }
 
     /**
-     * @param $payload
+     * @param $orderno
      * @param $refundPrice
      * @return mixed
      * @throws \Ineplant\Exceptions\ReturnException
      */
-    public static function refund($payload, $refundPrice) {
+    public static function refund($orderno, $refundPrice) {
         $request = new PayOrder();
-        $request->setPayload($payload);
+        $request->setOrderno($orderno);
         $request->setPrice($refundPrice);
 
         $response = GrpcHyperClient::getOrFail(self::getClient()->refund($request)->wait());
