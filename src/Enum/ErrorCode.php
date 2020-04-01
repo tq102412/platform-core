@@ -47,6 +47,8 @@ class ErrorCode {
 
     //模板消息的行业不符，但修改失败：本月已超出修改次数
     const TEMPLATE_INDUSTRY_ERROR = 43100;
+    //处理中,稍后重新处理
+    const WAIT_HANDLE = 42002;
 
     const SQL               = 50001; //sql执行错误
     const COMPANY_NOT_FOUND = 50002; //店铺不存在
@@ -82,6 +84,7 @@ class ErrorCode {
         self::NOT_WECHAT_VERIFY_SERVICE => '使用该功能需要先授权已认证服务号',
         self::NOT_WECHAT_VERIFY         => '使用该功能需要先授权已认证公众号',
         self::WXA_LOGIN_INVALID         => '小程序登录失效',
+        self::WAIT_HANDLE               => 'timeout'
     ];
 
 
