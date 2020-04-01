@@ -26,15 +26,17 @@ class ActivityBasic {
     /**
      * @param $activityId
      * @param $companyId
+     * @param $orderno
      * @throws ReturnException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function packetOrderHandle($activityId, $companyId) {
+    public static function packetOrderHandle($activityId, $companyId, $orderno) {
         self::setDomain();
         $response = self::getClient()->request('GET', '/api/activity/packet/order/handle', [
             'query' => [
                 'activity_id' => $activityId,
-                'company_id'  => $companyId
+                'company_id'  => $companyId,
+                'orderno'     => $orderno
             ],
         ]);
 

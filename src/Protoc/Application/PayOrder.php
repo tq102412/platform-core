@@ -16,47 +16,51 @@ class PayOrder extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string orderno = 1;</code>
      */
-    protected $orderno = '';
+    private $orderno = '';
     /**
      * Generated from protobuf field <code>string name = 2;</code>
      */
-    protected $name = '';
+    private $name = '';
     /**
      * Generated from protobuf field <code>string company_id = 3;</code>
      */
-    protected $company_id = '';
+    private $company_id = '';
     /**
      * Generated from protobuf field <code>int32 price = 4;</code>
      */
-    protected $price = 0;
+    private $price = 0;
     /**
      * Generated from protobuf field <code>int32 charging_model_id = 5;</code>
      */
-    protected $charging_model_id = 0;
+    private $charging_model_id = 0;
     /**
      * Generated from protobuf field <code>int32 pay_mode = 6;</code>
      */
-    protected $pay_mode = 0;
+    private $pay_mode = 0;
     /**
      * Generated from protobuf field <code>int32 type = 7;</code>
      */
-    protected $type = 0;
+    private $type = 0;
     /**
      * Generated from protobuf field <code>string created_user_id = 8;</code>
      */
-    protected $created_user_id = '';
+    private $created_user_id = '';
     /**
      * Generated from protobuf field <code>int32 package_id = 9;</code>
      */
-    protected $package_id = 0;
+    private $package_id = 0;
     /**
      * Generated from protobuf field <code>string payload = 10;</code>
      */
-    protected $payload = '';
+    private $payload = '';
     /**
      * Generated from protobuf field <code>string transaction_id = 11;</code>
      */
-    protected $transaction_id = '';
+    private $transaction_id = '';
+    /**
+     * Generated from protobuf field <code>int32 commission = 12;</code>
+     */
+    private $commission = 0;
 
     /**
      * Constructor.
@@ -75,6 +79,7 @@ class PayOrder extends \Google\Protobuf\Internal\Message
      *     @type int $package_id
      *     @type string $payload
      *     @type string $transaction_id
+     *     @type int $commission
      * }
      */
     public function __construct($data = NULL) {
@@ -320,6 +325,28 @@ class PayOrder extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->transaction_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 commission = 12;</code>
+     * @return int
+     */
+    public function getCommission()
+    {
+        return $this->commission;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 commission = 12;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setCommission($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->commission = $var;
 
         return $this;
     }

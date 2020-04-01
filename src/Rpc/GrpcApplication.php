@@ -79,6 +79,8 @@ class GrpcApplication extends GrpcHyperClient {
         key_exists('created_user_id', $orderData) && $order->setCreatedUserId($orderData['created_user_id']);
         key_exists('package_id', $orderData) && $order->setPackageId($orderData['package_id']);
         key_exists('payload', $orderData) && $order->setPayload($orderData['payload']);
+        key_exists('transaction_id', $orderData) && $order->setPayload($orderData['payload']);
+        key_exists('commission', $orderData) && $order->setCommission($orderData['commission']);
         return $order;
     }
 
@@ -97,7 +99,9 @@ class GrpcApplication extends GrpcHyperClient {
             'type'              => $order->getType(),
             'created_user_id'   => $order->getCreatedUserId(),
             'package_id'        => $order->getPackageId(),
-            'payload'           => $order->getPayload()
+            'payload'           => $order->getPayload(),
+            'transaction_id'    => $order->getTransactionId(),
+            'commission'        => $order->getCommission()
         ];
     }
 }

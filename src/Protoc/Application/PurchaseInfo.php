@@ -16,11 +16,11 @@ class PurchaseInfo extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 app_id = 1;</code>
      */
-    protected $app_id = 0;
+    private $app_id = 0;
     /**
      * Generated from protobuf field <code>string company_id = 2;</code>
      */
-    protected $company_id = '';
+    private $company_id = '';
 
     /**
      * Constructor.

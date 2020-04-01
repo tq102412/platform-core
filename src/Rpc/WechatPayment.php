@@ -35,8 +35,8 @@ class WechatPayment extends WechatBasic {
      */
     public static function refundWithResult($transactionId, $refundFee, $logHandle, $refundDesc = '') {
         try {
-            self::refund($transactionId, $refundFee, $refundDesc);
-            return [true, ''];
+            $response = self::refund($transactionId, $refundFee, $refundDesc);
+            return [true, $response->getBody()->getContents()];
         } catch (\Exception $e) {
             $exception = $e->hasResponse()
                 ? (string)$e->getResponse()->getBody() : '退款请求未获取到响应';

@@ -16,7 +16,7 @@ class Result extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>bool status = 1;</code>
      */
-    protected $status = false;
+    private $status = false;
 
     /**
      * Constructor.

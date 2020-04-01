@@ -16,19 +16,19 @@ class User extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string user_id = 1;</code>
      */
-    protected $user_id = '';
+    private $user_id = '';
     /**
      * Generated from protobuf field <code>string client_id = 2;</code>
      */
-    protected $client_id = '';
+    private $client_id = '';
     /**
      * Generated from protobuf field <code>string follow_id = 3;</code>
      */
-    protected $follow_id = '';
+    private $follow_id = '';
     /**
      * Generated from protobuf field <code>string company_id = 4;</code>
      */
-    protected $company_id = '';
+    private $company_id = '';
 
     /**
      * Constructor.
