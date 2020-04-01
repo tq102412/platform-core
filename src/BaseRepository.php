@@ -2,8 +2,7 @@
 
 namespace Ineplant;
 
-trait BaseRepository
-{
+trait BaseRepository {
 
     protected $model;
 
@@ -243,10 +242,13 @@ trait BaseRepository
      * 根据$query语句 返回分页的列表格式数据
      *
      * @param $query
+     * @param $count
      * @return array
      */
-    public function pageRes($query) {
-        $count = $query->count();
+    public function pageRes($query, $count = null) {
+        if (is_null($count)) {
+            $count = $query->count();
+        }
         return Helper::listRes($count, $count ? $this->doQueryPaged($query) : []);
     }
 
