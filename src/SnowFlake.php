@@ -46,12 +46,12 @@ class SnowFlake
     /**
      * @var null|int
      */
-    protected $lastTimestamp = null;
+    protected static $lastTimestamp = null;
 
     /**
      * @var int
      */
-    protected $sequence = 1;
+    protected static $sequence = 1;
     protected $signLeftShift = self::TIMESTAMP_BITS + self::DATACENTER_BITS + self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
     protected $timestampLeftShift = self::DATACENTER_BITS + self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
     protected $dataCenterLeftShift = self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
@@ -88,24 +88,24 @@ class SnowFlake
     {
         $sign = 0; // default 0
         $timestamp = $this->getUnixTimestamp();
-        if ($timestamp < $this->lastTimestamp) {
+        if ($timestamp < self::$lastTimestamp) {
             throw new \Exception('"Clock moved backwards!');
         }
-        if ($timestamp == $this->lastTimestamp) { //与上次时间戳相等，需要生成序列号
-            $sequence = ++$this->sequence;
+        if ($timestamp == self::$lastTimestamp) { //与上次时间戳相等，需要生成序列号
+            $sequence = ++self::$sequence;
             if ($sequence == $this->maxSequenceId) { //如果序列号超限，则需要重新获取时间
                 $timestamp = $this->getUnixTimestamp();
-                while ($timestamp <= $this->lastTimestamp) {
+                while ($timestamp <= self::$lastTimestamp) {
                     $timestamp = $this->getUnixTimestamp();
                 }
-                $this->sequence = 0;
-                $sequence = ++$this->sequence;
+                self::$sequence = 0;
+                $sequence = ++self::$sequence;
             }
         } else {
-            $this->sequence = 0;
-            $sequence = ++$this->sequence;
+            self::$sequence = 0;
+            $sequence = ++self::$sequence;
         }
-        $this->lastTimestamp = $timestamp;
+        self::$lastTimestamp = $timestamp;
         $time = (int)($timestamp - self::EPOCH_OFFSET);
         $id = ($sign << $this->signLeftShift) | ($time << $this->timestampLeftShift) | ($this->datacenter_id << $this->dataCenterLeftShift) | ($this->machine_id << $this->machineLeftShift) | $sequence;
         return (string)$id;
