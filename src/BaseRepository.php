@@ -249,7 +249,7 @@ trait BaseRepository {
         if (is_null($count)) {
             $count = $query->count();
         }
-        return Helper::listRes($count, $count ? $this->doQueryPaged($query) : []);
+        return Helper::listRes($count, $count ? $this->doQueryPaged($query) : collect([]));
     }
 
     /**
