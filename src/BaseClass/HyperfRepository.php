@@ -52,6 +52,7 @@ class HyperfRepository {
 
     /**
      * 简单单条查询
+     *
      * @param $val
      * @param string $field
      * @return \Hyperf\Database\Model\Builder|\Hyperf\Database\Model\Model|object|null
@@ -79,6 +80,7 @@ class HyperfRepository {
 
     /**
      * 简单多条查询
+     *
      * @param array $condition
      * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
      */
@@ -116,6 +118,7 @@ class HyperfRepository {
 
     /**
      * 简单单条查询
+     *
      * @param $val
      * @param string $field
      * @return \Hyperf\Database\Model\Builder|\Hyperf\Database\Model\Model|object|null
@@ -226,10 +229,14 @@ class HyperfRepository {
      * 根据$query语句 返回分页的列表格式数据
      *
      * @param \Hyperf\Database\Model\Builder $query
+     * @param $count
      * @return array
      */
-    public function pageRes($query) {
-        return Helper::listRes($query->count(), $this->doQueryPaged($query));
+    public function pageRes($query, $count = null) {
+        if (is_null($count)) {
+            $count = $query->count();
+        }
+        return Helper::listRes($query->count(), $count ? $this->doQueryPaged($query) : collect([]));
     }
 
     /**
