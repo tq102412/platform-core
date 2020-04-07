@@ -39,10 +39,11 @@ class WechatPayment extends WechatBasic {
             return [true, $response->getBody()->getContents()];
         } catch (\Exception $e) {
             $exception = $e->hasResponse()
-                ? (string)$e->getResponse()->getBody() : '退款请求未获取到响应';
+                ? (string)$e->getResponse()->getBody() : '退款请求无响应，请联系商家';
+
             if (strlen($exception) > 50) {
                 call_user_func([$logHandle, 'error'], $exception);
-                $exception = '退款请求异常';
+                $exception = '退款请求异常，请联系商家';
             }
 
             return [false, $exception];
