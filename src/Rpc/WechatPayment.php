@@ -92,16 +92,20 @@ class WechatPayment extends WechatBasic {
      * @param $followId
      * @param $price
      * @param $tradeNo
+     * @param $originId
+     * @param $originType
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function payToBalance($appId, $followId, $price, $tradeNo) {
+    public static function payToBalance($appId, $followId, $price, $tradeNo, $originId, $originType) {
         return self::getClient()->request('POST', "/api/wx/pay/to_balance", [
             'json' => [
                 'app_id'    => $appId,
                 'follow_id' => $followId,
                 'price'     => $price,
                 'trade_no'  => $tradeNo,
+                'origin_id' => $originId,
+                'origin_type' => $originType
             ]
         ]);
 
