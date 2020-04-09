@@ -16,11 +16,11 @@ class GetByOpenidAndAppIdRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string app_id = 1;</code>
      */
-    private $app_id = '';
+    protected $app_id = '';
     /**
      * Generated from protobuf field <code>string openid = 2;</code>
      */
-    private $openid = '';
+    protected $openid = '';
 
     /**
      * Constructor.

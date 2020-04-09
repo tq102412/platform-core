@@ -20,7 +20,7 @@ class FollowIds extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string nickname = 2;</code>
      */
-    private $nickname = '';
+    protected $nickname = '';
 
     /**
      * Constructor.

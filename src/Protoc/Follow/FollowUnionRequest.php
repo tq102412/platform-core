@@ -16,11 +16,11 @@ class FollowUnionRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string follow_id = 1;</code>
      */
-    private $follow_id = '';
+    protected $follow_id = '';
     /**
      * Generated from protobuf field <code>string app_id = 2;</code>
      */
-    private $app_id = '';
+    protected $app_id = '';
 
     /**
      * Constructor.

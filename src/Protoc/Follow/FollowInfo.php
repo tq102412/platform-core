@@ -16,15 +16,15 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string follow_id = 1;</code>
      */
-    private $follow_id = '';
+    protected $follow_id = '';
     /**
      * Generated from protobuf field <code>string nickname = 2;</code>
      */
-    private $nickname = '';
+    protected $nickname = '';
     /**
      * Generated from protobuf field <code>string avatar_url = 3;</code>
      */
-    private $avatar_url = '';
+    protected $avatar_url = '';
 
     /**
      * Constructor.

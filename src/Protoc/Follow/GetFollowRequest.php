@@ -16,23 +16,23 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string app_id = 1;</code>
      */
-    private $app_id = '';
+    protected $app_id = '';
     /**
      * Generated from protobuf field <code>string openid = 2;</code>
      */
-    private $openid = '';
+    protected $openid = '';
     /**
      * Generated from protobuf field <code>string union_id = 3;</code>
      */
-    private $union_id = '';
+    protected $union_id = '';
     /**
      * Generated from protobuf field <code>int32 platform_type = 5;</code>
      */
-    private $platform_type = 0;
+    protected $platform_type = 0;
     /**
      * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
      */
-    private $data = null;
+    protected $data = null;
 
     /**
      * Constructor.

@@ -16,15 +16,19 @@ class FollowUnion extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string follow_id = 1;</code>
      */
-    private $follow_id = '';
+    protected $follow_id = '';
     /**
      * Generated from protobuf field <code>string openid = 2;</code>
      */
-    private $openid = '';
+    protected $openid = '';
     /**
      * Generated from protobuf field <code>int32 platform_type = 3;</code>
      */
-    private $platform_type = 0;
+    protected $platform_type = 0;
+    /**
+     * Generated from protobuf field <code>bool subscribed = 4;</code>
+     */
+    protected $subscribed = false;
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class FollowUnion extends \Google\Protobuf\Internal\Message
      *     @type string $follow_id
      *     @type string $openid
      *     @type int $platform_type
+     *     @type bool $subscribed
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class FollowUnion extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->platform_type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool subscribed = 4;</code>
+     * @return bool
+     */
+    public function getSubscribed()
+    {
+        return $this->subscribed;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool subscribed = 4;</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setSubscribed($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->subscribed = $var;
 
         return $this;
     }

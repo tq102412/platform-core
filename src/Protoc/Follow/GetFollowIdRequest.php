@@ -16,15 +16,15 @@ class GetFollowIdRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string union_id = 1;</code>
      */
-    private $union_id = '';
+    protected $union_id = '';
     /**
      * Generated from protobuf field <code>int32 platform_type = 5;</code>
      */
-    private $platform_type = 0;
+    protected $platform_type = 0;
     /**
      * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
      */
-    private $data = null;
+    protected $data = null;
 
     /**
      * Constructor.

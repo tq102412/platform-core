@@ -16,31 +16,31 @@ class FollowData extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string nickname = 1;</code>
      */
-    private $nickname = '';
+    protected $nickname = '';
     /**
      * Generated from protobuf field <code>string avatar_url = 2;</code>
      */
-    private $avatar_url = '';
+    protected $avatar_url = '';
     /**
      * Generated from protobuf field <code>int32 gender = 3;</code>
      */
-    private $gender = 0;
+    protected $gender = 0;
     /**
      * Generated from protobuf field <code>string country = 4;</code>
      */
-    private $country = '';
+    protected $country = '';
     /**
      * Generated from protobuf field <code>string province = 5;</code>
      */
-    private $province = '';
+    protected $province = '';
     /**
      * Generated from protobuf field <code>string city = 6;</code>
      */
-    private $city = '';
+    protected $city = '';
     /**
      * Generated from protobuf field <code>string language = 7;</code>
      */
-    private $language = '';
+    protected $language = '';
 
     /**
      * Constructor.
