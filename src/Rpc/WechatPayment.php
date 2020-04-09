@@ -39,10 +39,11 @@ class WechatPayment extends WechatBasic {
             return [true, $response->getBody()->getContents()];
         } catch (\Exception $e) {
             $exception = $e->hasResponse()
-                ? (string)$e->getResponse()->getBody() : '退款请求未获取到响应';
-            if (strlen($exception) > 50) {
+                ? (string)$e->getResponse()->getBody() : '退款请求无响应，请联系商家';
+
+            if (strlen($exception) > 1000) {
                 call_user_func([$logHandle, 'error'], $exception);
-                $exception = '退款请求异常';
+                $exception = '退款请求异常，请联系商家';
             }
 
             return [false, $exception];
@@ -91,16 +92,20 @@ class WechatPayment extends WechatBasic {
      * @param $followId
      * @param $price
      * @param $tradeNo
+     * @param $originId
+     * @param $originType
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function payToBalance($appId, $followId, $price, $tradeNo) {
+    public static function payToBalance($appId, $followId, $price, $tradeNo, $originId, $originType) {
         return self::getClient()->request('POST', "/api/wx/pay/to_balance", [
             'json' => [
                 'app_id'    => $appId,
                 'follow_id' => $followId,
                 'price'     => $price,
                 'trade_no'  => $tradeNo,
+                'origin_id' => $originId,
+                'origin_type' => $originType
             ]
         ]);
 
