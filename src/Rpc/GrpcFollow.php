@@ -45,7 +45,11 @@ class GrpcFollow extends GrpcClient {
         $request->setOpenid($openid);
         $request->setUnionId($unionId);
 
-        self::setFollowData($request, $data);
+        if ($data instanceof FollowData) {
+            $request->setData($data);
+        } else {
+            self::setFollowData($request, $data);
+        }
 
         return self::getClient()->GetFollow($request)->wait();
     }
@@ -54,18 +58,11 @@ class GrpcFollow extends GrpcClient {
      * @param $data
      */
     protected static function setFollowData($request, &$data) {
-        $followData = new FollowData();
+        $followData = new \Ineplant\Services\FollowData();
+        $followData->initByFollowData($data);
+        $follow = $followData->getFollowData();
 
-        isset($data['nickname']) && $followData->setNickname($data['nickname']);
-        isset($data['headimgurl']) && $followData->setAvatarUrl($data['headimgurl']);
-        isset($data['avatar_url']) && $followData->setAvatarUrl($data['avatar_url']);
-        isset($data['city']) && $followData->setCity($data['city']);
-        isset($data['country']) && $followData->setCountry($data['country']);
-        isset($data['gender']) && $followData->setGender(intval($data['gender']));
-        isset($data['language']) && $followData->setLanguage($data['language']);
-        isset($data['province']) && $followData->setProvince($data['province']);
-
-        $request->setData($followData);
+        $request->setData($follow);
     }
 
 
