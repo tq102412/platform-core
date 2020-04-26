@@ -20,7 +20,9 @@ class ActivityBasic {
      * 设置请求的domain
      */
     private static function setDomain() {
-        self::$domain = getenv('RPC_ADDR_ACTIVITY') ?: 'http://activity:9501';
+        if (!self::$domain) {
+            self::$domain = getenv('RPC_ADDR_ACTIVITY') ?: 'http://activity:9501';
+        }
     }
 
     /**
@@ -67,5 +69,27 @@ class ActivityBasic {
                 'transaction_id' => $transactionId
             ],
         ]);
+    }
+
+    /**
+     * @param $activityId
+     * @return array {
+     * @types string custom_name
+     * @types array template ['applet_path' => xx]
+     * }
+     * @throws ReturnException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function activityWithTemplate($activityId) {
+        self::setDomain();
+        $response = self::getClient()->request('GET', '/api/act/template/info', [
+            'query' => ['id' => $activityId,]
+        ]);
+
+        $response = Helper::getForJsonResponse($response);
+        if (empty($response['content']['activity_template_id'])) {
+            throw new ReturnException("获取活动信息失败", ErrorCode::RPC);
+        }
+        return $response['content'];
     }
 }
