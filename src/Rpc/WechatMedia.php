@@ -2,6 +2,11 @@
 
 namespace Ineplant\Rpc;
 
+use Illuminate\Support\Facades\Log;
+use Ineplant\Enum\ErrorCode;
+use Ineplant\Exceptions\ReturnException;
+use Ineplant\Helper;
+
 class WechatMedia extends WechatBasic {
 
     /**
@@ -27,7 +32,7 @@ class WechatMedia extends WechatBasic {
 
         return $client->requestAsync('POST', "/api/media/up_image", [
             'json' => [
-                'path' => $path,
+                'path'  => $path,
                 'appId' => $appId
             ]
         ]);
@@ -57,11 +62,36 @@ class WechatMedia extends WechatBasic {
 
         return $client->requestAsync('POST', "/api/media/upload", [
             'json' => [
-                'type' => $type,
-                'path' => $path,
+                'type'  => $type,
+                'path'  => $path,
                 'appId' => $appId
             ]
         ]);
+    }
+
+    /**
+     * @param $activityId
+     * @param $customName
+     * @param $companyId
+     * @return mixed
+     * @throws ReturnException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function actNewsUrl($activityId, $customName, $companyId) {
+        $response = self::getClient()->request('post', '/api/wx/activity/news_url', [
+            'json' => [
+                'activity_id' => $activityId,
+                'custom_name' => $customName,
+                'company_id'  => $companyId
+            ]
+        ]);
+
+        $response = Helper::getForJsonResponse($response);
+        if (!array_key_exists('errcode', $response) || $response['errcode']) {
+            Log::error($response);
+            throw new ReturnException("上传获取图文信息失败", ErrorCode::RPC);
+        }
+        return $response['content'];
     }
 
 

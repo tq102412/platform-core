@@ -208,17 +208,15 @@ trait BaseRepository {
      * @return mixed
      */
     public function listByLimit($where = false, $sortColumn = 'id', $sort = 'desc') {
+        $query = $this->model;
         if ($where) {
-            if ($sortColumn != 'id') {
-                $query = $this->model->where($where)
-                    ->orderBy($sortColumn, $sort)
-                    ->orderBy('id', 'desc');
-            } else {
-                $query = $this->model->where($where)
-                    ->orderBy($sortColumn, $sort);
-            }
+            $query = $query->where($where);
+        }
+
+        if ($sortColumn != 'id') {
+            $query = $query->orderBy($sortColumn, $sort)->orderBy('id', 'desc');
         } else {
-            $query = $this->model->orderBy($sortColumn, $sort);
+            $query = $query->orderBy($sortColumn, $sort);
         }
 
         return $this->pageRes($query);
