@@ -2,6 +2,10 @@
 
 namespace Ineplant\Rpc;
 
+use Ineplant\Exceptions\ErrCodeException;
+use Ineplant\Helper;
+use Ineplant\Enum\ErrorCode;
+
 class WechatBasic {
 
     use BaseRpc;
@@ -56,5 +60,53 @@ class WechatBasic {
             ],
         ]);
     }
+
+
+    /**
+     * 文本反垃圾检测
+     *
+     * @param $string
+     * @throws ErrCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function textAntiSpam($string) {
+        $string = trim($string);
+        if (!$string) {
+            return;
+        }
+
+        $response = self::getClient()->request('POST', '/api/inside/contentsecurity/checktext', [
+            'json' => [
+                'text' => $string
+            ]
+        ]);
+
+        if (0 != Helper::getForJsonResponse($response, 'errcode')) {
+            throw new ErrCodeException(ErrorCode::TEXT_ANTI_SPAM);
+        };
+    }
+
+
+    /**
+     * 图片反垃圾检测
+     *
+     * @param $string
+     * @throws ErrCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function imageAntiSpam($ossPath) {
+        $response = self::getClient()->request('POST', '/api/inside/contentsecurity/checkimage', [
+            'json' => [
+                'path' => $ossPath
+            ]
+        ]);
+
+        if (0 != Helper::getForJsonResponse($response, 'errcode')) {
+            throw new ErrCodeException(ErrorCode::TEXT_ANTI_SPAM);
+        };
+    }
+
 
 }
