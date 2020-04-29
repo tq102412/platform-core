@@ -3,7 +3,7 @@
 namespace Ineplant\Middleware;
 
 use Closure;
-use Ineplant\Rpc\Platform;
+use Ineplant\Rpc\WechatBasic;
 
 class TextAntiSpam {
 
@@ -16,8 +16,8 @@ class TextAntiSpam {
      * @throws \Ineplant\Exceptions\ReturnException
      */
     public function handle($request, Closure $next) {
-        if ('POST' == $request->method()) {
-            Platform::textAntiSpam($request->getContent());
+        if (in_array($request->method(), ['POST', 'PUT'])) {
+            WechatBasic::textAntiSpam($request->getContent());
         }
 
         return $next($request);
