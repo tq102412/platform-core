@@ -90,17 +90,39 @@ class WechatSubscribeMessage extends WechatBasic {
         $data,
         $page = 'pages/home/index/index'
     ) {
+
+        $json = [
+            'thing1' => $data[0], // 活动名称
+            'date6'  => $data[1], // 开始时间
+            'thing5' => $data[2], // 温馨提示
+        ];
+
+        return self::sendAsyncActivityByOpenIds($appId, $templateId, $openIds, $json, $page);
+    }
+
+
+    /**
+     * @param $appId
+     * @param $templateId
+     * @param $openIds
+     * @param $data
+     * @param string $page
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public static function sendAsyncActivityByOpenIds(
+        $appId,
+        $templateId,
+        $openIds,
+        $data,
+        $page = 'pages/home/index/index'
+    ) {
         $json = [
             'appid'    => $appId,
             'open_ids' => $openIds,
             'info'     => [
                 'template_id' => $templateId,
                 'page'        => $page,
-                'data'        => [
-                    'thing1' => $data[0], // 活动名称
-                    'date6'  => $data[1], // 开始时间
-                    'thing5' => $data[2], // 温馨提示
-                ],
+                'data'        => $data
             ],
         ];
 

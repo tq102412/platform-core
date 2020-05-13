@@ -77,7 +77,7 @@ class ErrorCode {
         self::SYSTEM_FAIL               => '系统错误',
         self::UNION_INFO_NOT_FOUND      => '没有找到关联信息',
         self::COMPANY_NOT_FOUND         => '店铺不存在',
-        self::TEXT_ANTI_SPAM            => '含有敏感内容',
+        self::TEXT_ANTI_SPAM            => '你发布的内容含有敏感内容，请修改后重试！',
         self::MODEL_NOT_FOUND           => '未查询到相关数据',
         self::TEMPLATE_INDUSTRY_ERROR   => '模板消息的行业不符，但修改失败：本月已超出修改次数',
         self::UNBIND_WECHAT             => '未绑定公众号',
