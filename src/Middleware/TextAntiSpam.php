@@ -16,7 +16,7 @@ class TextAntiSpam {
      * @throws \Ineplant\Exceptions\ReturnException
      */
     public function handle($request, Closure $next) {
-        if (in_array($request->method(), ['POST', 'PUT'])) {
+        if ('local' != env('APP_ENV', 'production') && in_array($request->method(), ['POST', 'PUT'])) {
             WechatBasic::textAntiSpam($request->getContent());
         }
 
