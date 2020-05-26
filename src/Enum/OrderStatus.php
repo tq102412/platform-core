@@ -5,6 +5,12 @@ namespace Ineplant\Enum;
 
 
 class OrderStatus extends SplEnum {
+    //所有状态
+    const ALL = -2;
+
+    //默认显示状态(除了未支付的)
+    const DEFAULT_SHOW = -1;
+
     //未支付
     const UNPAID = 0;
 
