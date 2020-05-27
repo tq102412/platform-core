@@ -19,6 +19,6 @@ class RpcHttpException extends \Exception {
 
     public function render() {
         $msg = $this->getMessage();
-        return response($msg > 255 ? "服务调用异常" : $msg, 500);
+        return response(mb_strlen($msg) > 255 ? "服务调用异常" : $msg, 500);
     }
 }
