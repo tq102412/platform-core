@@ -26,6 +26,10 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      */
     protected $union_id = '';
     /**
+     * Generated from protobuf field <code>string follow_id = 4;</code>
+     */
+    protected $follow_id = '';
+    /**
      * Generated from protobuf field <code>int32 platform_type = 5;</code>
      */
     protected $platform_type = 0;
@@ -43,6 +47,7 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      *     @type string $app_id
      *     @type string $openid
      *     @type string $union_id
+     *     @type string $follow_id
      *     @type int $platform_type
      *     @type \Follow\FollowData $data
      * }
@@ -114,6 +119,28 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->union_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string follow_id = 4;</code>
+     * @return string
+     */
+    public function getFollowId()
+    {
+        return $this->follow_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string follow_id = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setFollowId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->follow_id = $var;
 
         return $this;
     }

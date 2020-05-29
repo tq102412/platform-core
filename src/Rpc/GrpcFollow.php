@@ -35,15 +35,18 @@ class GrpcFollow extends GrpcClient {
      * @param $openid
      * @param $unionId
      * @param int $type
+     * @param null $data
+     * @param string $followId
      * @return mixed
      */
-    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat, $data = null) {
+    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat, $data = null, $followId = '') {
         $request = new GetFollowRequest();
 
         $request->setPlatformType($type);
         $request->setAppId($appId);
         $request->setOpenid($openid);
         $request->setUnionId($unionId);
+        $request->setFollowId($followId);
 
         if ($data instanceof FollowData) {
             $request->setData($data);
