@@ -95,8 +95,11 @@ class GrpcFollow extends GrpcClient {
         $request->setUnionId($unionId);
         $request->setPlatformType($type);
 
-        self::setFollowData($request, $data);
-
+        if ($data instanceof FollowData) {
+            $request->setData($data);
+        } else {
+            self::setFollowData($request, $data);
+        }
 
         $result = self::getOrFail(self::getClient()->GetFollowIdByUnionId($request)->wait());
 
