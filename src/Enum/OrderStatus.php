@@ -14,6 +14,9 @@ class OrderStatus extends SplEnum {
     //未支付
     const UNPAID = 0;
 
+    //部分支付(定金)
+    const PART_PAID = 2;
+
     //已支付/未生效
     const PAID_NOT_EFFECTIVE = 5;
 
