@@ -13,6 +13,7 @@ use Follow\GetFollowRequest;
 use Follow\UnionsRequest;
 use Ineplant\Enum\PlatformType;
 use Ineplant\Exceptions\TypeErrorException;
+use Follow\UpFollowIdRequest;
 
 class GrpcFollow extends GrpcClient {
 
@@ -178,6 +179,22 @@ class GrpcFollow extends GrpcClient {
             }
         }
         return $openIds;
+    }
+
+
+    /**
+     * @param $appid
+     * @param $openid
+     * @param $unionid
+     * @return mixed
+     */
+    public static function upFollowId($appid, $openid, $unionid) {
+        $request = new UpFollowIdRequest();
+        $request->setAppId($appid);
+        $request->setOpenid($openid);
+        $request->setUnionId($unionid);
+
+        return self::getClient()->UpFollowId($request)->wait();
     }
 
 }

@@ -25,6 +25,10 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string avatar_url = 3;</code>
      */
     protected $avatar_url = '';
+    /**
+     * Generated from protobuf field <code>bool linked = 4;</code>
+     */
+    protected $linked = false;
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      *     @type string $follow_id
      *     @type string $nickname
      *     @type string $avatar_url
+     *     @type bool $linked
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->avatar_url = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool linked = 4;</code>
+     * @return bool
+     */
+    public function getLinked()
+    {
+        return $this->linked;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool linked = 4;</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setLinked($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->linked = $var;
 
         return $this;
     }
