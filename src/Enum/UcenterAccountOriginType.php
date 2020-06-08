@@ -15,6 +15,8 @@ class UcenterAccountOriginType {
     // 秒杀活动 -> orderno
     const ACTIVITY_SECKILL = 'activity_seckill';
 
+    const ACTIVITY_PRE_SALE = 'activity_pre_sale';
+
     // 提现 -> 微信交易单号
     const WITH_DRAW_MONEY = 'withdrawmoney';
 }
