@@ -18,6 +18,7 @@ class UcenterAccountOriginType {
     // 接龙活动 -> orderno
     const ACTIVITY_CHAIN = 'activity_chain';
 
+    // 预售活动 -> orderno
     const ACTIVITY_PRE_SALE = 'activity_pre_sale';
 
     // 提现 -> 微信交易单号
