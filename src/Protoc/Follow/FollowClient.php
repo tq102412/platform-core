@@ -107,4 +107,17 @@ class FollowClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Follow\UpFollowIdRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function UpFollowId(\Follow\UpFollowIdRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/Follow.Follow/UpFollowId',
+        $argument,
+        ['\Follow\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
 }

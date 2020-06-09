@@ -19,7 +19,7 @@ class FollowData {
             'headimgurl' => $data['headimgurl'] ?? '',
             'city'       => $data['city'] ?? '',
             'country'    => $data['country'] ?? '',
-            'gender'     => intval($data['sex'] ?? 0),
+            'gender'     => intval($data['sex'] ?? $data['gender'] ?? 0),
             'language'   => $data['language'] ?? '',
             'province'   => $data['province'] ?? '',
         ];

@@ -13,6 +13,7 @@ use Follow\GetFollowRequest;
 use Follow\UnionsRequest;
 use Ineplant\Enum\PlatformType;
 use Ineplant\Exceptions\TypeErrorException;
+use Follow\UpFollowIdRequest;
 
 class GrpcFollow extends GrpcClient {
 
@@ -35,15 +36,18 @@ class GrpcFollow extends GrpcClient {
      * @param $openid
      * @param $unionId
      * @param int $type
+     * @param null $data
+     * @param string $followId
      * @return mixed
      */
-    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat, $data = null) {
+    public static function getFollow($appId, $openid, $unionId, $type = PlatformType::Wechat, $data = null, $followId = '') {
         $request = new GetFollowRequest();
 
         $request->setPlatformType($type);
         $request->setAppId($appId);
         $request->setOpenid($openid);
         $request->setUnionId($unionId);
+        $request->setFollowId($followId);
 
         if ($data instanceof FollowData) {
             $request->setData($data);
@@ -92,8 +96,11 @@ class GrpcFollow extends GrpcClient {
         $request->setUnionId($unionId);
         $request->setPlatformType($type);
 
-        self::setFollowData($request, $data);
-
+        if ($data instanceof FollowData) {
+            $request->setData($data);
+        } else {
+            self::setFollowData($request, $data);
+        }
 
         $result = self::getOrFail(self::getClient()->GetFollowIdByUnionId($request)->wait());
 
@@ -172,6 +179,22 @@ class GrpcFollow extends GrpcClient {
             }
         }
         return $openIds;
+    }
+
+
+    /**
+     * @param $appid
+     * @param $openid
+     * @param $unionid
+     * @return mixed
+     */
+    public static function upFollowId($appid, $openid, $unionid) {
+        $request = new UpFollowIdRequest();
+        $request->setAppId($appid);
+        $request->setOpenid($openid);
+        $request->setUnionId($unionid);
+
+        return self::getClient()->UpFollowId($request)->wait();
     }
 
 }
