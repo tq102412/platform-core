@@ -2,6 +2,7 @@
 
 namespace Ineplant\Rpc;
 
+use Illuminate\Support\Str;
 use Ineplant\Exceptions\ReturnException;
 use Ineplant\Helper;
 
@@ -34,6 +35,16 @@ class WechatPayment extends WechatBasic {
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function refundWithResult($transactionId, $refundFee, $logHandle, $refundDesc = '') {
+        //用于开发调试的判断
+        if ('local' == config('app.env')) {
+            if (Str::startsWith($transactionId, 'test_fail')) {
+                return [false, '退款请求异常，请联系商家(开发测试'];
+            }
+            if (Str::startsWith($transactionId, 'test_success')) {
+                return [true, 'SUCCESS(开发测试'];
+            }
+        }
+
         try {
             $response = self::refund($transactionId, $refundFee, $refundDesc);
             return [true, $response->getBody()->getContents()];
