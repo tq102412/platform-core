@@ -12,5 +12,5 @@ class RefundStatus  extends SplEnum {
     const PART_SUCCESS = 100;
 
     //部分支付(定金) 失败
-    const PART_FAIL = 150;
+    const PART_FAIL = 110;
 }
