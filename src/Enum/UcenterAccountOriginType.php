@@ -21,6 +21,9 @@ class UcenterAccountOriginType {
     // 预售活动 -> orderno
     const ACTIVITY_PRE_SALE = 'activity_pre_sale';
 
+    // 预售活动定金不退的 -> activity_id
+    const ACTIVITY_PRE_SALE_DEPOSIT = 'activity_pre_sale_deposit';
+
     // 提现 -> 微信交易单号
     const WITH_DRAW_MONEY = 'withdrawmoney';
 }
