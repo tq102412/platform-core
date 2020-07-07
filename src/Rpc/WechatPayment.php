@@ -3,6 +3,7 @@
 namespace Ineplant\Rpc;
 
 use Illuminate\Support\Str;
+use Ineplant\Enum\PaySources;
 use Ineplant\Exceptions\ReturnException;
 use Ineplant\Helper;
 
@@ -60,24 +61,30 @@ class WechatPayment extends WechatBasic {
             return [false, $exception];
         }
     }
+
     /**
      * 支付码扣款并获取到支付结果
+     *
      * @param array $company {
      * @type string $company_id
      * @type string $name
      * }
      * @param string $authCode 付款码
      * @param string $totalFee 支付金额 (分)
-     * @return mixed transaction_id
+     * @param $source
+     * @param $customAttach
+     * @return array ['transaction_id', 'total_fee', 'cash_fee', 'promotion_detail']
      * @throws ReturnException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function codePayWithResult($company, $authCode, $totalFee) {
+    public static function codePayWithResult($company, $authCode, $totalFee, $source = PaySources::CONSUME, $customAttach = []) {
         $response = self::getClient()->request('POST', "/api/wx/pay/code", [
             'json' => [
-                'company'   => $company,
-                'auth_code' => $authCode,
-                'total_fee' => $totalFee,
+                'company'       => $company,
+                'auth_code'     => $authCode,
+                'total_fee'     => $totalFee,
+                'source'        => $source,
+                'custom_attach' => $customAttach,
             ]
         ]);
         return Helper::HttpRpcResult($response);
@@ -111,11 +118,11 @@ class WechatPayment extends WechatBasic {
     public static function payToBalance($appId, $followId, $price, $tradeNo, $originId, $originType) {
         return self::getClient()->request('POST', "/api/wx/pay/to_balance", [
             'json' => [
-                'app_id'    => $appId,
-                'follow_id' => $followId,
-                'price'     => $price,
-                'trade_no'  => $tradeNo,
-                'origin_id' => $originId,
+                'app_id'      => $appId,
+                'follow_id'   => $followId,
+                'price'       => $price,
+                'trade_no'    => $tradeNo,
+                'origin_id'   => $originId,
                 'origin_type' => $originType
             ]
         ]);
