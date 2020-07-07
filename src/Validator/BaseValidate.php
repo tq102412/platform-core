@@ -44,7 +44,7 @@ class BaseValidate extends Validate {
      * @param $value
      * @return bool|string
      */
-    protected function isPositiveInteger($value) {
+    public static function isPositiveInteger($value) {
         return (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) ?
             true : ':attribute只能是正整数';
     }
