@@ -8,61 +8,18 @@
 
 namespace Ineplant;
 
-use App\Exceptions\InePlantLogicException;
-use App\Services\ErrorCode;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\ValidationException;
 
-class BaseRequest extends FormRequest
-{
+use Illuminate\Foundation\Http\FormRequest;
+use Ineplant\BaseClass\RequestTrait;
+
+
+class BaseRequest extends FormRequest {
+
+    use RequestTrait;
+
     /**
      * @var array 错误码映射
      */
     protected $maps;
 
-
-    /**
-     * 重写验证失败时的异常抛出
-     *
-     * @param Validator $validator
-     * @throws ValidationException
-     */
-    protected function failedValidation(Validator $validator){
-
-        throw new ValidationException($validator,response(
-            $this->formatErrors($validator)));
-
-    }
-
-
-    /**
-     * 格式化输出错误消息
-     *
-     * @param Validator $validator
-     * @return array
-     */
-    protected function formatErrors(Validator $validator){
-        $message = config('app.debug') ? $messages = $validator->errors()->all()
-            : '参数错误';
-
-        $code = '400';
-
-        //        foreach ($messages as $v){
-        //
-        //            if( isset($this->maps[$v]) ){
-        //                $code = $this->maps[$v];
-        //                $message = $v;
-        //                break;
-        //            }
-        //        }
-
-        $result = [
-            'errcode' => $code,
-            'errmsg'  => $message,
-            'content' => ''
-        ];
-
-        return $result;
-    }
 }
