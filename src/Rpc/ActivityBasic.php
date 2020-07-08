@@ -47,7 +47,7 @@ class ActivityBasic {
             throw new ReturnException("活动发布处理异常", ErrorCode::RPC);
         }
         if ($response['errcode']) {
-            throw new ReturnException("{$response['content']} (errcode:{$response['errcode']})", ErrorCode::RPC);
+            throw new ReturnException("{$response['errmsg']} (errcode:{$response['errcode']})", ErrorCode::RPC);
         }
     }
 
