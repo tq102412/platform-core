@@ -3,9 +3,12 @@
 namespace Ineplant\BaseClass;
 
 use Ineplant\CollectHandle;
+use Illuminate\Foundation\Http\FormRequest;
 
-abstract class BaseRequest extends \Ineplant\BaseRequest
-{
+abstract class BaseRequest extends FormRequest {
+
+    use RequestTrait;
+
     /**
      * Determine if the user is authorized to make this request.
      *
