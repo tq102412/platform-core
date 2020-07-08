@@ -430,4 +430,13 @@ class Helper {
         }
         return $mchRate;
     }
+
+    /**
+     * 判断是否为正整数
+     * @param $value
+     * @return bool
+     */
+    public static function isPositiveInteger($value) {
+        return (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0);
+    }
 }
