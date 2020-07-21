@@ -88,13 +88,25 @@ class UserCenter {
      * @throws \Ineplant\Exceptions\ReturnException
      */
     public static function getCompanyByIds($companyIds) {
+        return array_column(self::getCompaniesByIds($companyIds), null, 'CompanyId');
+    }
+
+    /**
+     * 根据companyIds查询
+     *
+     * @param $companyIds
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getCompaniesByIds($companyIds) {
         $response = self::getClient()->request('POST', '/company/get_by_companyids', [
             'json' => [
                 'companyIds' => $companyIds,
             ],
         ]);
 
-        return array_column(Helper::getForJsonResponse($response), null, 'CompanyId');
+        return Helper::getForJsonResponse($response);
     }
 
     /**
@@ -197,7 +209,7 @@ class UserCenter {
      * @throws \Ineplant\Exceptions\ReturnException
      */
     public static function getClientId($companyId) {
-        return Helper::responseForRPC(function() use ($companyId) {
+        return Helper::responseForRPC(function () use ($companyId) {
             $response = self::getClient()->request('GET', '/getclientid', [
                 'query' => [
                     'company_id' => $companyId,
