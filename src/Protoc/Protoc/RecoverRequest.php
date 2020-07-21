@@ -16,11 +16,11 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string code = 1;</code>
      */
-    private $code = '';
+    protected $code = '';
     /**
      * Generated from protobuf field <code>string created_user_id = 2;</code>
      */
-    private $created_user_id = '';
+    protected $created_user_id = '';
 
     /**
      * Constructor.

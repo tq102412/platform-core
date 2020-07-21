@@ -16,11 +16,11 @@ class Coupon extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string coupon_id = 1;</code>
      */
-    private $coupon_id = '';
+    protected $coupon_id = '';
     /**
      * Generated from protobuf field <code>string title = 2;</code>
      */
-    private $title = '';
+    protected $title = '';
 
     /**
      * Constructor.

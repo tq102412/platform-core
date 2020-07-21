@@ -20,7 +20,7 @@ class CancelRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string company_id = 2;</code>
      */
-    private $company_id = '';
+    protected $company_id = '';
 
     /**
      * Constructor.

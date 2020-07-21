@@ -16,7 +16,7 @@ class DiscountMoney extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 money = 1;</code>
      */
-    private $money = 0;
+    protected $money = 0;
 
     /**
      * Constructor.

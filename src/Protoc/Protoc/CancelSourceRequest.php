@@ -16,11 +16,11 @@ class CancelSourceRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 source = 1;</code>
      */
-    private $source = 0;
+    protected $source = 0;
     /**
      * Generated from protobuf field <code>string source_id = 2;</code>
      */
-    private $source_id = '';
+    protected $source_id = '';
 
     /**
      * Constructor.

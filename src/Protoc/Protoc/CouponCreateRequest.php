@@ -18,63 +18,63 @@ class CouponCreateRequest extends \Google\Protobuf\Internal\Message
      *
      * Generated from protobuf field <code>int32 type = 1;</code>
      */
-    private $type = 0;
+    protected $type = 0;
     /**
      * Generated from protobuf field <code>int32 from_money = 2;</code>
      */
-    private $from_money = 0;
+    protected $from_money = 0;
     /**
      * Generated from protobuf field <code>int32 to_money = 3;</code>
      */
-    private $to_money = 0;
+    protected $to_money = 0;
     /**
      * Generated from protobuf field <code>string title = 4;</code>
      */
-    private $title = '';
+    protected $title = '';
     /**
      * Generated from protobuf field <code>string company_id = 5;</code>
      */
-    private $company_id = '';
+    protected $company_id = '';
     /**
      * Generated from protobuf field <code>string created_user_id = 6;</code>
      */
-    private $created_user_id = '';
+    protected $created_user_id = '';
     /**
      * Generated from protobuf field <code>string activity_id = 7;</code>
      */
-    private $activity_id = '';
+    protected $activity_id = '';
     /**
      * Generated from protobuf field <code>int32 total_sku = 8;</code>
      */
-    private $total_sku = 0;
+    protected $total_sku = 0;
     /**
      * Generated from protobuf field <code>int32 limit = 9;</code>
      */
-    private $limit = 0;
+    protected $limit = 0;
     /**
      * Generated from protobuf field <code>int32 effective_type = 10;</code>
      */
-    private $effective_type = 0;
+    protected $effective_type = 0;
     /**
      * Generated from protobuf field <code>string effective_from_date = 11;</code>
      */
-    private $effective_from_date = '';
+    protected $effective_from_date = '';
     /**
      * Generated from protobuf field <code>string effective_to_date = 12;</code>
      */
-    private $effective_to_date = '';
+    protected $effective_to_date = '';
     /**
      * Generated from protobuf field <code>int32 effective_day = 13;</code>
      */
-    private $effective_day = 0;
+    protected $effective_day = 0;
     /**
      * Generated from protobuf field <code>int32 effective_to_day = 14;</code>
      */
-    private $effective_to_day = 0;
+    protected $effective_to_day = 0;
     /**
      * Generated from protobuf field <code>int32 usage = 15;</code>
      */
-    private $usage = 0;
+    protected $usage = 0;
 
     /**
      * Constructor.

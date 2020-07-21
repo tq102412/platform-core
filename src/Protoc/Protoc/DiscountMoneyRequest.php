@@ -16,23 +16,27 @@ class DiscountMoneyRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string coupon_code = 1;</code>
      */
-    private $coupon_code = '';
+    protected $coupon_code = '';
     /**
      * Generated from protobuf field <code>string member_union_id = 2;</code>
      */
-    private $member_union_id = '';
+    protected $member_union_id = '';
     /**
      * Generated from protobuf field <code>int32 usage = 3;</code>
      */
-    private $usage = 0;
+    protected $usage = 0;
     /**
      * Generated from protobuf field <code>int32 money = 4;</code>
      */
-    private $money = 0;
+    protected $money = 0;
     /**
      * Generated from protobuf field <code>string shop_id = 5;</code>
      */
-    private $shop_id = '';
+    protected $shop_id = '';
+    /**
+     * Generated from protobuf field <code>repeated string product_ids = 6;</code>
+     */
+    private $product_ids;
 
     /**
      * Constructor.
@@ -45,6 +49,7 @@ class DiscountMoneyRequest extends \Google\Protobuf\Internal\Message
      *     @type int $usage
      *     @type int $money
      *     @type string $shop_id
+     *     @type string[]|\Google\Protobuf\Internal\RepeatedField $product_ids
      * }
      */
     public function __construct($data = NULL) {
@@ -158,6 +163,28 @@ class DiscountMoneyRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->shop_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string product_ids = 6;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getProductIds()
+    {
+        return $this->product_ids;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string product_ids = 6;</code>
+     * @param string[]|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setProductIds($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->product_ids = $arr;
 
         return $this;
     }

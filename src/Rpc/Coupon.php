@@ -35,15 +35,17 @@ class Coupon extends GrpcClient {
      * @param $money
      * @param $shopId
      * @param int $usage
+     * @param array $productIds
      * @return array
      */
-    public static function GetDiscountMoney($couponCode, $memberUnionId, $money, $shopId, int $usage = 1) {
+    public static function GetDiscountMoney($couponCode, $memberUnionId, $money, $shopId, int $usage = 1, $productIds = []) {
         $request = new DiscountMoneyRequest();
         $request->setCouponCode($couponCode);
         $request->setMemberUnionId($memberUnionId);
         $request->setMoney($money);
         $request->setShopId($shopId);
         $request->setUsage($usage);
+        $request->setProductIds($productIds);
 
         return self::getClient()->GetDiscountMoney($request)->wait();
     }

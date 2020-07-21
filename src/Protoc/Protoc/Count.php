@@ -16,7 +16,7 @@ class Count extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 count = 1;</code>
      */
-    private $count = 0;
+    protected $count = 0;
 
     /**
      * Constructor.

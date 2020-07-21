@@ -16,11 +16,11 @@ class GetCountByMemberRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>int32 status = 1;</code>
      */
-    private $status = 0;
+    protected $status = 0;
     /**
      * Generated from protobuf field <code>string member_union_id = 2;</code>
      */
-    private $member_union_id = '';
+    protected $member_union_id = '';
 
     /**
      * Constructor.

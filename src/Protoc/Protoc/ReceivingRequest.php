@@ -16,31 +16,31 @@ class ReceivingRequest extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>string coupon_id = 1;</code>
      */
-    private $coupon_id = '';
+    protected $coupon_id = '';
     /**
      * Generated from protobuf field <code>string member_union_id = 2;</code>
      */
-    private $member_union_id = '';
+    protected $member_union_id = '';
     /**
      * Generated from protobuf field <code>int32 quantity = 3;</code>
      */
-    private $quantity = 0;
+    protected $quantity = 0;
     /**
      * Generated from protobuf field <code>int32 money = 4;</code>
      */
-    private $money = 0;
+    protected $money = 0;
     /**
      * Generated from protobuf field <code>string activity_id = 5;</code>
      */
-    private $activity_id = '';
+    protected $activity_id = '';
     /**
      * Generated from protobuf field <code>int32 source = 6;</code>
      */
-    private $source = 0;
+    protected $source = 0;
     /**
      * Generated from protobuf field <code>string source_id = 7;</code>
      */
-    private $source_id = '';
+    protected $source_id = '';
 
     /**
      * Constructor.
