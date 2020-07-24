@@ -318,11 +318,12 @@ class Helper {
      * 避免其他异常被handle
      *
      * @param $func
+     * @return mixed
      * @throws \Exception
      */
     public static function avoidExceptionHandle($func) {
         try {
-            $func();
+            return $func();
         } catch (\Throwable $e) {
             throw new \Exception($e->getMessage());
         }
