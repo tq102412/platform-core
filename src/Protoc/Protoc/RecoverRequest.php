@@ -21,6 +21,10 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string created_user_id = 2;</code>
      */
     protected $created_user_id = '';
+    /**
+     * Generated from protobuf field <code>bool is_open_coupon = 3;</code>
+     */
+    protected $is_open_coupon = false;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $code
      *     @type string $created_user_id
+     *     @type bool $is_open_coupon
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class RecoverRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->created_user_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool is_open_coupon = 3;</code>
+     * @return bool
+     */
+    public function getIsOpenCoupon()
+    {
+        return $this->is_open_coupon;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool is_open_coupon = 3;</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setIsOpenCoupon($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->is_open_coupon = $var;
 
         return $this;
     }

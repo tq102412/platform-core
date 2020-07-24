@@ -178,4 +178,18 @@ class Member {
         return $result;
     }
 
+
+    /**
+     * @param $transactionId
+     * @return array|\ArrayAccess|mixed
+     * @throws ErrCodeException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Ineplant\Exceptions\ReturnException
+     */
+    public static function getByTransactionId($transactionId) {
+        $response = self::getClient()->request('GET', '/api/consumepayway/getbytransactionid/' . $transactionId);
+
+        return Helper::getForJsonResponse($response);
+    }
+
 }

@@ -146,4 +146,17 @@ class couponClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Protoc\ConsumingOpenCouponRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function ConsumingOpenCoupon(\Protoc\ConsumingOpenCouponRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/protoc.coupon/ConsumingOpenCoupon',
+        $argument,
+        ['\Protoc\PBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
 }

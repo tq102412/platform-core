@@ -13,6 +13,7 @@ use Protoc\GetByIdsRequest;
 use Protoc\GetCountByMemberRequest;
 use Protoc\ReceivingRequest;
 use Protoc\RecoverRequest;
+use Protoc\ConsumingOpenCouponRequest;
 
 class Coupon extends GrpcClient {
 
@@ -242,6 +243,26 @@ class Coupon extends GrpcClient {
         $request->setCouponCodes($codes);
 
         return self::getClient()->GetByCodes($request)->wait();
+    }
+
+
+    /**
+     * @param $sotckId
+     * @param $couponCode
+     * @param string $billCode
+     * @param string $userId
+     * @param string $shopId
+     * @return mixed
+     */
+    public static function consumingOpenCoupon($sotckId, $couponCode, $billCode = '', $userId = '', $shopId = '') {
+        $request = new ConsumingOpenCouponRequest();
+        $request->setBillCode($billCode);
+        $request->setUserId($userId);
+        $request->setShopId($shopId);
+        $request->setStockId($sotckId);
+        $request->setWechatOpenCouponCode($couponCode);
+
+        return self::getClient()->ConsumingOpenCoupon($request)->wait();
     }
 
 }
