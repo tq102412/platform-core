@@ -103,15 +103,17 @@ class Member {
      * @param $unionId
      * @param $companyId
      * @param $data
+     * @param string $platformOpenid
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function makeByUnionId($unionId, $companyId, $data) {
+    public static function makeByUnionId($unionId, $companyId, $data, $platformOpenid = '') {
         return self::getClient()->request('POST', '/api/member/makebyunionId', [
             'json' => [
                 'data'       => $data,
                 'unionid'    => $unionId,
                 'company_id' => $companyId,
+                'platform_openid' => $platformOpenid,
             ],
         ]);
     }
