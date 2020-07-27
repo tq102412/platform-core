@@ -29,6 +29,10 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>bool linked = 4;</code>
      */
     protected $linked = false;
+    /**
+     * Generated from protobuf field <code>bool platform_linked = 5;</code>
+     */
+    protected $platform_linked = false;
 
     /**
      * Constructor.
@@ -40,6 +44,7 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
      *     @type string $nickname
      *     @type string $avatar_url
      *     @type bool $linked
+     *     @type bool $platform_linked
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +136,28 @@ class FollowInfo extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->linked = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool platform_linked = 5;</code>
+     * @return bool
+     */
+    public function getPlatformLinked()
+    {
+        return $this->platform_linked;
+    }
+
+    /**
+     * Generated from protobuf field <code>bool platform_linked = 5;</code>
+     * @param bool $var
+     * @return $this
+     */
+    public function setPlatformLinked($var)
+    {
+        GPBUtil::checkBool($var);
+        $this->platform_linked = $var;
 
         return $this;
     }

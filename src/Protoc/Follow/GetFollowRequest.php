@@ -37,6 +37,10 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.Follow.FollowData data = 6;</code>
      */
     protected $data = null;
+    /**
+     * Generated from protobuf field <code>string platform_openid = 7;</code>
+     */
+    protected $platform_openid = '';
 
     /**
      * Constructor.
@@ -50,6 +54,7 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
      *     @type string $follow_id
      *     @type int $platform_type
      *     @type \Follow\FollowData $data
+     *     @type string $platform_openid
      * }
      */
     public function __construct($data = NULL) {
@@ -185,6 +190,28 @@ class GetFollowRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Follow\FollowData::class);
         $this->data = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string platform_openid = 7;</code>
+     * @return string
+     */
+    public function getPlatformOpenid()
+    {
+        return $this->platform_openid;
+    }
+
+    /**
+     * Generated from protobuf field <code>string platform_openid = 7;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPlatformOpenid($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->platform_openid = $var;
 
         return $this;
     }
