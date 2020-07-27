@@ -58,9 +58,10 @@ class Coupon extends GrpcClient {
      * @param int $usage
      * @param string $createdUserId
      * @param string $billCode
+     * @param int $isOpenCoupon
      * @return mixed
      */
-    public static function Consuming($couponCode, $memberUnionId, $shopId, $usage = 1, $createdUserId = '', $billCode = '') {
+    public static function Consuming($couponCode, $memberUnionId, $shopId, $usage = 1, $createdUserId = '', $billCode = '', $isOpenCoupon = 0) {
         $request = new ConsumingRequest();
 
         $request->setCouponCode($couponCode);
@@ -69,6 +70,7 @@ class Coupon extends GrpcClient {
         $request->setUsage($usage);
         $request->setCreatedUserId($createdUserId);
         $request->setBillCode($billCode);
+        $request->setIsOpenCoupon($isOpenCoupon);
 
         return self::getClient()->Consuming($request)->wait();
     }
