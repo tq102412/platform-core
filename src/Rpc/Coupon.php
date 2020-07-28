@@ -58,9 +58,10 @@ class Coupon extends GrpcClient {
      * @param int $usage
      * @param string $createdUserId
      * @param string $billCode
+     * @param bool $isOpenCoupon
      * @return mixed
      */
-    public static function Consuming($couponCode, $memberUnionId, $shopId, $usage = 1, $createdUserId = '', $billCode = '') {
+    public static function Consuming($couponCode, $memberUnionId, $shopId, $usage = 1, $createdUserId = '', $billCode = '', $isOpenCoupon = false) {
         $request = new ConsumingRequest();
 
         $request->setCouponCode($couponCode);
@@ -69,6 +70,7 @@ class Coupon extends GrpcClient {
         $request->setUsage($usage);
         $request->setCreatedUserId($createdUserId);
         $request->setBillCode($billCode);
+        $request->setIsOpenCoupon($isOpenCoupon);
 
         return self::getClient()->Consuming($request)->wait();
     }
@@ -183,14 +185,16 @@ class Coupon extends GrpcClient {
      *
      * @param string $code 优惠券code
      * @param string $userId 操作人
+     * @param bool $isOpenCoupon 是否为开发发券
      * @return mixed
      */
-    public static function recover($code, $userId) {
+    public static function recover($code, $userId, $isOpenCoupon = false) {
         $client = self::getClient();
 
         $request = new RecoverRequest();
         $request->setCode($code);
         $request->setCreatedUserId($userId);
+        $request->setIsOpenCoupon($isOpenCoupon);
 
         return $client->Recover($request)->wait();
     }
